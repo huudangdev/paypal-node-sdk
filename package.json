@@ -23,11 +23,6 @@
     "chai": "*",
     "mocha": "*"
   },
-  /*
-  "scripts": {
-    "test": "mocha test"
-  },
-  */
   "private": "true",
   "readmeFilename": "README.md"
 }
