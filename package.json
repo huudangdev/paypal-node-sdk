@@ -1,0 +1,31 @@
+{
+  "author": "PayPal <paypal@paypal.com> (https://developer.paypal.com/)",
+  "name": "paypal-rest-sdk",
+  "description": "Wrapper for PayPal REST APIs",
+  "version": "0.5.0",
+  "homepage": "https://github.com/paypal/rest-api-sdk-nodejs",
+  "keywords": [
+    "paypal",    
+    "rest",
+    "api",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paypal/rest-api-sdk-nodejs.git"
+  },
+  "engines": {
+    "node": ">= v0.6.0"
+  },
+  "main": "./index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "private": "true",
+  "readmeFilename": "README.md"
+}
