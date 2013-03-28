@@ -20,7 +20,9 @@ var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
 var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 
 
-
+describe('SDK', function() {
+	describe('#Sale api ', function() {
+		it('Get and refund', function(done) {
 /*------ Generate Token ----------- */
 paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 	console.log("Token generated "+generatedToken);
@@ -59,6 +61,7 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 							console.log("-----------------------");
 							console.log(res);
 							should.exist(res.id);
+							done();
 						}
 					
 					})
@@ -70,7 +73,9 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 	})
 })
 
-
+		})
+	})
+})
 var refund_data = {"amount":{"total":"2.34","currency":"USD"}};
 
 var create_payment_data = {

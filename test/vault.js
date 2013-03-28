@@ -28,6 +28,9 @@ var cardData = {
 	 "last_name":"Shopper"
 }; 
 
+describe('SDK', function() {
+	describe('#Vault api ', function() {
+		it('Create and Get', function(done) {
 /*------ Generate Token ---------- */
 paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 		console.log("Token generated "+generatedToken);
@@ -54,6 +57,7 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 						console.log(res);
 						should.exist(res.id);
 						expect(res.id).to.contain('CARD');
+						done();
 					}
 				
 				})
@@ -61,3 +65,6 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
         })
 })
 
+		})
+	})
+})
