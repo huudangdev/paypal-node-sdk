@@ -38,33 +38,33 @@ To write an app that uses the SDK
 	* Now invoke relevant api (eg: create payment) using your newly generated authorization token.
 	* A sample api call is shown below.     
 	
-	```nodejs
-	var paypal_sdk = require('./lib/paypal-rest-sdk.js');
-	
-	var http_default_opts = {
-		'host': 'api.sandbox.paypal.com',
-		'port': '',
-		'headers': {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
-			'Authorization': ''
-		}
-	};
-
-	paypal_sdk.configure(http_default_opts);
-	
-	var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
-	var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
-	
-	paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
-		http_default_opts.headers['Authorization'] = generatedToken;
-		paypal_sdk.payment.create(create_payment_data, http_default_opts, function(res,err){
+		```nodejs
+		var paypal_sdk = require('./lib/paypal-rest-sdk.js');
 		
-			//process your business logic with payment response
-		})
-	})
+		var http_default_opts = {
+			'host': 'api.sandbox.paypal.com',
+			'port': '',
+			'headers': {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': ''
+			}
+		};
 	
-	```
+		paypal_sdk.configure(http_default_opts);
+		
+		var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
+		var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
+		
+		paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
+			http_default_opts.headers['Authorization'] = generatedToken;
+			paypal_sdk.payment.create(create_payment_data, http_default_opts, function(res,err){
+			
+				//process your business logic with payment response
+			})
+		})
+		
+		```
 	
 
 
