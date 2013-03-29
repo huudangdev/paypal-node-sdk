@@ -7,7 +7,7 @@ Prerequisites
 -------------
 
   * nodejs v0.6.0
-  * npm dependency mocha and chai
+  * npm dependency 'mocha' and 'chai'
    
 
 Running the sample
@@ -20,20 +20,23 @@ Running the sample
 Running test case
 -----------------
 
-  * Install require npm modules
-  * Install Mocha javascript test framework, using command 'npm install -g mocha'
-  * Navigate to SDK root and run mocha at command prompt to run all test cases
+  * Install npm modules specified in prerequisite.
+  * Install Mocha javascript test framework, using command 'npm install -g mocha'.
+  * You may need to update timeout in local npm cache file suite.js (eg: this._timeout = 60000;).
+  * Navigate to SDK root and run mocha at command prompt to run all test cases.
        
 Usage
 -----
 
 To write an app that uses the SDK
 	
-  * copy the paypal-rest-sdk.js file under root lib directory, to your project.
+  * Copy the paypal-rest-sdk.js file under root lib directory, to your project.
   * Obtain your clientId and client secret from the developer portal.
-  * Now you are all set to make your first API call. Create a reference  variable of paypal-rest-sdk.js in your nodejs file.
-  * First you need to generate authorization token by invoking generateToken method by setting clientId and client secret as shown below
-  * Now invoke relevant api (eg: create payment) using your newly generated authorization token.
+  * Now you are all set to make your first API call. 
+  * Create a reference  variable of paypal-rest-sdk.js in your nodejs file.
+  * Create a http_options variable and initialize by invoking 'configure' method. 
+  * Generate an authorization token by invoking 'generateToken' method by setting clientId and client secret.
+  * Invoke a relevant api (eg: create payment) using your newly generated authorization token.
   * A sample api call is shown below.
 
   ```js 
