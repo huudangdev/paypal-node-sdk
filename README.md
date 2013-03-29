@@ -29,14 +29,14 @@ Usage
 
 To write an app that uses the SDK
 	
-	* copy the paypal-rest-sdk.js file under root lib directory, to your project.
-	* Obtain your clientId and client secret from the developer portal.
-	* Now you are all set to make your first API call. Create a reference  variable of paypal-rest-sdk.js
+    * copy the paypal-rest-sdk.js file under root lib directory, to your project.
+    * Obtain your clientId and client secret from the developer portal.
+    * Now you are all set to make your first API call. Create a reference  variable of paypal-rest-sdk.js
 	  in your nodejs file.
-	* First you need to generate authorization token by invoking generateToken method by setting clientId and client secret 
+    * First you need to generate authorization token by invoking generateToken method by setting clientId and client secret 
 	  as shown below
-	* Now invoke relevant api (eg: create payment) using your newly generated authorization token.
-	* A sample api call is shown below.     
+    * Now invoke relevant api (eg: create payment) using your newly generated authorization token.
+    * A sample api call is shown below.     
 	
 		```nodejs
 		var paypal_sdk = require('./lib/paypal-rest-sdk.js');
@@ -63,7 +63,6 @@ To write an app that uses the SDK
 				//process your business logic with payment response
 			})
 		})
-		
 		```
 	
 
