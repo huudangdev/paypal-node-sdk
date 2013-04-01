@@ -30,7 +30,7 @@ To write an app using the SDK
   * Create and configure http_options.  
   * Generate an authorization token by invoking 'generateToken' method with your client_id and secret.
   * Set 'Authorization' header in http_options with generated Token. 
-  * Invoke the rest api (eg: create payment) with required arguments.
+  * Invoke the rest api (eg: store a credit card) with required arguments.
 
   ```js 
     var paypal_sdk = require('paypal-rest-sdk');
@@ -44,7 +44,16 @@ To write an app using the SDK
 		
 	var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
 	var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
-		
+	
+	 var card_data = {
+	 	"type": "visa",
+	 	"number": "4417119669820331",
+	 	"expire_month": "11",
+	 	"expire_year": "2018",
+	 	"first_name": "Joe",
+	 	"last_name": "Shopper"
+	 };
+ 	
 	paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 		
 		if (!http_options.headers) {
@@ -52,7 +61,7 @@ To write an app using the SDK
 		}
 		http_options.headers['Authorization'] = generatedToken;
 		
-		paypal_sdk.payment.create(create_payment_data, http_options, function(res,err){
+		paypal_sdk.credit_card.create(card_data, http_options, function(res,err){
 			
 			//process your business logic with payment response
 		})
