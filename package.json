@@ -18,7 +18,9 @@
     "node": ">= v0.6.0"
   },
   "main": "./index.js",
-  "dependencies": {},
+  "dependencies": {
+    "node-uuid":"*"
+    },
   "devDependencies": {
     "chai": "*",
     "mocha": "*"
