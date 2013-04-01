@@ -22,8 +22,7 @@ Running test case
 
   * Install npm modules specified in prerequisite.
   * Install Mocha javascript test framework, using command 'npm install -g mocha'.
-  * You may need to update timeout in local npm cache file suite.js (eg: this._timeout = 60000;).
-  * Navigate to SDK root and run mocha at command prompt to run all test cases.
+  * Navigate to SDK root and run mocha with timeout (eg: 'mocha -t 15000').
        
 Usage
 -----
@@ -35,7 +34,7 @@ To write an app that uses the SDK
   * Create a http_options variable and initialize it by invoking 'configure' method. 
   * Generate an authorization token by invoking 'generateToken' method by setting clientId and client secret.
   * Set 'Authorization' header with newly generatedToken inside http_options variable . 
-  * Invoke a relevant api (eg: create payment) by passing json request data and http_options.
+  * Invoke a api (eg: create payment) by passing json request data and http_options.
 
   ```js 
   var paypal_sdk = require('paypal-rest-sdk');
