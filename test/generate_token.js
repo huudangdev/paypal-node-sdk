@@ -7,12 +7,7 @@ var paypal_sdk = require('../');
 
 var http_default_opts = {
 	'host': 'api.sandbox.paypal.com',
-	'port': '',
-	'headers': {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': ''
-	}
+	'port': ''
 };
 
 paypal_sdk.configure(http_default_opts);
