@@ -13,23 +13,23 @@ Prerequisites
 To run sample
 ------------------
 
-	node app.js
+	node samples/app.js
 
 To run the tests
 -----------------
 
-	mocha -t 15000
+	mocha -t 15000 
        
 Usage
 -----
 
-To write an app that uses the SDK
+To write an app using the SDK
 	
   * Register for a developer account with PayPal and get your client_id and secret at (https://developer.paypal.com).
-  * Create a reference variable of 'paypal-rest-sdk' npm in your file.
+  * Get a reference variable for 'paypal-rest-sdk' npm in your file.
   * Create and configure http_options.  
   * Generate an authorization token by invoking 'generateToken' method with your client_id and secret.
-  * Set 'Authorization' header with generatedToken inside http_options variable . 
+  * Set 'Authorization' header in http_options with generated Token. 
   * Invoke the rest api (eg: create payment) with required arguments.
 
   ```js 
@@ -59,8 +59,8 @@ To write an app that uses the SDK
 	})
   ```
 
-To read rest api documentation
-------------------------------
+REST api documentation
+----------------------
 
    [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
