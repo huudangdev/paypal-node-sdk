@@ -8,7 +8,6 @@ var http_default_opts = {
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'headers': {
-		'Accept': 'application/json',
 		'Content-Type': 'application/json',
 		'Authorization': ''
 	}
@@ -31,11 +30,11 @@ var cardData = {
 describe('SDK', function() {
 	describe('#Vault api ', function() {
 		it('Create and Get', function(done) {
-/*------ Generate Token ---------- */
+// Generate Token 
 paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 		console.log("Token generated "+generatedToken);
 		http_default_opts.headers['Authorization'] = generatedToken;
-		/*---------- Store Credit Card with PayPal ---------- */
+		// Store Credit Card with PayPal 
 		paypal_sdk.credit_card.create(cardData, http_default_opts, function(res,err){
 			if(err){
 				console.log(err);;
@@ -46,7 +45,7 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 				console.log(res);
 				should.exist(res.id);
 				expect(res.id).to.contain('CARD');
-				/*---------- Look up credit card detail ----------- */
+				// Look up credit card detail 
 				paypal_sdk.credit_card.get(res.id, http_default_opts, function(res,err){
 					if(err){
 						console.log(err);

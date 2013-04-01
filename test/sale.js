@@ -8,7 +8,6 @@ var http_default_opts = {
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'headers': {
-		'Accept': 'application/json',
 		'Content-Type': 'application/json',
 		'Authorization': ''
 	}
@@ -23,11 +22,11 @@ var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 describe('SDK', function() {
 	describe('#Sale api ', function() {
 		it('Get and refund', function(done) {
-/*------ Generate Token ----------- */
+// Generate Token
 paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 	console.log("Token generated "+generatedToken);
 	http_default_opts.headers['Authorization'] = generatedToken;
-	/*------ Making a payment ------- */
+	// Making a payment 
 	paypal_sdk.payment.create(create_payment_data, http_default_opts, function(res,err){
 		if(err){
 			console.log(err);
@@ -41,7 +40,7 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 			var sale_id = res.transactions[0].related_resources[0].sale.id;
 			console.log("sale_id : "+ sale_id);
 			
-			/*------ Getting a sale transaction for a completed payment -------- */
+			// Getting a sale transaction for a completed payment
 			paypal_sdk.sale.get(sale_id, http_default_opts, function(res,err){
 				if(err){
 					console.log(err);
@@ -51,7 +50,7 @@ paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
 					console.log("-----------------------");
 					console.log(res);
 					should.exist(res.id);
-					/*------ Refund a sale ---------- */ 
+					// Refund a sale 
 					paypal_sdk.sale.refund(res.id, refund_data, http_default_opts, function(res,err){
 						if(err){
 							console.log(err);

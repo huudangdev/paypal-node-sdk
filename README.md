@@ -30,36 +30,32 @@ Usage
 
 To write an app that uses the SDK
 	
-  * Copy the paypal-rest-sdk.js file under root lib directory, to your project.
   * Obtain your clientId and client secret from the developer portal.
-  * Now you are all set to make your first API call. 
-  * Create a reference  variable of paypal-rest-sdk.js in your nodejs file.
-  * Create a http_options variable and initialize by invoking 'configure' method. 
+  * Create a reference variable of 'paypal-rest-sdk' npm module in your nodejs file.
+  * Create a http_options variable and initialize it by invoking 'configure' method. 
   * Generate an authorization token by invoking 'generateToken' method by setting clientId and client secret.
-  * Invoke a relevant api (eg: create payment) using your newly generated authorization token.
-  * A sample api call is shown below.
+  * Set 'Authorization' header with newly generatedToken inside http_options variable . 
+  * Invoke a relevant api (eg: create payment) by passing json request data and http_options.
 
   ```js 
-  var paypal_sdk = require('./lib/paypal-rest-sdk.js');
+  var paypal_sdk = require('paypal-rest-sdk');
 		
-	var http_default_opts = {
+	var http_options = {
 			'host': 'api.sandbox.paypal.com',
 			'port': '',
 			'headers': {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
 				'Authorization': ''
 			}
 	};
 	
-	paypal_sdk.configure(http_default_opts);
+	paypal_sdk.configure(http_options);
 		
 	var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
 	var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 		
 	paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
-		http_default_opts.headers['Authorization'] = generatedToken;
-		paypal_sdk.payment.create(create_payment_data, http_default_opts, function(res,err){
+		http_options.headers['Authorization'] = generatedToken;
+		paypal_sdk.payment.create(create_payment_data, http_options, function(res,err){
 			
 			//process your business logic with payment response
 		})
