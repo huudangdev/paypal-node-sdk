@@ -18,7 +18,7 @@ To run sample
 To run the tests
 -----------------
 
-	mocha -t 15000 
+	mocha -t 15000 (timeout is specified in milliseconds eg: 15000ms)
        
 Usage
 -----
@@ -28,9 +28,9 @@ To write an app using the SDK
   * Register for a developer account with PayPal and get your client_id and secret at (https://developer.paypal.com).
   * Get a reference variable for 'paypal-rest-sdk' npm in your file.
   * Create and configure http_options.  
-  * Generate an authorization token by invoking 'generateToken' method with your client_id and secret.
-  * Set 'Authorization' header in http_options with generated Token. 
-  * Invoke the rest api (eg: store a credit card) with required arguments.
+  * Generate access token by invoking 'generateToken' method with your client_id and secret and callback function.
+  * Use the token to set 'Authorization' header in http_options. 
+  * Invoke the rest api (eg: store a credit card) with required params (eg: data, http_options, callback).
 
   ```js 
     var paypal_sdk = require('paypal-rest-sdk');
