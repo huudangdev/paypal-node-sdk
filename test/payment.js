@@ -63,28 +63,28 @@ var create_payment_json_card = {
 describe('SDK', function() {
 	describe('#createpaymentusingcard', function() {
 		it('payment should be created', function(done) {
-			
 
-				paypal_sdk.payment.create(create_payment_json_card, http_default_opts, function(res, err) {
-					if (err) {
-						throw err;
-					}
 
-					if (res) {
-						expect(res.id).to.contain('PAY-');
-						paypal_sdk.payment.get(res.id, http_default_opts, function(get_res, get_err) {
-							if (get_err) {
-								throw get_res;
-							}
+			paypal_sdk.payment.create(create_payment_json_card, http_default_opts, function(err, res) {
+				if (err) {
+					throw err;
+				}
 
-							if (get_res) {
-								expect(get_res.state).to.contain('approved');
-								done();
-							}
+				if (res) {
+					expect(res.id).to.contain('PAY-');
+					paypal_sdk.payment.get(res.id, http_default_opts, function( get_err, get_res) {
+						if (get_err) {
+							throw get_res;
+						}
 
-						});
-					}
-				});
+						if (get_res) {
+							expect(get_res.state).to.contain('approved');
+							done();
+						}
+
+					});
+				}
+			});
 
 		})
 	})
@@ -119,16 +119,16 @@ describe('SDK', function() {
 	describe('#createpaymentusingsavedcard', function() {
 		it('payment should be created', function(done) {
 
-				paypal_sdk.payment.create(create_payment_json_savedcard, http_default_opts, function(res, err) {
-					if (err) {
-						throw err;
-					}
+			paypal_sdk.payment.create(create_payment_json_savedcard, http_default_opts, function(err, res) {
+				if (err) {
+					throw err;
+				}
 
-					if (res) {
-						expect(res.id).to.contain('PAY-');
-						done();
-					}
-				});
+				if (res) {
+					expect(res.id).to.contain('PAY-');
+					done();
+				}
+			});
 
 		})
 	})
@@ -163,16 +163,16 @@ describe('SDK', function() {
 		it('payment should be created', function(done) {
 
 
-				paypal_sdk.payment.create(create_payment_json_paypal, http_default_opts, function(res, err) {
-					if (err) {
-						throw err;
-					}
+			paypal_sdk.payment.create(create_payment_json_paypal, http_default_opts, function(err, res) {
+				if (err) {
+					throw err;
+				}
 
-					if (res) {
-						expect(res.id).to.contain('PAY-');
-						done();
-					}
-				});
+				if (res) {
+					expect(res.id).to.contain('PAY-');
+					done();
+				}
+			});
 
 		})
 	})
