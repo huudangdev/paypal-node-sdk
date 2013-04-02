@@ -28,7 +28,7 @@ To write an app using the SDK
   * Register for a developer account with PayPal and get your client_id and secret at (https://developer.paypal.com).
   * Get a reference for 'paypal-rest-sdk' npm in your file.
   * Create and configure http_options.  
-  * Generate access token by invoking 'generateToken' method with your client_id and secret and callback function.
+  * Generate access token by invoking 'generateToken' method, passing your client_id and secret.
   * Use the token to set 'Authorization' header in http_options. 
   * Invoke the rest api (eg: store a credit card) with required params (eg: data, http_options, callback).
 
