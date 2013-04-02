@@ -60,50 +60,50 @@ describe('SDK', function() {
 	describe('#Sale api ', function() {
 		it('Get and refund', function(done) {
 
-				// Making a payment 
-				paypal_sdk.payment.create(create_payment_data, http_default_opts, function(res, err) {
-					if (err) {
-						console.log(err);
-					}
-					if (res) {
-						console.log("Create payment response :");
-						console.log("-----------------------");
-						console.log(res);
-						should.exist(res.id);
-						expect(res.id).to.contain('PAY');
-						var sale_id = res.transactions[0].related_resources[0].sale.id;
-						console.log("sale_id : " + sale_id);
+			// Making a payment 
+			paypal_sdk.payment.create(create_payment_data, http_default_opts, function(err, res) {
+				if (err) {
+					console.log(err);
+				}
+				if (res) {
+					console.log("Create payment response :");
+					console.log("-----------------------");
+					console.log(res);
+					should.exist(res.id);
+					expect(res.id).to.contain('PAY');
+					var sale_id = res.transactions[0].related_resources[0].sale.id;
+					console.log("sale_id : " + sale_id);
 
-						// Getting a sale transaction for a completed payment
-						paypal_sdk.sale.get(sale_id, http_default_opts, function(res, err) {
-							if (err) {
-								console.log(err);
-							}
-							if (res) {
-								console.log("Get sale response :");
-								console.log("-----------------------");
-								console.log(res);
-								should.exist(res.id);
-								// Refund a sale 
-								paypal_sdk.sale.refund(res.id, refund_data, http_default_opts, function(res, err) {
-									if (err) {
-										console.log(err);
-									}
-									if (res) {
-										console.log("Get refund response :");
-										console.log("-----------------------");
-										console.log(res);
-										should.exist(res.id);
-										done();
-									}
+					// Getting a sale transaction for a completed payment
+					paypal_sdk.sale.get(sale_id, http_default_opts, function(err, res) {
+						if (err) {
+							console.log(err);
+						}
+						if (res) {
+							console.log("Get sale response :");
+							console.log("-----------------------");
+							console.log(res);
+							should.exist(res.id);
+							// Refund a sale 
+							paypal_sdk.sale.refund(res.id, refund_data, http_default_opts, function(err, res) {
+								if (err) {
+									console.log(err);
+								}
+								if (res) {
+									console.log("Get refund response :");
+									console.log("-----------------------");
+									console.log(res);
+									should.exist(res.id);
+									done();
+								}
 
-								})
-							}
+							})
+						}
 
-						})
-					}
+					})
+				}
 
-				})
+			})
 
 
 		})
