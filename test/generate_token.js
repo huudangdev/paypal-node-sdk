@@ -7,7 +7,9 @@ var paypal_sdk = require('../');
 
 var http_default_opts = {
 	'host': 'api.sandbox.paypal.com',
-	'port': ''
+	'port': '',
+	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
 paypal_sdk.configure(http_default_opts);
