@@ -11,7 +11,9 @@ var paypal_sdk = require('../');
 
 var http_default_opts = {
 	'host': 'api.sandbox.paypal.com',
-	'port': ''
+	'port': '',
+	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
 paypal_sdk.configure(http_default_opts);
@@ -61,14 +63,7 @@ var create_payment_json_card = {
 describe('SDK', function() {
 	describe('#createpaymentusingcard', function() {
 		it('payment should be created', function(done) {
-			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
-				console.log("The Generated Token is " + generatedToken);
-
-				if (!http_default_opts.headers) {
-					http_default_opts['headers'] = {};
-				}
-
-				http_default_opts.headers['Authorization'] = generatedToken;
+			
 
 				paypal_sdk.payment.create(create_payment_json_card, http_default_opts, function(res, err) {
 					if (err) {
@@ -90,7 +85,7 @@ describe('SDK', function() {
 						});
 					}
 				});
-			})
+
 		})
 	})
 })
@@ -123,10 +118,6 @@ var create_payment_json_savedcard = {
 describe('SDK', function() {
 	describe('#createpaymentusingsavedcard', function() {
 		it('payment should be created', function(done) {
-			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
-				console.log("The Generated Token is " + generatedToken);
-
-				http_default_opts.headers['Authorization'] = generatedToken;
 
 				paypal_sdk.payment.create(create_payment_json_savedcard, http_default_opts, function(res, err) {
 					if (err) {
@@ -138,7 +129,7 @@ describe('SDK', function() {
 						done();
 					}
 				});
-			})
+
 		})
 	})
 })
@@ -170,10 +161,7 @@ var create_payment_json_paypal = {
 describe('SDK', function() {
 	describe('#createpaymentusingpaypal', function() {
 		it('payment should be created', function(done) {
-			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
-				console.log("The Generated Token is " + generatedToken);
 
-				http_default_opts.headers['Authorization'] = generatedToken;
 
 				paypal_sdk.payment.create(create_payment_json_paypal, http_default_opts, function(res, err) {
 					if (err) {
@@ -185,7 +173,7 @@ describe('SDK', function() {
 						done();
 					}
 				});
-			})
+
 		})
 	})
 })
