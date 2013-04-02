@@ -8,12 +8,16 @@ Prerequisites
 
   * nodejs v0.6.0
   * mocha and chai unit test framework
-   
+
+Install npm dependencies
+------------------------
+
+    npm install
 
 To run sample
 ------------------
 
-	node samples/app.js
+	node samples/app
 
 To run the tests
 -----------------
