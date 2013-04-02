@@ -25,7 +25,7 @@ Usage
 
 To write an app using the SDK
 	
-  * Register for a developer account and get your client_id and secret at [PayPal Developer portal](https://developer.paypal.com).
+  * Register for a developer account and get your client_id and secret at [PayPal Developer Portal](https://developer.paypal.com).
   * Get a reference for 'paypal-rest-sdk' npm in your file.
   * Create and configure http_options.  
   * Generate access token by invoking 'generateToken' method, passing your client_id and secret.
@@ -63,7 +63,7 @@ To write an app using the SDK
 		
 		paypal_sdk.credit_card.create(card_data, http_options, function(res,err){
 			
-			//process your business logic with create credit_card response
+			//process your business logic 
 		})
 	})
   ```
