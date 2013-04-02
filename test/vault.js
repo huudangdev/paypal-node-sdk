@@ -4,12 +4,12 @@
 
  var paypal_sdk = require('../');
 
-var http_default_opts = {
-	'host': 'api.sandbox.paypal.com',
-	'port': '',
-	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-};
+ var http_default_opts = {
+ 	'host': 'api.sandbox.paypal.com',
+ 	'port': '',
+ 	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+ 	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+ };
 
  var cardData = {
  	"type": "visa",
@@ -24,34 +24,34 @@ var http_default_opts = {
  	describe('#Vault api ', function() {
  		it('Create and Get', function(done) {
 
- 				// Store Credit Card with PayPal 
- 				paypal_sdk.credit_card.create(cardData, http_default_opts, function(res, err) {
- 					if (err) {
- 						console.log(err);;
- 					}
- 					if (res) {
- 						console.log("Create creditcard response :");
- 						console.log("-----------------------");
- 						console.log(res);
- 						should.exist(res.id);
- 						expect(res.id).to.contain('CARD');
- 						// Look up credit card detail 
- 						paypal_sdk.credit_card.get(res.id, http_default_opts, function(res, err) {
- 							if (err) {
- 								console.log(err);
- 							}
- 							if (res) {
- 								console.log("Get creditcard response :");
- 								console.log("-----------------------");
- 								console.log(res);
- 								should.exist(res.id);
- 								expect(res.id).to.contain('CARD');
- 								done();
- 							}
+ 			// Store Credit Card with PayPal 
+ 			paypal_sdk.credit_card.create(cardData, http_default_opts, function(err, res) {
+ 				if (err) {
+ 					console.log(err);;
+ 				}
+ 				if (res) {
+ 					console.log("Create creditcard response :");
+ 					console.log("-----------------------");
+ 					console.log(res);
+ 					should.exist(res.id);
+ 					expect(res.id).to.contain('CARD');
+ 					// Look up credit card detail 
+ 					paypal_sdk.credit_card.get(res.id, http_default_opts, function(err, res) {
+ 						if (err) {
+ 							console.log(err);
+ 						}
+ 						if (res) {
+ 							console.log("Get creditcard response :");
+ 							console.log("-----------------------");
+ 							console.log(res);
+ 							should.exist(res.id);
+ 							expect(res.id).to.contain('CARD');
+ 							done();
+ 						}
 
- 						})
- 					}
- 				})
+ 					})
+ 				}
+ 			})
  		})
  	})
  })
