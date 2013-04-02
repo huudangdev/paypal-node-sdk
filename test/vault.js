@@ -4,15 +4,12 @@
 
  var paypal_sdk = require('../');
 
- var http_default_opts = {
- 	'host': 'api.sandbox.paypal.com',
- 	'port': ''
- };
-
- paypal_sdk.configure(http_default_opts);
-
- var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
- var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
+var http_default_opts = {
+	'host': 'api.sandbox.paypal.com',
+	'port': '',
+	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+};
 
  var cardData = {
  	"type": "visa",
@@ -26,13 +23,7 @@
  describe('SDK', function() {
  	describe('#Vault api ', function() {
  		it('Create and Get', function(done) {
- 			// Generate Token 
- 			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
- 				console.log("Token generated " + generatedToken);
- 				if (!http_default_opts.headers) {
- 					http_default_opts['headers'] = {};
- 				}
- 				http_default_opts.headers['Authorization'] = generatedToken;
+
  				// Store Credit Card with PayPal 
  				paypal_sdk.credit_card.create(cardData, http_default_opts, function(res, err) {
  					if (err) {
@@ -61,8 +52,6 @@
  						})
  					}
  				})
- 			})
-
  		})
  	})
  })
