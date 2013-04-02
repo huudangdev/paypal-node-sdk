@@ -29,8 +29,9 @@ paypal_api.generateToken(client_id, client_secret, function(generatedToken) {
 
 	http_default_opts.headers['Authorization'] = token;
 
-	paypal_api.payment.create(create_payment_json, http_default_opts, function(res, err) {
+	paypal_api.payment.create(create_payment_json, http_default_opts, function( err, res) {
 		if (err) {
+			console.log(err);
 			throw err;
 		}
 

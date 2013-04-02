@@ -52,7 +52,7 @@ var create_payment_json = {
 	}]
 };
 
-paypal_api.payment.create(create_payment_json, http_default_opts, function(res, err) {
+paypal_api.payment.create(create_payment_json, http_default_opts, function(err, res) {
 	if (err) {
 		throw err;
 	}
@@ -61,8 +61,8 @@ paypal_api.payment.create(create_payment_json, http_default_opts, function(res, 
 		console.log("Create Payment Response");
 		console.log(res);
 		console.log("Create Payment Response");
-		console.log("Authorization Header " + http_default_opts.headers.Authorization );
-		paypal_api.payment.get(res.id, http_default_opts, function(get_res, get_err) {
+		console.log("Authorization Header " + http_default_opts.headers.Authorization);
+		paypal_api.payment.get(res.id, http_default_opts, function(get_err, get_res) {
 			if (get_err) {
 				throw get_res;
 			}
@@ -77,6 +77,3 @@ paypal_api.payment.create(create_payment_json, http_default_opts, function(res, 
 
 	}
 });
-
-
-
