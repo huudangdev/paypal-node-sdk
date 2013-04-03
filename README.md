@@ -11,9 +11,12 @@ Install npm dependencies
 
 To run the tests
 -----------------
-  * If mocha is not installed run (npm install -g mocha) 
-	mocha -t 15000 (timeout is specified in milliseconds eg: 15000ms)
-       
+  * If mocha is not installed (npm install -g mocha)
+    
+   ```js
+    mocha -t 15000 (timeout is specified in milliseconds eg: 15000ms)
+    ```	
+
 Usage
 -----
 
@@ -21,18 +24,20 @@ To write an app using the SDK
 	
   * Register for a developer account and get your client_id and secret at [PayPal Developer Portal](https://developer.paypal.com).
   * Get a dependency for 'paypal-rest-sdk' npm in your file.
-  	```js
+  
+	```js
   	 var paypal_sdk = require('paypal-rest-sdk');
   	``` 
   * Create a variable http_options, with required parameters (host, port, client_id, secret) etc. 
-  	```js
-  	 var http_options ={
-	'host': 'api.sandbox.paypal.com',
-	'port': '',
-	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-	};
-   ```	 
+      
+      ```js
+      var http_options ={
+      'host': 'api.sandbox.paypal.com',
+      'port': '',
+      'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+      'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+      };
+      ```	 
   * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, http_options, callback).
 	```js
 	var card_data = {
