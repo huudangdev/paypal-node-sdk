@@ -5,7 +5,7 @@
   "version": "0.5.0",
   "homepage": "https://github.com/paypal/rest-api-sdk-nodejs",
   "keywords": [
-    "paypal",    
+    "paypal",
     "rest",
     "api",
     "sdk"
@@ -19,11 +19,15 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "node-uuid":"*"
-    },
+    "node-uuid": "*"
+  },
   "devDependencies": {
     "chai": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.3.0",
+    "grunt-simple-mocha": "~0.3.2",
+    "grunt-mocha-cli": "~1.0.2"
   },
   "scripts": {
     "test": "mocha -t 60000"
