@@ -1,3 +1,6 @@
+/* Copyright 2013 PayPal */
+"use strict";
+
 var chai = require('chai'),
 	expect = chai.expect,
 	should = chai.should();
@@ -19,17 +22,17 @@ var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 
 
 
-describe('SDK', function() {
-	describe('#generateToken', function() {
-		it('token should be generated', function(done) {
-			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
+describe('SDK', function () {
+	describe('#generateToken', function () {
+		it('token should be generated', function (done) {
+			paypal_sdk.generateToken(client_id, client_secret, function (generatedToken) {
 
 				should.exist(generatedToken);
 				expect(generatedToken).to.contain('Bearer');
 				done();
-			})
-		})
-	})
+			});
+		});
+	});
 }
 
-)
+);

@@ -14,7 +14,10 @@
     "mootools": false,
     "dojo": false,
 
-    "predef": [],
+    "predef": [ 
+        "describe",
+        "it"
+        ],
 
     "debug": false,
     "devel": false,
