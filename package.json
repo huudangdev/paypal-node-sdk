@@ -26,8 +26,7 @@
     "mocha": "*",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.3.0",
-    "grunt-simple-mocha": "~0.3.2",
-    "grunt-mocha-cli": "~1.0.2"
+    "grunt-simple-mocha": "~0.3.2"
   },
   "scripts": {
     "test": "mocha -t 60000"

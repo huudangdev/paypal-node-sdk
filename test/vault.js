@@ -4,7 +4,7 @@
 
  var paypal_sdk = require('../');
 
- var http_default_opts = {
+ var config_opts = {
  	'host': 'api.sandbox.paypal.com',
  	'port': '',
  	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
@@ -25,7 +25,7 @@
  		it('Create and Get', function(done) {
 
  			// Store Credit Card with PayPal 
- 			paypal_sdk.credit_card.create(cardData, http_default_opts, function(err, res) {
+ 			paypal_sdk.credit_card.create(cardData, config_opts, function(err, res) {
  				if (err) {
  					console.log(err);;
  				}
@@ -36,7 +36,7 @@
  					should.exist(res.id);
  					expect(res.id).to.contain('CARD');
  					// Look up credit card detail 
- 					paypal_sdk.credit_card.get(res.id, http_default_opts, function(err, res) {
+ 					paypal_sdk.credit_card.get(res.id, config_opts, function(err, res) {
  						if (err) {
  							console.log(err);
  						}

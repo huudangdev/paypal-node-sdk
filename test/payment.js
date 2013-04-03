@@ -9,14 +9,14 @@ var chai = require('chai'),
 var paypal_sdk = require('../');
 
 
-var http_default_opts = {
+var config_opts = {
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
 	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
-paypal_sdk.configure(http_default_opts);
+paypal_sdk.configure(config_opts);
 
 var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
 var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
@@ -65,14 +65,14 @@ describe('SDK', function() {
 		it('payment should be created', function(done) {
 
 
-			paypal_sdk.payment.create(create_payment_json_card, http_default_opts, function(err, res) {
+			paypal_sdk.payment.create(create_payment_json_card, config_opts, function(err, res) {
 				if (err) {
 					throw err;
 				}
 
 				if (res) {
 					expect(res.id).to.contain('PAY-');
-					paypal_sdk.payment.get(res.id, http_default_opts, function( get_err, get_res) {
+					paypal_sdk.payment.get(res.id, config_opts, function( get_err, get_res) {
 						if (get_err) {
 							throw get_res;
 						}
@@ -119,7 +119,7 @@ describe('SDK', function() {
 	describe('#createpaymentusingsavedcard', function() {
 		it('payment should be created', function(done) {
 
-			paypal_sdk.payment.create(create_payment_json_savedcard, http_default_opts, function(err, res) {
+			paypal_sdk.payment.create(create_payment_json_savedcard, config_opts, function(err, res) {
 				if (err) {
 					throw err;
 				}
@@ -163,7 +163,7 @@ describe('SDK', function() {
 		it('payment should be created', function(done) {
 
 
-			paypal_sdk.payment.create(create_payment_json_paypal, http_default_opts, function(err, res) {
+			paypal_sdk.payment.create(create_payment_json_paypal, config_opts, function(err, res) {
 				if (err) {
 					throw err;
 				}
