@@ -2,27 +2,16 @@ REST API SDK for nodejs (V0.5.0)
 ================================
 
 This repository contains PayPal's nodejs SDK and samples for REST API.
-
-Prerequisites
--------------
-
-  * nodejs v0.6.0
-  * mocha and chai unit test framework
+Required nodejs version is v0.6.0 or higher.
 
 Install npm dependencies
 ------------------------
 
     npm install
-    npm install -g mocha
-
-To run sample
-------------------
-
-	node samples/app
 
 To run the tests
 -----------------
-
+  * If mocha is not installed run (npm install -g mocha) 
 	mocha -t 15000 (timeout is specified in milliseconds eg: 15000ms)
        
 Usage
@@ -31,20 +20,21 @@ Usage
 To write an app using the SDK
 	
   * Register for a developer account and get your client_id and secret at [PayPal Developer Portal](https://developer.paypal.com).
-  * Get a reference for 'paypal-rest-sdk' npm in your file.
-  * Create a variable http_options, with required parameters (host, port, client_id, secret) etc.  
-  * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, http_options, callback).
-
-  ```js 
-    var paypal_sdk = require('paypal-rest-sdk');
-		
-	var http_options ={
+  * Get a dependency for 'paypal-rest-sdk' npm in your file.
+  	```js
+  	 var paypal_sdk = require('paypal-rest-sdk');
+  	``` 
+  * Create a variable http_options, with required parameters (host, port, client_id, secret) etc. 
+  	```js
+  	 var http_options ={
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
 	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 	};
-	
+   ```	 
+  * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, http_options, callback).
+	```js
 	var card_data = {
 	 	"type": "visa",
 	 	"number": "4417119669820331",
@@ -66,8 +56,8 @@ To write an app using the SDK
 	})
    ```
 
-REST api documentation
-----------------------
+REST API Reference
+------------------
 
    [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
