@@ -8,8 +8,7 @@
     "paypal",
     "rest",
     "api",
-    "sdk"
-  ],
+    "sdk"],
   "repository": {
     "type": "git",
     "url": "https://github.com/paypal/rest-api-sdk-nodejs.git"
