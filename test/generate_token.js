@@ -1,3 +1,6 @@
+/* Copyright 2013 PayPal */
+"use strict";
+
 var chai = require('chai'),
 	expect = chai.expect,
 	should = chai.should();
@@ -5,31 +8,31 @@ var chai = require('chai'),
 var paypal_sdk = require('../');
 
 
-var http_default_opts = {
+var config_opts = {
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
 	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
-paypal_sdk.configure(http_default_opts);
+paypal_sdk.configure(config_opts);
 
 var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
 var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 
 
 
-describe('SDK', function() {
-	describe('#generateToken', function() {
-		it('token should be generated', function(done) {
-			paypal_sdk.generateToken(client_id, client_secret, function(generatedToken) {
+describe('SDK', function () {
+	describe('#generateToken', function () {
+		it('token should be generated', function (done) {
+			paypal_sdk.generateToken(client_id, client_secret, function (generatedToken) {
 
 				should.exist(generatedToken);
 				expect(generatedToken).to.contain('Bearer');
 				done();
-			})
-		})
-	})
+			});
+		});
+	});
 }
 
-)
+);

@@ -1,14 +1,9 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-// Sandbox Creds - 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM', 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-// VPS 16 Creds - 'EB6t3j2rIX5k59S6z2YMznpIBsel5qLWCwE88TT1HhKY', 'EGgy5gXmQC5Wtibks-81aJZIBsel5qLWCwE88TT1HhKY'
-
 var paypal_api = require('../');
 
-var token = null;
-
-var http_default_opts = {
+var config_opts = {
 	'host': 'api.sandbox.paypal.com',
 	'port': '',
 	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
@@ -52,7 +47,7 @@ var create_payment_json = {
 	}]
 };
 
-paypal_api.payment.create(create_payment_json, http_default_opts, function(err, res) {
+paypal_api.payment.create(create_payment_json, config_opts, function (err, res) {
 	if (err) {
 		console.log(err);
 		throw err;
