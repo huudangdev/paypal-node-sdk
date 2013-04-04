@@ -20,7 +20,7 @@ var config_opts = {
 describe('SDK', function () {
     describe('#generateToken', function () {
         it('token should be generated', function (done) {
-            paypal_sdk.generate_token(null, function (generatedToken) {
+            paypal_sdk.generate_token(config_opts, function (generatedToken) {
 
                 should.exist(generatedToken);
                 expect(generatedToken).to.contain('Bearer');
