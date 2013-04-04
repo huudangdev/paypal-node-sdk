@@ -11,5 +11,5 @@ to run samples
 
 ```sh
 node <sample file name>
-ex: node creditCardPayment.js
+ex: node credit-card-payment.js
 ```
