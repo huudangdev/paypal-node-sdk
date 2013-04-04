@@ -16,8 +16,8 @@ ex: node credit-card-payment.js
 Samples
 -------------------
 
-  * credit-card-payment.js - make payement with a creditcard
-  * get-credit-card - get creditcard details associated with a CreditCard ID(ID got from save-credit-card)
+  * credit-card-payment.js - make payement with a CreditCard
+  * get-credit-card - get creditcard details associated with a CreditCardID(ID got from save-credit-card)
   * get-payment - get payment details
   * get-sale-details.js - get sale datails
   * list-payments.js - list all the payments associated with this emailId
