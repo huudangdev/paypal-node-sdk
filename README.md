@@ -1,37 +1,29 @@
-REST API SDK for nodejs (V0.5.0)
-================================
+# REST API SDK for nodejs [![NPM version](https://badge.fury.io/js/rest-api-sdk-nodejs.png)](http://badge.fury.io/js/rest-api-sdk-nodejs) [![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs) [![NPM version](https://badge.fury.io/js/rest-api-sdk-nodejs.png)](http://badge.fury.io/js/rest-api-sdk-nodejs)
+==================================
 
-This repository contains PayPal's nodejs SDK and samples for REST API.
-Required nodejs version is v0.6.0 or higher.
+This repository contains PayPal's nodejs (version >=0.6.x) SDK and samples for REST API.
 
-Install npm dependencies
-------------------------
+## Install npm dependencies
+---------------------------
 
     npm install
 
-To run the tests
------------------
-  * If mocha is not installed (npm install -g mocha)
-    
-   ```js
-    mocha -t 15000 (timeout is specified in milliseconds eg: 15000ms)
-    ```	
-
-Usage
------
+## Usage
+--------
 
 To write an app using the SDK
 	
   * Register for a developer account and get your client_id and secret at [PayPal Developer Portal](https://developer.paypal.com).
-  * Get a dependency for 'paypal-rest-sdk' npm in your file.
+  * Add dependency 'paypal-rest-sdk' in your package.json file.
+  * Require 'paypal-rest-sdk' in your file
   
 	```js
   	 var paypal_sdk = require('paypal-rest-sdk');
   	``` 
-  * Create a variable http_options, with required parameters (host, port, client_id, secret) etc. 
+  * Create config options, with required parameters (host, port, client_id, secret). 
       
       ```js
-      var http_options ={
+      var config_options ={
       'host': 'api.sandbox.paypal.com',
       'port': '',
       'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
@@ -49,7 +41,7 @@ To write an app using the SDK
 	 	"last_name": "Shopper"
 	 };
  	
-	paypal_sdk.credit_card.create(card_data, http_options, function(res,err){
+	paypal_sdk.credit_card.create(card_data, http_options, function(err , res){
 		if (err) {
 			console.log(err);
 			throw err;
@@ -61,8 +53,23 @@ To write an app using the SDK
 	})
    ```
 
-REST API Reference
-------------------
+   
+## Running Tests   
+To run the test suite first invoke the following command within the repo 
 
+If mocha is not installed 
+    ```sh
+    npm install -g mocha
+    ```
+and then to install the development dependencies:
+    ```sh
+    npm install
+    ```
+then run the tests:
+    ```sh
+    mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
+    ```
+## REST API Reference
+------------------
    [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
