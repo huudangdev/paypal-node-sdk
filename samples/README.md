@@ -7,7 +7,7 @@ Before executing run the following
 npm install ../
 ```
 
-tu run samples 
+to run samples 
 
 ```sh
 node <sample file name>
