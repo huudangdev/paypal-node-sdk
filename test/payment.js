@@ -15,10 +15,6 @@ var config_opts = {
 	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
-paypal_sdk.configure(config_opts);
-
-var client_id = 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM';
-var client_secret = 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM';
 
 var create_payment_json_card = {
 	"intent": "sale",
