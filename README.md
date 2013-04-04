@@ -62,6 +62,6 @@ then run the tests:
 ```sh
 mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
 ```
-## REST API Reference
-   [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
+## Reference
+   [REST API Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
