@@ -54,17 +54,17 @@ To write an app using the SDK
 To run the test suite first invoke the following command within the repo 
 
 If mocha is not installed 
-    ```sh
-    npm install -g mocha
-    ```
+```sh
+npm install -g mocha
+```
 and then to install the development dependencies:
-    ```sh
-    npm install
-    ```
+```sh
+npm install
+```
 then run the tests:
-    ```sh
-    mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
-    ```
+```sh
+mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
+```
 ## REST API Reference
    [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
