@@ -1,16 +1,12 @@
-# REST API SDK for nodejs [![NPM version](https://badge.fury.io/js/rest-api-sdk-nodejs.png)](http://badge.fury.io/js/rest-api-sdk-nodejs) [![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs) [![NPM version](https://badge.fury.io/js/rest-api-sdk-nodejs.png)](http://badge.fury.io/js/rest-api-sdk-nodejs)
+# REST API SDK for nodejs [![NPM version](https://badge.fury.io/js/rest-api-sdk-nodejs.png)](http://badge.fury.io/js/rest-api-sdk-nodejs) [![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs)
 ==================================
 
 This repository contains PayPal's nodejs (version >=0.6.x) SDK and samples for REST API.
 
 ## Install npm dependencies
----------------------------
-
     npm install
 
 ## Usage
---------
-
 To write an app using the SDK
 	
   * Register for a developer account and get your client_id and secret at [PayPal Developer Portal](https://developer.paypal.com).
@@ -70,6 +66,5 @@ then run the tests:
     mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
     ```
 ## REST API Reference
-------------------
    [REST APIs Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
    
