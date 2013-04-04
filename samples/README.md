@@ -7,8 +7,9 @@ Before executing run the following
 npm install ../
 ```
 
-After the above command
+tu run samples 
 
 ```sh
-node app
+node <sample file name>
+ex: node creditCardPayment.js
 ```
