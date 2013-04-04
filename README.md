@@ -22,7 +22,7 @@ To write an app using the SDK
       'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
       };
       ```	 
-  * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, http_options, callback).
+  * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, config_options, callback).
 	```js
 	var card_data = {
 	 	"type": "visa",
@@ -33,7 +33,7 @@ To write an app using the SDK
 	 	"last_name": "Shopper"
 	 };
  	
-	paypal_sdk.credit_card.create(card_data, http_options, function(err , res){
+	paypal_sdk.credit_card.create(card_data, config_options, function(err , res){
 		if (err) {
 			console.log(err);
 			throw err;
