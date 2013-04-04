@@ -15,6 +15,7 @@ ex: node credit-card-payment.js
 ```
 Samples
 -------------------
+
 credit-card-payment.js - make payement with a creditcard
 get-credit-card - get creditcard details associated with a CreditCard ID(ID got from save-credit-card)
 get-payment - get payment details
