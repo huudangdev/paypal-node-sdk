@@ -37,6 +37,5 @@
   "scripts": {
     "test": "mocha -t 60000"
   },
-  "private": "true",
   "readmeFilename": "README.md"
 }
