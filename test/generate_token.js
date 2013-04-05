@@ -15,8 +15,6 @@ var config_opts = {
     'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
 };
 
-
-
 describe('SDK', function () {
     describe('#generateToken', function () {
         it('token should be generated', function (done) {
@@ -28,6 +26,4 @@ describe('SDK', function () {
             });
         });
     });
-}
-
-);
+});
