@@ -64,4 +64,8 @@ mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
 ```
 ## Reference
    [REST API Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
-   
+
+## Contribution
+   * If you would like to contribute, please fork the repo and send in a pull request. 
+   * Please ensure you run grunt before sending in the pull request.
+
