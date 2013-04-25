@@ -46,6 +46,10 @@ To write an app using the SDK
 	})
    ```
 
+## Running Samples
+Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
+
+<a href="https://runnable.com/paypal" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
    
 ## Running Tests   
 To run the test suite first invoke the following command within the repo 
