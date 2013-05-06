@@ -9,43 +9,43 @@ To write an app using the SDK
   * Add dependency 'paypal-rest-sdk' in your package.json file.
   * Require 'paypal-rest-sdk' in your file
 
-  ```js
-  var paypal_sdk = require('paypal-rest-sdk');
-  ```
+    ```js
+    var paypal_sdk = require('paypal-rest-sdk');
+    ```
   * Create config options, with required parameters (host, port, client_id, secret).
 
-  ```js
-  var config_options = {
-    'host': 'api.sandbox.paypal.com',
-    'port': '',
-    'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-    'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-  };
-  ```
+    ```js
+    var config_options = {
+      'host': 'api.sandbox.paypal.com',
+      'port': '',
+      'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
+      'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+    };
+    ```
   * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, config_options, callback).
 
-  ```js
-  var card_data = {
-     "type": "visa",
-     "number": "4417119669820331",
-     "expire_month": "11",
-     "expire_year": "2018",
-     "cvv2": "123",
-     "first_name": "Joe",
-     "last_name": "Shopper"
-   };
+    ```js
+    var card_data = {
+      "type": "visa",
+      "number": "4417119669820331",
+      "expire_month": "11",
+      "expire_year": "2018",
+      "cvv2": "123",
+      "first_name": "Joe",
+      "last_name": "Shopper"
+    };
 
-  paypal_sdk.credit_card.create(card_data, config_options, function(err , res){
-    if (err) {
-      console.log(err);
-      throw err;
-    }
-    if (res) {
-      console.log("Create Credit-Card Response");
-      console.log(res);
-    }
-  })
-  ```
+    paypal_sdk.credit_card.create(card_data, config_options, function(err , res){
+      if (err) {
+        console.log(err);
+        throw err;
+      }
+      if (res) {
+        console.log("Create Credit-Card Response");
+        console.log(res);
+      }
+    })
+    ```
 
 ## Running Samples
 Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
