@@ -47,6 +47,37 @@ To write an app using the SDK
     })
     ```
 
+  * To access OpenID Connect service
+
+    ```js
+    // OpenID configuration
+    paypal_sdk.configure({
+      'openid_client_id': 'CLIENT_ID',
+      'openid_client_secret': 'CLIENT_SECRET',
+      'openid_redirect_uri': 'http://example.com' });
+
+    // Authorize url
+    paypal_sdk.openid_connect.authorize_url({'scope': 'openid profile'});
+
+    // Get tokeninfo with Authorize code
+    paypal_sdk.openid_connect.tokeninfo.create("Replace with authorize code", function(error, tokeninfo){
+      console.log(tokeninfo);
+    });
+
+    // Get tokeninfo with Refresh code
+    paypal_sdk.openid_connect.tokeninfo.refresh("Replace with refresh_token", function(error, tokeninfo){
+      console.log(tokeninfo);
+    });
+
+    // Get userinfo with Access code
+    paypal_sdk.openid_connect.userinfo.get("Replace with access_code", function(error, userinfo){
+      console.log(userinfo);
+    });
+
+    // Logout url
+    paypal_sdk.openid_connect.logout_url("Replace with tokeninfo.id_token");
+    ```
+
 ## Running Samples
 Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
 
