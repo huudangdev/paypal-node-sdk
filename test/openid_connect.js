@@ -6,6 +6,7 @@ var chai = require('chai'),
 	should = chai.should();
 
 var paypal_sdk = require('../');
+var openid_connect = paypal_sdk.openid_connect;
 var querystring = require('querystring');
 
 paypal_sdk.configure({
@@ -16,7 +17,7 @@ paypal_sdk.configure({
 describe('OpenIDConnect', function () {
   describe('authorize_url', function () {
     it('default', function (done) {
-      var url = paypal_sdk.authorize_url();
+      var url = openid_connect.authorize_url();
       expect(url).to.contain('response_type=code');
       expect(url).to.contain('scope=openid');
       expect(url).to.contain('client_id=');
@@ -25,7 +26,7 @@ describe('OpenIDConnect', function () {
     });
 
     it('with scope', function (done) {
-      var url = paypal_sdk.authorize_url({'scope': 'openid profile'});
+      var url = openid_connect.authorize_url({'scope': 'openid profile'});
       expect(url).to.contain(querystring.stringify({'scope':'openid profile'}));
       done();
     });
@@ -33,13 +34,13 @@ describe('OpenIDConnect', function () {
 
   describe('logout_url', function () {
     it('default', function (done) {
-      var url = paypal_sdk.logout_url();
+      var url = openid_connect.logout_url();
       expect(url).to.contain('logout=true');
       done();
     });
 
     it('with id_token', function (done) {
-      var url = paypal_sdk.logout_url({'id_token': 'test'});
+      var url = openid_connect.logout_url({'id_token': 'test'});
       expect(url).to.contain('logout=true');
       expect(url).to.contain('id_token=test');
       done();
@@ -48,28 +49,28 @@ describe('OpenIDConnect', function () {
 
   describe('Tokeninfo', function () {
     it('create with code', function (done) {
-      paypal_sdk.tokeninfo.create('Invalid code', function (error, tokeninfo){
+      openid_connect.tokeninfo.create('Invalid code', function (error, tokeninfo){
         expect(error.httpStatusCode).equal(400);
         done();
       });
     });
 
     it('create with object', function (done) {
-      paypal_sdk.tokeninfo.create({ 'code': 'Invalid code' }, function (error, tokeninfo){
+      openid_connect.tokeninfo.create({ 'code': 'Invalid code' }, function (error, tokeninfo){
         expect(error.httpStatusCode).equal(400);
         done();
       });
     });
 
     it('refresh with refresh_token', function (done) {
-      paypal_sdk.tokeninfo.refresh('Invalid refresh_token', function (error, tokeninfo){
+      openid_connect.tokeninfo.refresh('Invalid refresh_token', function (error, tokeninfo){
         expect(error.httpStatusCode).equal(400);
         done();
       });
     });
 
     it('refresh with object', function (done) {
-      paypal_sdk.tokeninfo.refresh({ 'refresh_token': 'Invalid refresh_token' }, function (error, tokeninfo){
+      openid_connect.tokeninfo.refresh({ 'refresh_token': 'Invalid refresh_token' }, function (error, tokeninfo){
         expect(error.httpStatusCode).equal(400);
         done();
       });
@@ -78,14 +79,14 @@ describe('OpenIDConnect', function () {
 
   describe('Userinfo', function () {
     it('get with access_token', function (done) {
-      paypal_sdk.userinfo.get('Invalid access_token', function (error, userinfo){
+      openid_connect.userinfo.get('Invalid access_token', function (error, userinfo){
         expect(error.httpStatusCode).equal(401);
         done();
       });
     });
 
     it('get with object', function (done) {
-      paypal_sdk.userinfo.get({ 'access_token': 'Invalid access_token' }, function (error, userinfo){
+      openid_connect.userinfo.get({ 'access_token': 'Invalid access_token' }, function (error, userinfo){
         expect(error.httpStatusCode).equal(401);
         done();
       });
