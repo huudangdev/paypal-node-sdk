@@ -47,7 +47,7 @@ To write an app using the SDK
     })
     ```
 
-  * To access OpenID Connect service
+  * To use OpenID Connect
 
     ```js
     // OpenID configuration
