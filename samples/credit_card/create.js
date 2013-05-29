@@ -14,14 +14,12 @@ var savedCard = {
     "last_name": "Shopper"
 };
 
-paypal_api.credit_card.create(savedCard, function (get_err, get_res) {
-    if (get_err) {
-        throw get_res;
-    }
-
-    if (get_res) {
+paypal_api.credit_card.create(savedCard, function (error, credit_card) {
+    if (error) {
+        throw error;
+    } else {
         console.log("Save Credit Card Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(credit_card));
     }
 
 });

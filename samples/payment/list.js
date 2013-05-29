@@ -9,14 +9,12 @@ var listPayment = {
     'start_index': '1'
 };
 
-paypal_api.payment.list(listPayment, function (get_err, get_res) {
-    if (get_err) {
-        throw get_res;
-    }
-
-    if (get_res) {
+paypal_api.payment.list(listPayment, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
         console.log("List Payments Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(payment));
     }
 
 });

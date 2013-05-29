@@ -22,14 +22,12 @@ var savedCard = {
         "description": "This is the payment description."
     }]
 };
-paypal_api.payment.create(savedCard, function (get_err, get_res) {
-    if (get_err) {
-        throw get_res;
-    }
-
-    if (get_res) {
+paypal_api.payment.create(savedCard, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
         console.log("Pay with stored card Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(payment));
     }
 
 });

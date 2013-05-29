@@ -22,13 +22,11 @@ var create_payment_json = {
 };
 
 
-paypal_api.payment.create(create_payment_json, function (err, res) {
-    if (err) {
-        throw err;
-    }
-
-    if (res) {
+paypal_api.payment.create(create_payment_json, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
         console.log("Create Payment Response");
-        console.log(res);
+        console.log(payment);
     }
 });

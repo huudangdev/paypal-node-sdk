@@ -6,14 +6,12 @@ require('../configure');
 
 var saleId = "3RM92092UW5126232";
 
-paypal_api.sale.get(saleId, function (get_err, get_res) {
-    if (get_err) {
-        throw get_res;
-    }
-
-    if (get_res) {
+paypal_api.sale.get(saleId, function (error, sale) {
+    if (error) {
+        throw error;
+    } else {
         console.log("Get Sale Details Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(sale));
     }
 
 });

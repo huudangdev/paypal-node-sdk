@@ -14,10 +14,10 @@ saleId = "3RM92092UW5126232";
 
 paypal_api.sale.refund(saleId, data, function (error, refund) {
     if (error) {
-        throw get_err;
+        throw error;
     } else {
         console.log("Refund Sale Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(refund));
     }
 
 });
