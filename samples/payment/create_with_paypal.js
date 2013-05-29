@@ -1,14 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
-var paypal_api = require('../');
-
-var config_opts = {
-    'host': 'api.sandbox.paypal.com',
-    'port': '',
-    'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-    'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-};
-
+var paypal_api = require('../../');
+require('../configure');
 
 var create_payment_json = {
     "intent": "sale",
@@ -29,7 +22,7 @@ var create_payment_json = {
 };
 
 
-paypal_api.payment.create(create_payment_json, config_opts, function (err, res) {
+paypal_api.payment.create(create_payment_json, function (err, res) {
     if (err) {
         throw err;
     }
