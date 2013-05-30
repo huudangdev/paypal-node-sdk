@@ -2,7 +2,7 @@
   "author": "PayPal <DL-PP-Platform-NodeJs-SDK@ebay.com> (https://developer.paypal.com/)",
   "name": "paypal-rest-sdk",
   "description": "SDK for PayPal REST APIs",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "homepage": "https://github.com/paypal/rest-api-sdk-nodejs",
   "keywords": [
     "paypal",
