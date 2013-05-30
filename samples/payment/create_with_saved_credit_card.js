@@ -1,14 +1,8 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../');
-
-var config_opts = {
-    'host': 'api.sandbox.paypal.com',
-    'port': '',
-    'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-    'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-};
+var paypal_api = require('../../');
+require('../configure');
 
 var savedCard = {
     "intent": "sale",
@@ -28,14 +22,12 @@ var savedCard = {
         "description": "This is the payment description."
     }]
 };
-paypal_api.payment.create(savedCard, config_opts, function (get_err, get_res) {
-    if (get_err) {
-        throw get_res;
-    }
-
-    if (get_res) {
+paypal_api.payment.create(savedCard, function (error, payment) {
+    if (error) {
+        throw error;
+    } else {
         console.log("Pay with stored card Response");
-        console.log(JSON.stringify(get_res));
+        console.log(JSON.stringify(payment));
     }
 
 });

@@ -2,60 +2,52 @@
 "use strict";
 
 var chai = require('chai'),
-	expect = chai.expect,
-	should = chai.should();
+    expect = chai.expect,
+    should = chai.should();
 
 var paypal_sdk = require('../');
+require('./configure');
 
-var config_opts = {
-	'host': 'api.sandbox.paypal.com',
-	'port': '',
-	'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-	'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-};
-
-var cardData = {
-	"type": "visa",
-	"number": "4417119669820331",
-	"expire_month": "11",
-	"expire_year": "2018",
-	"cvv2": "123",
-	"first_name": "Joe",
-	"last_name": "Shopper"
-};
 
 describe('SDK', function () {
-	describe('#Vault api ', function () {
-		it('Create and Get', function (done) {
+    describe('CreditCard', function () {
 
-			// Store Credit Card with PayPal 
-			paypal_sdk.credit_card.create(cardData, config_opts, function (err, res) {
-				if (err) {
-					console.log(err);
-				}
-				if (res) {
-					console.log("Create creditcard response :");
-					console.log("-----------------------");
-					console.log(res);
-					should.exist(res.id);
-					expect(res.id).to.contain('CARD');
-					// Look up credit card detail 
-					paypal_sdk.credit_card.get(res.id, config_opts, function (err, res) {
-						if (err) {
-							console.log(err);
-						}
-						if (res) {
-							console.log("Get creditcard response :");
-							console.log("-----------------------");
-							console.log(res);
-							should.exist(res.id);
-							expect(res.id).to.contain('CARD');
-							done();
-						}
+        var credit_card_details = {
+            "type": "visa",
+            "number": "4417119669820331",
+            "expire_month": "11",
+            "expire_year": "2018",
+            "cvv2": "123" };
 
-					});
-				}
-			});
-		});
-	});
+        function create_credit_card(callback) {
+            paypal_sdk.credit_card.create(credit_card_details, function (error, credit_card) {
+                expect(error).equal(null);
+                expect(credit_card.id).to.contain('CARD');
+                callback(credit_card);
+            });
+        }
+
+        it('create and get', function (done) {
+
+            create_credit_card(function (credit_card) {
+                paypal_sdk.credit_card.get(credit_card.id, function (error, credit_card) {
+                    expect(error).equal(null);
+                    expect(credit_card.id).to.contain('CARD');
+                    done();
+                });
+            });
+
+        });
+
+        it('create and delete', function (done) {
+
+            create_credit_card(function (credit_card) {
+                paypal_sdk.credit_card.delete(credit_card.id, function (error, no_response) {
+                    expect(error).equal(null);
+                    done();
+                });
+            });
+
+        });
+    });
 });

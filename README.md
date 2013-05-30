@@ -15,12 +15,12 @@ To write an app using the SDK
   * Create config options, with required parameters (host, port, client_id, secret).
 
     ```js
-    var config_options = {
+    paypal_sdk.configure({
       'host': 'api.sandbox.paypal.com',
       'port': '',
       'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
       'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-    };
+    });
     ```
   * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, config_options, callback).
 
@@ -35,14 +35,13 @@ To write an app using the SDK
       "last_name": "Shopper"
     };
 
-    paypal_sdk.credit_card.create(card_data, config_options, function(err , res){
-      if (err) {
-        console.log(err);
+    paypal_sdk.credit_card.create(card_data, function(error, credit_card){
+      if (error) {
+        console.log(error);
         throw err;
-      }
-      if (res) {
+      } else {
         console.log("Create Credit-Card Response");
-        console.log(res);
+        console.log(credit_card);
       }
     })
     ```

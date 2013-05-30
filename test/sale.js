@@ -6,13 +6,7 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-
-var config_opts = {
-    'host': 'api.sandbox.paypal.com',
-    'port': '',
-    'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-    'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
-};
+require('./configure');
 
 var refund_data = {
     "amount": {
@@ -63,8 +57,8 @@ describe('SDK', function () {
     describe('#Sale api ', function () {
         it('Get and refund', function (done) {
 
-            // Making a payment 
-            paypal_sdk.payment.create(create_payment_data, config_opts, function (err, res) {
+            // Making a payment
+            paypal_sdk.payment.create(create_payment_data, function (err, res) {
                 if (err) {
                     console.log(err);
                 }
@@ -78,7 +72,7 @@ describe('SDK', function () {
                     console.log("sale_id : " + sale_id);
 
                     // Getting a sale transaction for a completed payment
-                    paypal_sdk.sale.get(sale_id, config_opts, function (err, res) {
+                    paypal_sdk.sale.get(sale_id, function (err, res) {
                         if (err) {
                             console.log(err);
                         }
@@ -87,8 +81,8 @@ describe('SDK', function () {
                             console.log("-----------------------");
                             console.log(res);
                             should.exist(res.id);
-                            // Refund a sale 
-                            paypal_sdk.sale.refund(res.id, refund_data, config_opts, function (err, res) {
+                            // Refund a sale
+                            paypal_sdk.sale.refund(res.id, refund_data, function (err, res) {
                                 if (err) {
                                     console.log(err);
                                 }
