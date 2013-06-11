@@ -15,94 +15,57 @@ var refund_data = {
     }
 };
 
-var create_payment_data = {
-    "intent": "sale",
-    "payer": {
-        "payment_method": "credit_card",
-        "funding_instruments": [{
-            "credit_card": {
-                "number": "4417119669820331",
-                "type": "visa",
-                "expire_month": 11,
-                "expire_year": 2018,
-                "cvv2": 874,
-                "first_name": "Joe",
-                "last_name": "Shopper",
-                "billing_address": {
-                    "line1": "52 N Main ST",
-                    "city": "Johnstown",
-                    "country_code": "US",
-                    "postal_code": "43210",
-                    "state": "OH"
-                }
-            }
-        }]
-    },
-    "transactions": [{
-        "amount": {
-            "total": "7.47",
-            "currency": "USD",
-            "details": {
-                "subtotal": "7.41",
-                "tax": "0.03",
-                "shipping": "0.03"
-            }
-        },
-        "description": "This is the payment transaction description."
-    }]
-};
-
-
 describe('SDK', function () {
-    describe('#Sale api ', function () {
-        it('Get and refund', function (done) {
+    describe('Sale', function () {
 
-            // Making a payment
-            paypal_sdk.payment.create(create_payment_data, function (err, res) {
-                if (err) {
-                    console.log(err);
-                }
-                if (res) {
-                    console.log("Create payment response :");
-                    console.log("-----------------------");
-                    console.log(res);
-                    should.exist(res.id);
-                    expect(res.id).to.contain('PAY');
-                    var sale_id = res.transactions[0].related_resources[0].sale.id;
-                    console.log("sale_id : " + sale_id);
+        var create_payment_data = {
+            "intent": "sale",
+            "payer": {
+                "payment_method": "credit_card",
+                "funding_instruments": [{
+                    "credit_card": {
+                        "number": "4417119669820331",
+                        "type": "visa",
+                        "expire_month": 11,
+                        "expire_year": 2018,
+                        "cvv2": 874 } }] },
+            "transactions": [{
+                "amount": {
+                    "total": "7.47",
+                    "currency": "USD",
+                    "details": {
+                        "subtotal": "7.41",
+                        "tax": "0.03",
+                        "shipping": "0.03" } },
+                "description": "This is the payment transaction description." }] };
 
-                    // Getting a sale transaction for a completed payment
-                    paypal_sdk.sale.get(sale_id, function (err, res) {
-                        if (err) {
-                            console.log(err);
-                        }
-                        if (res) {
-                            console.log("Get sale response :");
-                            console.log("-----------------------");
-                            console.log(res);
-                            should.exist(res.id);
-                            // Refund a sale
-                            paypal_sdk.sale.refund(res.id, refund_data, function (err, res) {
-                                if (err) {
-                                    console.log(err);
-                                }
-                                if (res) {
-                                    console.log("Get refund response :");
-                                    console.log("-----------------------");
-                                    console.log(res);
-                                    should.exist(res.id);
-                                    done();
-                                }
-
-                            });
-                        }
-
-                    });
-                }
-
+        function create_sale(callback) {
+            paypal_sdk.payment.create(create_payment_data, function (error, payment) {
+                expect(error).equal(null);
+                callback(payment.transactions[0].related_resources[0].sale);
             });
+        }
 
-
+        it('get', function (done) {
+            create_sale(function (sale) {
+                paypal_sdk.sale.get(sale.id, function (error, sale) {
+                    expect(error).equal(null);
+                    expect(sale.state).equal("completed");
+                    done();
+                });
+            });
         });
+
+        it('refund', function (done) {
+            create_sale(function (sale) {
+                paypal_sdk.sale.refund(sale.id, {}, function (error, refund) {
+                    expect(error).equal(null);
+                    expect(refund.state).equal("completed");
+                    expect(refund.sale_id).equal(sale.id);
+                    done();
+                });
+            });
+        });
+
     });
 });
