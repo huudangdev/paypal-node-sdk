@@ -44,7 +44,7 @@
     "blanket": {
       "pattern": "paypal-rest-sdk.js"
     },
-    "test": "mocha -t 60000 --require blanket --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "mocha -t 60000"
   },
   "readmeFilename": "README.md"
 }
