@@ -64,6 +64,20 @@ describe('SDK', function () {
                 });
             });
         });
+        
+        it('reauthorize', function (done) {
+	        var reauthorize_details = {
+		    	"amount": {
+			        "currency": "USD",
+			        "total": "4.54" 
+			     }
+		    };
+            paypal_sdk.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, authorization) {
+                expect(authorization).equal(null);
+                expect(error).not.to.be.null;
+                done();
+            });
+        });
 
     });
 });
