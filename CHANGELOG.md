@@ -1,3 +1,6 @@
+Version 0.6.3 - July 31, 2013
+  * Added support for Reauthorization.
+
 Version 0.6.2 - July 10, 2013
   * Update HTTP User-Agent
 
