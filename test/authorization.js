@@ -74,7 +74,7 @@ describe('SDK', function () {
 		    };
             paypal_sdk.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, authorization) {
                 expect(authorization).equal(null);
-                expect(error).not.to.be.null;
+                expect(error).not.equal(null);
                 done();
             });
         });
