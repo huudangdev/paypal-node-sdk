@@ -8,7 +8,8 @@
     "paypal",
     "rest",
     "api",
-    "sdk"],
+    "sdk"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/paypal/rest-api-sdk-nodejs.git"
@@ -17,9 +18,11 @@
     "url": "https://github.com/paypal/rest-api-sdk-nodejs/issues",
     "email": "DL-PP-Platform-NodeJs-SDK@ebay.com"
   },
-  "licenses": [{
-    "url": "https://github.com/paypal/rest-api-sdk-nodejs/blob/master/LICENSE.txt"
-  }],
+  "licenses": [
+    {
+      "url": "https://github.com/paypal/rest-api-sdk-nodejs/blob/master/LICENSE.txt"
+    }
+  ],
   "engines": {
     "node": ">= v0.6.0"
   },
@@ -32,9 +35,15 @@
     "mocha": "*",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.3.0",
-    "grunt-simple-mocha": "~0.3.2"
+    "grunt-simple-mocha": "~0.3.2",
+    "mocha-lcov-reporter": "0.0.1",
+    "blanket": "~1.1.5",
+    "coveralls": "~2.0.16"
   },
   "scripts": {
+    "blanket": {
+      "pattern": "paypal-rest-sdk.js"
+    },
     "test": "mocha -t 60000"
   },
   "readmeFilename": "README.md"
