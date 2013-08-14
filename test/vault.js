@@ -49,5 +49,12 @@ describe('SDK', function () {
             });
 
         });
+
+        it('create with invalid data', function (done) {
+          paypal_sdk.credit_card.create({}, function (error, credit_card) {
+            expect(error).not.equal(null);
+            done();
+          });
+        });
     });
 });
