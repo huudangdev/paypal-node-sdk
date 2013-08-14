@@ -9,10 +9,19 @@ var create_payment_json = {
         "payment_method": "paypal"
     },
     "redirect_urls": {
-        "return_url": "http:\/\/localhost\/test\/rest\/rest-api-sdk-php\/sample\/payments\/ExecutePayment.php?success=true",
-        "cancel_url": "http:\/\/localhost\/test\/rest\/rest-api-sdk-php\/sample\/payments\/ExecutePayment.php?success=false"
+        "return_url": "http://return.url",
+        "cancel_url": "http://cancel.url"
     },
     "transactions": [{
+        "item_list": {
+            "items": [{
+                "name": "item",
+                "sku": "item",
+                "price": "1.00",
+                "currency": "USD",
+                "quantity": 1
+            }]
+        },
         "amount": {
             "currency": "USD",
             "total": "1.00"
