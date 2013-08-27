@@ -30,7 +30,7 @@ describe('SDK', function () {
                 "subtotal": "5",
                 "tax": "1",
                 "shipping": "1" } },
-            "description": "This is the payment transaction description." }] };
+            "description": "This is the payment transaction descriptiön." }] };
 
 		    it('create with credit_card', function (done) {
 			      paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {
