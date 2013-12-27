@@ -104,3 +104,4 @@ mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
    * If you would like to contribute, please fork the repo and send in a pull request.
    * Please ensure you run grunt before sending in the pull request.
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paypal/rest-api-sdk-nodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
