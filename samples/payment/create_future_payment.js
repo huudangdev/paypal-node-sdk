@@ -1,4 +1,12 @@
-/* Copyright 2014 PayPal */
+/* Complete example of a future payment after consent has been granted on a mobile device.
+   Authorization code from mobile sdk is replaced from refresh token which is used to create 
+   a charge. In practice, the refresh token would be stored, mapped to the consenting customer.
+   When customer makes a payment in future, the correlation id obtained from mobile device
+   should be passed in while charging the customer.
+
+   Copyright 2014 PayPal
+*/
+
 "use strict";
 var paypal_api = require('../../');
 require('../configure');
