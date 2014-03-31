@@ -28,7 +28,10 @@ describe('SDK', function () {
                         "type": "visa",
                         "expire_month": 11,
                         "expire_year": 2018,
-                        "cvv2": 874 } }] },
+                        "cvv2": 874
+                    }
+                }]
+            },
             "transactions": [{
                 "amount": {
                     "total": "7.47",
@@ -36,8 +39,12 @@ describe('SDK', function () {
                     "details": {
                         "subtotal": "7.41",
                         "tax": "0.03",
-                        "shipping": "0.03" } },
-                "description": "This is the payment transaction description." }] };
+                        "shipping": "0.03"
+                    }
+                },
+                "description": "This is the payment transaction description."
+            }]
+        };
 
         function create_sale(callback) {
             paypal_sdk.payment.create(create_payment_data, function (error, payment) {

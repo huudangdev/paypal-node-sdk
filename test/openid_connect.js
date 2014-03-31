@@ -12,7 +12,8 @@ var querystring = require('querystring');
 paypal_sdk.configure({
     'openid_client_id': 'CLIENT_ID',
     'openid_client_secret': 'CLIENT_SECRET',
-    'openid_redirect_uri': 'http://example.com' });
+    'openid_redirect_uri': 'http://example.com'
+});
 
 describe('OpenIDConnect', function () {
     describe('authorize_url', function () {
