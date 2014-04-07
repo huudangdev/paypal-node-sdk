@@ -76,6 +76,7 @@ To write an app using the SDK
     // Logout url
     paypal_sdk.openid_connect.logout_url("Replace with tokeninfo.id_token");
     ```
+  * To create [Future Payments](https://developer.paypal.com/docs/integration/mobile/make-future-payment/), check out this [sample](/samples/payment/create_future_payment.js) for executing future payments for a customer who has granted consent on a mobile device.
 
 ## Running Samples
 Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
@@ -104,3 +105,4 @@ mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
    * If you would like to contribute, please fork the repo and send in a pull request.
    * Please ensure you run grunt before sending in the pull request.
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paypal/rest-api-sdk-nodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

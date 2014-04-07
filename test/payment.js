@@ -9,31 +9,37 @@ var paypal_sdk = require('../');
 require('./configure');
 
 describe('SDK', function () {
-	  describe('Payment', function () {
-
+	describe('Payment', function () {
         var create_payment_json_card = {
-          "intent": "sale",
-          "payer": {
-            "payment_method": "credit_card",
-            "funding_instruments": [{
-              "credit_card": {
-                "type": "visa",
-                "number": "4417119669820331",
-                "expire_month": "11",
-                "expire_year": "2018",
-                "cvv2": "874" } }] },
-          "transactions": [{
-            "amount": {
-              "total": "7",
-              "currency": "USD",
-              "details": {
-                "subtotal": "5",
-                "tax": "1",
-                "shipping": "1" } },
-            "description": "This is the payment transaction descriptiön." }] };
+            "intent": "sale",
+            "payer": {
+                "payment_method": "credit_card",
+                "funding_instruments": [{
+                    "credit_card": {
+                        "type": "visa",
+                        "number": "4417119669820331",
+                        "expire_month": "11",
+                        "expire_year": "2018",
+                        "cvv2": "874"
+                    }
+                }]
+            },
+            "transactions": [{
+                "amount": {
+                    "total": "7",
+                    "currency": "USD",
+                    "details": {
+                        "subtotal": "5",
+                        "tax": "1",
+                        "shipping": "1"
+                    }
+                },
+                "description": "This is the payment transaction descriptiön."
+            }]
+        };
 
-		    it('create with credit_card', function (done) {
-			      paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {
+        it('create with credit_card', function (done) {
+            paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {
                 expect(error).equal(null);
                 expect(payment.id).to.contain('PAY-');
 
@@ -53,6 +59,5 @@ describe('SDK', function () {
                 done();
             });
         });
-
     });
 });

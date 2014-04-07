@@ -19,11 +19,17 @@ describe('SDK', function () {
                         "type": "visa",
                         "number": "4417119669820331",
                         "expire_month": "11",
-                        "expire_year": "2018" }}]},
+                        "expire_year": "2018"
+                    }
+                }]
+            },
             "transactions": [{
                 "amount": {
                     "total": "1.00",
-                    "currency": "USD" }}]};
+                    "currency": "USD"
+                }
+            }]
+        };
 
         function create_authorization(callback) {
             paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
@@ -64,13 +70,13 @@ describe('SDK', function () {
                 });
             });
         });
-        
+
         it('reauthorize', function (done) {
 	        var reauthorize_details = {
-		    	"amount": {
+		        "amount": {
 			        "currency": "USD",
-			        "total": "4.54" 
-			     }
+			        "total": "4.54"
+			    }
 		    };
             paypal_sdk.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, authorization) {
                 expect(authorization).equal(null);
