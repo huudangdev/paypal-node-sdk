@@ -1,5 +1,7 @@
 /* Copyright 2014 PayPal */
 
+"use strict";
+
 var chai = require('chai'),
 	expect = chai.expect,
 	should = chai.should();
@@ -32,6 +34,16 @@ describe('SDK', function () {
             }]
         };
 
+        it('redirect uri required for paypal payment without refresh token', function (done) {
+			paypal_sdk.payment.create(create_payment_json, function (error, payment) {
+				expect(error.httpStatusCode).equal(400);
+				expect(error.response.name).equal('VALIDATION_ERROR');
+				expect(error.response.details[0].field).equal('redirect_urls');
+				expect(error.response.details[0].issue).equal('This field required when payment_method is \'paypal\'');
+				done();
+			});
+		});		
+
 		it('fail with bad refresh token', function (done) {
 			paypal_sdk.payment.create(create_payment_json, {'refresh_token': 'invalid_token'}, function (error, payment) {
 				expect(error.httpStatusCode).equal(400);
@@ -39,6 +51,5 @@ describe('SDK', function () {
 				done();
 			});
 		});
-
 	});
 });
