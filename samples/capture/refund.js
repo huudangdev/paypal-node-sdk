@@ -6,7 +6,8 @@ require('../configure');
 var refund_details = {
     "amount": {
         "currency": "USD",
-        "total": "110.54" }
+        "total": "110.54"
+    }
 };
 
 paypal_sdk.capture.refund("8F148933LY9388354", refund_details, function (error, refund) {

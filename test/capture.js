@@ -19,11 +19,17 @@ describe('SDK', function () {
                         "type": "visa",
                         "number": "4417119669820331",
                         "expire_month": "11",
-                        "expire_year": "2018" }}]},
+                        "expire_year": "2018"
+                    }
+                }]
+            },
             "transactions": [{
                 "amount": {
                     "total": "1.00",
-                    "currency": "USD" }}]};
+                    "currency": "USD"
+                }
+            }]
+        };
 
         var capture_details = {
             "amount": { "currency": "USD", "total": "1.00" }

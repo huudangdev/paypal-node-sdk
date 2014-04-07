@@ -8,7 +8,6 @@ var chai = require('chai'),
 var paypal_sdk = require('../');
 require('./configure');
 
-
 describe('SDK', function () {
     describe('CreditCard', function () {
 
@@ -17,7 +16,8 @@ describe('SDK', function () {
             "number": "4417119669820331",
             "expire_month": "11",
             "expire_year": "2018",
-            "cvv2": "123" };
+            "cvv2": "123"
+        };
 
         function create_credit_card(callback) {
             paypal_sdk.credit_card.create(credit_card_details, function (error, credit_card) {
@@ -51,10 +51,11 @@ describe('SDK', function () {
         });
 
         it('create with invalid data', function (done) {
-          paypal_sdk.credit_card.create({}, function (error, credit_card) {
-            expect(error).not.equal(null);
-            done();
-          });
+
+            paypal_sdk.credit_card.create({}, function (error, credit_card) {
+                expect(error).not.equal(null);
+                done();
+            });
         });
     });
 });
