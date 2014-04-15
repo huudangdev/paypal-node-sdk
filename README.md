@@ -1,6 +1,6 @@
 # REST API SDK for Node.js [![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk) [![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs)
 
-Repository for PayPal's Node.js SDK (node.js version >=0.6.x) and Node.js samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
+Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
 
 ## Usage
 To write an app using the SDK
@@ -77,6 +77,8 @@ To write an app using the SDK
     paypal_sdk.openid_connect.logout_url("Replace with tokeninfo.id_token");
     ```
   * To create [Future Payments](https://developer.paypal.com/docs/integration/mobile/make-future-payment/), check out this [sample](/samples/payment/create_future_payment.js) for executing future payments for a customer who has granted consent on a mobile device.
+
+  * For [Invoicing](https://developer.paypal.com/webapps/developer/docs/api/#invoicing), check out the [samples](/samples/invoice/) to see how you can use the node sdk to create, send and manage invoices.
 
 ## Running Samples
 Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:

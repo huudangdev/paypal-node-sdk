@@ -10,6 +10,7 @@ v0.8.0
 v0.7.0
 -----
 * Future Payments support added
+* Linting
 
 v0.6.4
 -----
