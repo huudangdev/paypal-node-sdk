@@ -2,7 +2,7 @@
   "author": "PayPal <DL-PP-Platform-NodeJs-SDK@ebay.com> (https://developer.paypal.com/)",
   "name": "paypal-rest-sdk",
   "description": "SDK for PayPal REST APIs",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "homepage": "https://github.com/paypal/rest-api-sdk-nodejs",
   "keywords": [
     "paypal",
@@ -20,6 +20,7 @@
   },
   "licenses": [
     {
+      "type": "Custom",
       "url": "https://github.com/paypal/rest-api-sdk-nodejs/blob/master/LICENSE.txt"
     }
   ],
@@ -28,11 +29,11 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "node-uuid": "*"
+    "node-uuid": "~1.4.1"
   },
   "devDependencies": {
-    "chai": "*",
-    "mocha": "*",
+    "chai": "~1.9.1",
+    "mocha": "~1.18.2",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.3.0",
     "grunt-simple-mocha": "~0.3.2",
