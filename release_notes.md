@@ -3,11 +3,13 @@ PayPal Node SDK release notes
 
 v0.8.0
 -----
-* Fixed content length to support utf-8 characters
+* Invoicing API support added 
+* Added tests and samples for using the invoicing api via the sdk
+* Modules pinned to versions for package.json
 
 v0.7.0
 -----
-* Fixed content length to support utf-8 characters
+* Future Payments support added
 
 v0.6.4
 -----
