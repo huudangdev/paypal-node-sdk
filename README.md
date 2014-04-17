@@ -1,4 +1,13 @@
-# REST API SDK for Node.js [![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk) [![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs)
+# REST API SDK for Node.js
+
+Continuous integration status:
+
+[![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs) [![Coverage Status](https://coveralls.io/repos/paypal/rest-api-sdk-nodejs/badge.png?branch=master)](https://coveralls.io/r/paypal/rest-api-sdk-nodejs?branch=master) 
+
+NPM status:
+
+[![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk)
+[![Dependency Status](https://david-dm.org/paypal/rest-api-sdk-nodejs.png)](https://david-dm.org/paypal/rest-api-sdk-nodejs)
 
 Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
 
