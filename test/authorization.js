@@ -5,7 +5,7 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-require('./configure');
+var config = require('./configure');
 
 describe('SDK', function () {
     describe('Authorization', function () {
@@ -30,6 +30,10 @@ describe('SDK', function () {
                 }
             }]
         };
+
+        if (config.NOCK_OFF !== 'true') {
+          require('./mocks/authorization');
+        }
 
         function create_authorization(callback) {
             paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {

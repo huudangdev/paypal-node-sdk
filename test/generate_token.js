@@ -6,14 +6,17 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-require('./configure');
-
+var config = require('./configure');
 
 describe('SDK', function () {
     describe('#generateToken', function () {
         it('token should be generated', function (done) {
-            paypal_sdk.generate_token(function (error, generatedToken) {
 
+          if (config.NOCK_OFF !== 'true') {
+            require('./mocks/generate_token');
+          }
+
+            paypal_sdk.generate_token(function (error, generatedToken) {
                 should.exist(generatedToken);
                 expect(generatedToken).to.contain('Bearer');
                 done();
@@ -21,3 +24,5 @@ describe('SDK', function () {
         });
     });
 });
+
+

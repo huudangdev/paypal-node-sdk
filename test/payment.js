@@ -6,7 +6,7 @@ var chai = require('chai'),
 	should = chai.should();
 
 var paypal_sdk = require('../');
-require('./configure');
+var config = require('./configure');
 
 describe('SDK', function () {
 	describe('Payment', function () {
@@ -37,6 +37,10 @@ describe('SDK', function () {
                 "description": "This is the payment transaction descriptiön."
             }]
         };
+
+        if (config.NOCK_OFF !== 'true') {
+            require('./mocks/payment');
+        }
 
         it('create with credit_card', function (done) {
             paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {

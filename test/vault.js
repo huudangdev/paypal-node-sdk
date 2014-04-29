@@ -6,7 +6,7 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-require('./configure');
+var config = require('./configure');
 
 describe('SDK', function () {
     describe('CreditCard', function () {
@@ -20,6 +20,11 @@ describe('SDK', function () {
         };
 
         function create_credit_card(callback) {
+
+            if (config.NOCK_OFF !== 'true') {
+              require('./mocks/vault');
+            }
+
             paypal_sdk.credit_card.create(credit_card_details, function (error, credit_card) {
                 expect(error).equal(null);
                 expect(credit_card.id).to.contain('CARD');

@@ -6,7 +6,7 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-require('./configure');
+var config = require('./configure');
 
 var refund_data = {
     "amount": {
@@ -47,6 +47,11 @@ describe('SDK', function () {
         };
 
         function create_sale(callback) {
+
+            if (config.NOCK_OFF !== 'true') {
+              require('./mocks/sale');
+            }
+
             paypal_sdk.payment.create(create_payment_data, function (error, payment) {
                 expect(error).equal(null);
                 callback(payment.transactions[0].related_resources[0].sale);

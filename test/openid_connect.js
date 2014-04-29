@@ -9,6 +9,9 @@ var paypal_sdk = require('../');
 var openid_connect = paypal_sdk.openid_connect;
 var querystring = require('querystring');
 
+var paypal_sdk = require('../');
+var config = require('./configure');
+
 paypal_sdk.configure({
     'openid_client_id': 'CLIENT_ID',
     'openid_client_secret': 'CLIENT_SECRET',
@@ -16,6 +19,11 @@ paypal_sdk.configure({
 });
 
 describe('OpenIDConnect', function () {
+
+    if (config.NOCK_OFF !== 'true') {
+      require('./mocks/openid_connect');
+    }
+
     describe('authorize_url', function () {
         it('default', function (done) {
             var url = openid_connect.authorize_url();
