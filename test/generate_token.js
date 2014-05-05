@@ -6,13 +6,13 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-var config = require('./configure');
+require('./configure');
 
 describe('SDK', function () {
     describe('#generateToken', function () {
         it('token should be generated', function (done) {
 
-          if (config.NOCK_OFF !== 'true') {
+          if (process.env.NOCK_OFF !== 'true') {
             require('./mocks/generate_token');
           }
 

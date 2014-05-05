@@ -4,7 +4,7 @@
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
-
+    
 var paypal_sdk = require('../');
 require('./configure');
 
@@ -66,8 +66,8 @@ describe('SDK', function () {
           }
         };
 
-        if (config.NOCK_OFF !== 'true') {
-            require('./mocks/capture');
+        if (process.env.NOCK_OFF !== 'true') {
+            require('./mocks/invoice');
         }
 
         it('create and get success', function (done) {

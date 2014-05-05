@@ -6,7 +6,7 @@ var chai = require('chai'),
     should = chai.should();
 
 var paypal_sdk = require('../');
-var config = require('./configure');
+require('./configure');
 
 describe('SDK', function () {
     describe('CreditCard', function () {
@@ -21,7 +21,7 @@ describe('SDK', function () {
 
         function create_credit_card(callback) {
 
-            if (config.NOCK_OFF !== 'true') {
+            if (process.env.NOCK_OFF !== 'true') {
               require('./mocks/vault');
             }
 
