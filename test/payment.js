@@ -38,6 +38,10 @@ describe('SDK', function () {
             }]
         };
 
+        if (process.env.NOCK_OFF !== 'true') {
+            require('./mocks/payment');
+        }
+
         it('create with credit_card', function (done) {
             paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {
                 expect(error).equal(null);

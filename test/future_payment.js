@@ -11,6 +11,11 @@ require('./configure');
 
 describe('SDK', function () {
 	describe('FuturePayment', function () {
+
+		if (process.env.NOCK_OFF !== 'true') {
+			require('./mocks/future_payment');
+		}
+
 		it('fail with bad auth code', function (done) {
 			paypal_sdk.generate_token({'authorization_code': 'invalid_code'}, function (error, generatedToken) {
 				expect(error.httpStatusCode).equal(400);

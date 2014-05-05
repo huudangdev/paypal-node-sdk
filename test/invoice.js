@@ -2,9 +2,9 @@
 "use strict";
 
 var chai = require('chai'),
-	expect = chai.expect,
-	should = chai.should();
-
+    expect = chai.expect,
+    should = chai.should();
+    
 var paypal_sdk = require('../');
 require('./configure');
 
@@ -65,6 +65,10 @@ describe('SDK', function () {
             "value": "500.00"
           }
         };
+
+        if (process.env.NOCK_OFF !== 'true') {
+            require('./mocks/invoice');
+        }
 
         it('create and get success', function (done) {
             paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {

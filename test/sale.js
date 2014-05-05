@@ -47,6 +47,11 @@ describe('SDK', function () {
         };
 
         function create_sale(callback) {
+
+            if (process.env.NOCK_OFF !== 'true') {
+                require('./mocks/sale');
+            }
+
             paypal_sdk.payment.create(create_payment_data, function (error, payment) {
                 expect(error).equal(null);
                 callback(payment.transactions[0].related_resources[0].sale);

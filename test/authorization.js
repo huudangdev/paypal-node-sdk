@@ -31,6 +31,10 @@ describe('SDK', function () {
             }]
         };
 
+        if (process.env.NOCK_OFF !== 'true') {
+          require('./mocks/authorization');
+        }
+
         function create_authorization(callback) {
             paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
                 expect(error).equal(null);

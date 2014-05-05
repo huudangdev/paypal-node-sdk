@@ -4,6 +4,8 @@
 var paypal_sdk = require('../');
 var openid_connect = paypal_sdk.openid_connect;
 
+//set configs for openid_client_id and openid_client_secret if they are different from your
+//usual client_id and secret. openid_redirect_uri is required
 paypal_sdk.configure({
     'openid_client_id': 'CLIENT_ID',
     'openid_client_secret': 'CLIENT_SECRET',
