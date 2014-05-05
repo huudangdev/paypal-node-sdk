@@ -35,7 +35,13 @@ describe('SDK', function () {
             "amount": { "currency": "USD", "total": "1.00" }
         };
 
+
         function create_capture(callback) {
+
+            if (process.env.NOCK_OFF !== 'true') {
+              require('./mocks/capture');
+            }
+
             paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
                 expect(error).equal(null);
                 var authorization = payment.transactions[0].related_resources[0].authorization;
@@ -50,6 +56,7 @@ describe('SDK', function () {
 
         it('get', function (done) {
             create_capture(function (capture) {
+
                 paypal_sdk.capture.get(capture.id, function (error, capture) {
                     expect(error).equal(null);
                     expect(capture.state).equal("completed");
@@ -60,9 +67,11 @@ describe('SDK', function () {
 
         it('refund', function (done) {
             create_capture(function (capture) {
+                
                 paypal_sdk.capture.refund(capture.id, {}, function (error, refund) {
                     expect(error).equal(null);
                     expect(refund.state).equal("completed");
+
                     expect(refund.capture_id).equal(capture.id);
                     done();
                 });
