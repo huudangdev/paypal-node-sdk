@@ -1,6 +1,12 @@
 PayPal Node SDK release notes
 ============================
 
+v0.9.0
+----
+* Unit tests can run as mock mode
+* Mode configuration for easier toggling between live/sandbox
+* NODE_ENV=development can be added for getting debug-id
+
 v0.8.0
 -----
 * Invoicing API support added 
