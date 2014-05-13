@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v0.9.1
+----
+* Fix for toggling host by using mode in config
+
 v0.9.0
 ----
 * Unit tests can run as mock mode
