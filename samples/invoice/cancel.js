@@ -11,7 +11,7 @@ var options = {
     "note": "Canceling invoice",
     "send_to_merchant": true,
     "send_to_payer": true
-}
+};
 
 //Cannot be in DRAFT status for cancelling
 paypal_api.invoice.cancel(invoiceId, options, function (error, rv) {

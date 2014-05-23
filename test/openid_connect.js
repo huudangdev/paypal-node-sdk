@@ -21,7 +21,7 @@ paypal_sdk.configure({
 describe('OpenIDConnect', function () {
 
     if (process.env.NOCK_OFF !== 'true') {
-      require('./mocks/openid_connect');
+        require('./mocks/openid_connect');
     }
 
     describe('authorize_url', function () {

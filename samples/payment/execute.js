@@ -33,14 +33,15 @@ var create_payment_json = {
 
 paypal_api.payment.create(create_payment_json, function (error, payment) {
     if (error) {
-    	console.log(error.response);
+        console.log(error.response);
         throw error;
     } else {
-    	for (var index=0; index < payment.links.length; index++) {
-    		//Redirect user to this endpoint for redirect url
-    		if (payment.links[index].rel == 'approval_url')
-    			console.log(payment.links[index].href);
-    	}
+        for (var index = 0; index < payment.links.length; index++) {
+        //Redirect user to this endpoint for redirect url
+            if (payment.links[index].rel === 'approval_url') {
+                console.log(payment.links[index].href);
+            }
+        }
         console.log(payment);
     }
 });
