@@ -47,7 +47,7 @@ describe('SDK', function () {
 				expect(error.response.details[0].issue).equal('This field required when payment_method is \'paypal\'');
 				done();
 			});
-		});		
+		});
 
 		it('fail with bad refresh token', function (done) {
 			paypal_sdk.payment.create(create_payment_json, {'refresh_token': 'invalid_token'}, function (error, payment) {

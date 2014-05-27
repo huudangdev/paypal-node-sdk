@@ -4,66 +4,66 @@
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
-    
+
 var paypal_sdk = require('../');
 require('./configure');
 
 describe('SDK', function () {
-	describe('Invoice', function () {
+    describe('Invoice', function () {
         var invoice_attributes = {
-          "merchant_info": {
-            "email": "PPX.DevNet-facilitator@gmail.com",
-            "first_name": "Dennis",
-            "last_name": "Doctor",
-            "business_name": "Medical Professionals, LLC",
-            "phone": {
-              "country_code": "001",
-              "national_number": "5032141716"
+            "merchant_info": {
+                "email": "PPX.DevNet-facilitator@gmail.com",
+                "first_name": "Dennis",
+                "last_name": "Doctor",
+                "business_name": "Medical Professionals, LLC",
+                "phone": {
+                    "country_code": "001",
+                    "national_number": "5032141716"
+                },
+                "address": {
+                    "line1": "1234 Main St.",
+                    "city": "Portland",
+                    "state": "OR",
+                    "postal_code": "97217",
+                    "country_code": "US"
+                }
             },
-              "address": {
-              "line1": "1234 Main St.",
-              "city": "Portland",
-              "state": "OR",
-              "postal_code": "97217",
-              "country_code": "US"
-            }
-          },
-          "billing_info": [ { "email": "example@example.com" } ],
-          "items": [
-            {
-              "name": "Sutures",
-              "quantity": 100,
-              "unit_price": {
+            "billing_info": [{
+                "email": "example@example.com"
+            }],
+            "items": [{
+                "name": "Sutures",
+                "quantity": 100,
+                "unit_price": {
+                    "currency": "USD",
+                    "value": 5
+                }
+            }],
+            "note": "Medical Invoice 16 Jul, 2013 PST",
+            "payment_term": {
+                "term_type": "NET_45"
+            },
+            "shipping_info": {
+                "first_name": "Sally",
+                "last_name": "Patient",
+                "business_name": "Not applicable",
+                "phone": {
+                    "country_code": "001",
+                    "national_number": "5039871234"
+                },
+                "address": {
+                    "line1": "1234 Broad St.",
+                    "city": "Portland",
+                    "state": "OR",
+                    "postal_code": "97216",
+                    "country_code": "US"
+                }
+            },
+            "tax_inclusive": false,
+            "total_amount": {
                 "currency": "USD",
-                "value": 5
-              }
+                "value": "500.00"
             }
-          ],
-          "note": "Medical Invoice 16 Jul, 2013 PST",
-          "payment_term": {
-            "term_type": "NET_45"
-          },
-          "shipping_info": {
-            "first_name": "Sally",
-            "last_name": "Patient",
-            "business_name": "Not applicable",
-            "phone": {
-              "country_code": "001",
-              "national_number": "5039871234"
-            },
-            "address": {
-              "line1": "1234 Broad St.",
-              "city": "Portland",
-              "state": "OR",
-              "postal_code": "97216",
-              "country_code": "US"
-            }
-          },
-          "tax_inclusive": false,
-          "total_amount": {
-            "currency": "USD",
-            "value": "500.00"
-          }
         };
 
         if (process.env.NOCK_OFF !== 'true') {
@@ -100,12 +100,12 @@ describe('SDK', function () {
 
         it('search success', function (done) {
             var search_attr = {
-              "start_invoice_date" : "2010-05-10 PST",
-              "end_invoice_date" : "2014-04-10 PST",
-              "page" : 1,
-              "page_size" : 3,
-              "total_count_required" : true
-            }
+                "start_invoice_date": "2010-05-10 PST",
+                "end_invoice_date": "2014-04-10 PST",
+                "page": 1,
+                "page_size": 3,
+                "total_count_required": true
+            };
             paypal_sdk.invoice.search(search_attr, function (error, invoice_history) {
                 expect(error).equal(null);
                 expect(invoice_history.total_count).equal(23);
@@ -113,7 +113,7 @@ describe('SDK', function () {
                 done();
             });
         });
-        
+
         it('update draft invoice success', function (done) {
             paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
@@ -210,9 +210,10 @@ describe('SDK', function () {
                     "first_name": "Dennis",
                     "last_name": "Doctor"
                 },
-                    "billing_info": [ { "email": "example@example.com" 
+                "billing_info": [{
+                    "email": "example@example.com"
                 }]
-            }
+            };
             paypal_sdk.invoice.create(invoice_attr_wo_items, function (error, invoice) {
                 expect(error).equal(null);
                 expect(invoice.id).to.contain('INV2-');
@@ -242,7 +243,7 @@ describe('SDK', function () {
                     paypal_sdk.invoice.remind(invoice.id, remind_attr, function (error, rv) {
                         expect(error).equal(null);
                         expect(rv).equal('');
-                        done();  
+                        done();
                     });
                 });
             });
@@ -335,7 +336,7 @@ describe('SDK', function () {
 
                     paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
                         expect(error.response.message).equal("Only draft can be deleted.");
-                        done();  
+                        done();
                     });
                 });
             });

@@ -39,7 +39,7 @@ describe('SDK', function () {
         function create_capture(callback) {
 
             if (process.env.NOCK_OFF !== 'true') {
-              require('./mocks/capture');
+                require('./mocks/capture');
             }
 
             paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
@@ -67,7 +67,6 @@ describe('SDK', function () {
 
         it('refund', function (done) {
             create_capture(function (capture) {
-                
                 paypal_sdk.capture.refund(capture.id, {}, function (error, refund) {
                     expect(error).equal(null);
                     expect(refund.state).equal("completed");
