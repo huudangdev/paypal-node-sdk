@@ -32,7 +32,7 @@ describe('SDK', function () {
         };
 
         if (process.env.NOCK_OFF !== 'true') {
-          require('./mocks/authorization');
+            require('./mocks/authorization');
         }
 
         function create_authorization(callback) {

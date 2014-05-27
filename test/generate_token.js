@@ -12,9 +12,9 @@ describe('SDK', function () {
     describe('#generateToken', function () {
         it('token should be generated', function (done) {
 
-          if (process.env.NOCK_OFF !== 'true') {
-            require('./mocks/generate_token');
-          }
+            if (process.env.NOCK_OFF !== 'true') {
+                require('./mocks/generate_token');
+            }
 
             paypal_sdk.generate_token(function (error, generatedToken) {
                 should.exist(generatedToken);
@@ -24,5 +24,3 @@ describe('SDK', function () {
         });
     });
 });
-
-

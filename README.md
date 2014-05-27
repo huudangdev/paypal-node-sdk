@@ -106,7 +106,7 @@ npm install
 ```
 then run the tests:
 ```sh
-mocha -t 15000 #(timeout is specified in milliseconds eg: 15000ms)
+grunt test (timeout is specified in milliseconds eg: 15000ms)
 ```
 
 ## Debugging
