@@ -18,7 +18,8 @@ module.exports = function (grunt) {
 		},
 		simplemocha: {
 			options: {
-				timeout: 30000,
+				timeout: 15000,
+				reporter: 'dot'
 			},
 			all: {
 				src: 'test/*.js'
@@ -29,6 +30,9 @@ module.exports = function (grunt) {
 	// Load grunt tasks from npm packages
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks('grunt-simple-mocha');
+
+	// Test task
+	grunt.registerTask("test", ["simplemocha"]);
 
 	// Default task.
 	grunt.registerTask("default", ["jshint", "simplemocha"]);
