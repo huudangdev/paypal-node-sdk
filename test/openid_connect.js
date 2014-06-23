@@ -31,6 +31,7 @@ describe('OpenIDConnect', function () {
             expect(url).to.contain('scope=openid');
             expect(url).to.contain('client_id=');
             expect(url).to.contain('redirect_uri=');
+            expect(url).to.contain('www.sandbox.paypal.com');
             done();
         });
 
@@ -38,6 +39,15 @@ describe('OpenIDConnect', function () {
             var url = openid_connect.authorize_url({'scope': 'openid profile'});
             expect(url).to.contain(querystring.stringify({'scope': 'openid profile'}));
             done();
+        });
+
+        it('with live mode', function (done) {
+            paypal_sdk.configure({
+                'mode': 'live'
+            });
+            var url = openid_connect.authorize_url({'scope': 'openid profile'});
+            expect(url).to.not.contain('sandbox');
+            expect(url).to.contain('www.paypal.com');
         });
     });
 
@@ -53,6 +63,16 @@ describe('OpenIDConnect', function () {
             expect(url).to.contain('logout=true');
             expect(url).to.contain('id_token=test');
             done();
+        });
+
+        it('with live mode', function (done) {
+            paypal_sdk.configure({
+                'mode': 'live'
+            });
+            var url = openid_connect.logout_url({'id_token': 'test'});
+            expect(url).to.not.contain('sandbox');
+            expect(url).to.contain('www.paypal.com');
+            console.log(url);
         });
     });
 
