@@ -66,6 +66,19 @@ describe('SDK', function () {
             }
         ];
 
+        var update_merchant_preferences = [
+            {
+                "op":"replace",
+                "path":"/merchant-preferences",
+                "value" : {
+                    "cancel_url":"http://www.paypal123.com",
+                    "setup_fee": {
+                        "value" :"22",
+                        "currency" : "USD"
+                    }
+                }
+            ]
+
         var billing_agreement_attributes = {
             "name": "Fast Speed Agreement",
             "description": "Agreement for Fast Speed Plan",
@@ -125,7 +138,6 @@ describe('SDK', function () {
 
         it('get nonexistent billing plan failure', function (done) {
             paypal_sdk.billing_plan.get('ABRACADABRA', function (error, billingPlan) {
-                //should fail
                 expect(error.response.name).to.equal('BUSINESS_ERROR');
                 expect(error.response.message).to.equal('Invalid encrypted id.');
                 done();
@@ -139,8 +151,7 @@ describe('SDK', function () {
             });
         });
 
-        //QUESTION : is there a way to retrieve one billing agreement? how about all agreements
-        it('update billing plan success', function (done) {
+        it('activate billing plan (update status to active) success', function (done) {
             paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
                 expect(error).equal(null);
                 expect(billingPlan.state).equal("CREATED");
@@ -156,13 +167,30 @@ describe('SDK', function () {
             });
         });
 
+        it('update merchant preferences for billing plan success', function (done) {
+            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
+                expect(error).equal(null);
+                expect(billingPlan.state).equal("CREATED");
+
+                paypal_sdk.billing_plan.update(billingPlan.id, update_merchant_preferences, function (error, response) {
+                    expect(error).equal(null);
+                    expect(response.httpStatusCode).equal(204);
+                   
+                    paypal_sdk.billing_plan.get(billingPlan.id, function (error, billingPlan) {
+                        expect(error).equal(null);
+                        expect(billingPlan.merchant_preferences.setup_fee.value).to.equal('22');
+                        expect(billingPlan.merchant_preferences.cancel_url).to.equal('http://www.paypal123.com');
+                        done();
+                    });
+                });
+            });
+        });
+
         it('billing agreement create from billing plan success', function (done) {
             paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
                 expect(error).equal(null);
                 expect(billingPlan.state).equal("CREATED");
 
-                //wont work as patch returns a 204 so cannot expect billingPlan to be returned
-                //consider update vs replace
                 paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
                     expect(error).equal(null);
                     expect(response.httpStatusCode).equal(204);
@@ -208,8 +236,7 @@ describe('SDK', function () {
         it('billing agreement execute after create from billing plan success', function (done) {
             paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
                 expect(error).equal(null);
-                //wont work as patch returns a 204 so cannot expect billingPlan to be returned
-                //consider update vs replace
+
                 paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
                     expect(error).equal(null);
                     expect(response.httpStatusCode).equal(204);
@@ -295,7 +322,7 @@ describe('SDK', function () {
                                 "note": "Reactivating the agreement"
                             };
 
-                            paypal_sdk.billing_agreement.re_activate(billingAgreement.id, reactivate_note, function (error, response) {
+                            paypal_sdk.billing_agreement.reactivate(billingAgreement.id, reactivate_note, function (error, response) {
                                 expect(error).equal(null);
                                 expect(response.httpStatusCode).equal(204);
                                 done();
@@ -404,17 +431,5 @@ describe('SDK', function () {
                 });
             });
         });
-
-        // QUESTION after you create Returns the agreement object based on the billing plan.
-        // after creating billing agreement does the id get returned
-        //QUESTION: documentation does not look like id is returned, is id only populated after buyer approval?
-        //QUESTION: will a plan be around for testing?
-        //QUESTION: Search for agreements transactions what will it return, can be different than recurring payments?
-        //Quesion: set-balance is not documented
-
-        //QUESTION: test agreement-execute?
-        //QUESTION: does bill_balance and set_balance only start working after 
-        //QUESTION: post of execute agreement does not seem to have details
-        //QUESTION: Retrieve an agreement not documented along with set_balance
     });
 });
