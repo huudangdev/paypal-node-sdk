@@ -4,7 +4,7 @@
 var paypal_api = require('../../../');
 require('../../configure');
 
-var billingPlanId = "P-0NJ10521L3680291SOAQIVTQ";
+var billingPlanId = "P-6KX77264SV996415P6K4MZZY";
 
 paypal_api.billing_plan.get(billingPlanId, function (error, billingPlan) {
     if (error) {

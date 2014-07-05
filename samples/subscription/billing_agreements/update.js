@@ -4,14 +4,14 @@
 var paypal_api = require('../../../');
 require('../../configure');
 
-var billingAgreementId = "I-THNVHK6X9H0V";
+var billingAgreementId = "I-08413VDRU6DE";
 
 var billing_agreement_update_attributes = [
     {
         "op": "replace",
         "path": "/",
         "value": {
-            "description": "New Description",
+            "description": "Newer Description",
             "name": "New Name",
             "shipping_address": {
                 "line1": "StayBr111idge Suites",
@@ -34,13 +34,12 @@ paypal_api.billing_agreement.get(billingAgreementId, function (error, billingAgr
         console.log(JSON.stringify(billingAgreement));
 
         paypal_api.billing_agreement.update(billingAgreementId, billing_agreement_update_attributes, function (error, response) {
-        	if (error) {
-        		console.log(error);
-        		throw error;
-        	} else {
-        		console.log(billingAgreement.name);
-        		console.log(billingAgreement.description);
-        	}
+            if (error) {
+                console.log(error);
+                throw error;
+            } else {
+                console.log(response);
+            }
         });
     }
 });

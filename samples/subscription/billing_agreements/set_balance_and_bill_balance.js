@@ -25,13 +25,13 @@ paypal_api.billing_agreement.set_balance(billingAgreementId, outstanding_amount,
         };
 
         paypal_api.billing_agreement.bill_balance(billingAgreementId, outstanding_amount_note, function (error, response) {
-        	if (error) {
-        		console.log(error);
-        		throw error;
-        	} else {
-        		console.log("Billing Agreement Bill Balance Response");
-        		console.log(response);
-        	}
+            if (error) {
+                console.log(error);
+                throw error;
+            } else {
+                console.log("Billing Agreement Bill Balance Response");
+                console.log(response);
+            }
         });
     }
 });

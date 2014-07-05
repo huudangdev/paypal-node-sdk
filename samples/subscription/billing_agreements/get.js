@@ -4,7 +4,7 @@
 var paypal_api = require('../../../');
 require('../../configure');
 
-var billingAgreementId = "I-THNVHK6X9H0V";
+var billingAgreementId = "I-08413VDRU6DE";
 
 paypal_api.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
     if (error) {
