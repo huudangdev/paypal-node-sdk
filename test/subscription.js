@@ -169,8 +169,8 @@ describe('SDK', function () {
                     "description": "New Description",
                     "name": "New Name",
                     "shipping_address": {
-                        "line1": "StayBr111idge Suites",
-                        "line2": "Cro12ok Street",
+                        "line1": "StayBridge Suites",
+                        "line2": "Crook Street",
                         "city": "San Jose",
                         "state": "CA",
                         "postal_code": "95112",
@@ -179,13 +179,11 @@ describe('SDK', function () {
                 }
             }
         ];
-        var billing_agreement_id = 'I-08413VDRU6DE';
+        var billing_agreement_id = 'I-W0CR3PB7KTBB';
 
-        /*
         if (process.env.NOCK_OFF !== 'true') {
             require('./mocks/subscription');
         }
-        */
 
         it('billing plan create and get success', function (done) {
             paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
@@ -221,7 +219,8 @@ describe('SDK', function () {
 
                 paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
                     expect(error).equal(null);
-                    //expect(response.httpStatusCode).equal(204);
+                    expect(response.httpStatusCode).equal(200);
+
                     paypal_sdk.billing_plan.get(billingPlan.id, function (error, billingPlan) {
                         expect(error).equal(null);
                         expect(billingPlan.state).to.contain('ACTIVE');
@@ -238,7 +237,8 @@ describe('SDK', function () {
 
                 paypal_sdk.billing_plan.update(billingPlan.id, update_merchant_preferences, function (error, response) {
                     expect(error).equal(null);
-                    //expect(response.httpStatusCode).equal(204);
+                    expect(response.httpStatusCode).equal(200);
+
                     paypal_sdk.billing_plan.get(billingPlan.id, function (error, billingPlan) {
                         expect(error).equal(null);
                         expect(billingPlan.merchant_preferences.setup_fee.value).to.equal('22');
@@ -256,7 +256,7 @@ describe('SDK', function () {
 
                 paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
                     expect(error).equal(null);
-                    //expect(response.httpStatusCode).equal(204);
+                    expect(response.httpStatusCode).equal(200);
 
                     billing_agreement_attributes.plan.id = billingPlan.id;
                     paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
@@ -269,27 +269,11 @@ describe('SDK', function () {
             });
         });
 
-        it('billing agreement create from billing plan and get success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
+        it('billing agreement get success', function (done) {
+            paypal_sdk.billing_agreement.get(billing_agreement_id, function (error, billingAgreement) {
                 expect(error).equal(null);
-                expect(billingPlan.state).equal("CREATED");
-
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-
-                    billing_agreement_attributes_cc.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes_cc, function (error, billingAgreement) {
-                        console.log(error.response);
-                        expect(error).equal(null);
-                        expect(billingAgreement.id).to.contain('I-');
-
-                        paypal_sdk.billing_agreement.get(billingAgreement.id, function (error, billingAgreement) {
-                            expect(billingAgreement.name).to.equal(billing_agreement_attributes.name);
-                            expect(billingAgreement.plan.id).to.equal(billing_agreement_attributes.plan.id);
-                            done();
-                        });
-                    });
-                });
+                expect(billingAgreement.id).equal(billing_agreement_id);
+                done();
             });
         });
 
@@ -316,26 +300,6 @@ describe('SDK', function () {
             });
         });
 
-        it('billing agreement get success', function (done) {
-            paypal_sdk.billing_agreement.get(billing_agreement_id, function (error, billingAgreement) {
-                expect(error).equal(null);
-                expect(billingAgreement.id).equal(billing_agreement_id);
-                done();
-            });
-        });
-
-        it('billing agreement update success', function (done) {
-            paypal_sdk.billing_agreement.update(billing_agreement_id, billing_agreement_update_attributes, function (error, response) {
-                expect(error).equal(null);
-
-                paypal_sdk.billing_agreement.get(billing_agreement_id, function (error, billingAgreement) {
-                    expect(error).equal(null);
-                    expect(billingAgreement.description).equal(billing_agreement_update_attributes[0].value.description);
-                    done();
-                });
-            });
-        });
-
         it('search transactions for billing agreement not empty', function (done) {
             var start_date = "2014-07-01";
             var end_date = "2014-07-20";
@@ -349,132 +313,73 @@ describe('SDK', function () {
         });
 
         it('billing agreement suspend success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
+            var suspend_note = {
+                "note": "Suspending the agreement"
+            };
+
+            paypal_sdk.billing_agreement.suspend(billing_agreement_id, suspend_note, function (error, response) {
                 expect(error).equal(null);
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-                    billing_agreement_attributes.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
-                        expect(error).equal(null);
-
-                        var suspend_note = {
-                            "note": "Suspending the agreement"
-                        };
-
-                        paypal_sdk.billing_agreement.suspend(billingAgreement.id, suspend_note, function (error, response) {
-                            expect(error).equal(null);
-                            expect(response.httpStatusCode).equal(204);
-                            done();
-                        });
-                    });
-                });
+                done();
             });
         });
 
         it('billing agreement reactivate success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
+            var reactivate_note = {
+                "note": "Reactivating the agreement"
+            };
+
+            paypal_sdk.billing_agreement.reactivate(billing_agreement_id, reactivate_note, function (error, response) {
                 expect(error).equal(null);
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-                    billing_agreement_attributes.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
-                        expect(error).equal(null);
-
-                        paypal_sdk.billing_agreement.suspend(billingAgreement.id, function (error, response) {
-                            expect(error).equal(null);
-                            expect(response.httpStatusCode).equal(204);
-
-                            var reactivate_note = {
-                                "note": "Reactivating the agreement"
-                            };
-
-                            paypal_sdk.billing_agreement.reactivate(billingAgreement.id, reactivate_note, function (error, response) {
-                                expect(error).equal(null);
-                                expect(response.httpStatusCode).equal(204);
-                                done();
-                            });
-                        });
-                    });
-                });
+                expect(response.httpStatusCode).equal(204);
+                done();
             });
         });
 
-        it('billing agreement cancel success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
-                expect(error).equal(null);
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-                    billing_agreement_attributes.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
-                        expect(error).equal(null);
+        it('set outstanding agreement amount fails with cannot increase delinquent amount', function (done) {
+            var outstanding_amount = {
+                "value": "100000",
+                "currency": "USD"
+            };
 
-                        var cancel_note = {
-                            "note": "Canceling the agreement"
-                        };
-
-                        paypal_sdk.billing_agreement.cancel(billingAgreement.id, cancel_note, function (error, response) {
-                            expect(error).equal(null);
-                            expect(response.httpStatusCode).equal(204);
-                            done();
-                        });
-                    });
-                });
+            paypal_sdk.billing_agreement.set_balance(billing_agreement_id, outstanding_amount, function (error, response) {
+                expect(error.response.name).equal('RP_CANT_INCREASE_OUTSTANDING_AMOUNT');
+                expect(error.response.message).equal('Cannot increase delinquent amount');
+                expect(error.response.information_link).equal('https://developer.paypal.com/webapps/developer/docs/api/#RP_CANT_INCREASE_OUTSTANDING_AMOUNT');
+                expect(error.httpStatusCode).equal(400);
+                done();
             });
         });
 
-        it('set outstanding agreement amounts success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
-                expect(error).equal(null);
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-                    billing_agreement_attributes.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
-                        expect(error).equal(null);
+        it('bill outstanding agreement amount fails with cannot increase delinquent amount', function (done) {
+            var outstanding_amount = {
+                "note": "Billing Balance Amount",
+                "amount": {
+                    "value": "100000",
+                    "currency": "USD"
+                }
+            };
 
-                        var outstanding_amount = {
-                            "value": "100",
-                            "currency": "USD"
-                        };
-
-                        paypal_sdk.billing_agreement.set_balance(billingAgreement.id, outstanding_amount, function (error, response) {
-                            expect(error).equal(null);
-                            expect(response.httpStatusCode).equal(204);
-                            done();
-                        });
-                    });
-                });
+            paypal_sdk.billing_agreement.bill_balance(billing_agreement_id, outstanding_amount, function (error, response) {
+                expect(error.response.name).equal('RP_CANT_INCREASE_OUTSTANDING_AMOUNT');
+                expect(error.response.message).equal('Cannot increase delinquent amount');
+                expect(error.response.information_link).equal('https://developer.paypal.com/webapps/developer/docs/api/#RP_CANT_INCREASE_OUTSTANDING_AMOUNT');
+                expect(error.httpStatusCode).equal(400);
+                done();
             });
         });
 
-        it('bill outstanding agreement amounts success', function (done) {
-            paypal_sdk.billing_plan.create(billing_plan_attributes, function (error, billingPlan) {
-                expect(error).equal(null);
-                paypal_sdk.billing_plan.update(billingPlan.id, billing_plan_update_attributes, function (error, response) {
-                    expect(error).equal(null);
-                    billing_agreement_attributes.plan.id = billingPlan.id;
-                    paypal_sdk.billing_agreement.create(billing_agreement_attributes, function (error, billingAgreement) {
-                        expect(error).equal(null);
+        it('billing agreement cancel fails on invalid status', function (done) {
+            var cancel_note = {
+                "note": "Canceling the agreement"
+            };
 
-                        var outstanding_amount = {
-                            "value": "100",
-                            "currency": "USD"
-                        };
-                        paypal_sdk.billing_agreement.set_balance(billingAgreement.id, outstanding_amount, function (error, response) {
-                            expect(error).equal(null);
-                            expect(response.httpStatusCode).equal(204);
-
-                            var outstanding_amount_note = {
-                                "note": "Billing Balance Amount",
-                                "amount": outstanding_amount
-                            };
-                            paypal_sdk.billing_agreement.bill_balance(billingAgreement.id, outstanding_amount_note, function (error, response) {
-                                expect(error).equal(null);
-                                expect(response.httpStatusCode).equal(204);
-                                done();
-                            });
-                        });
-                    });
-                });
+            paypal_sdk.billing_agreement.cancel(billing_agreement_id, cancel_note, function (error, response) {
+                expect(error.response.name).equal('RP_INVALID_STATUS_TO_CANCEL');
+                expect(error.response.message).equal('Invalid profile status for cancel action; profile should be active or suspended');
+                expect(error.response.information_link).equal('https://developer.paypal.com/webapps/developer/docs/api/#RP_INVALID_STATUS_TO_CANCEL');
+                expect(error.response.debug_id).not.be.empty;
+                expect(error.httpStatusCode).equal(400);
+                done();
             });
         });
     });
