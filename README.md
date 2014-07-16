@@ -86,12 +86,14 @@ To write an app using the SDK
     // Logout url
     paypal_sdk.openid_connect.logout_url("Replace with tokeninfo.id_token");
     ```
+  * For creating [Subscription Payments](https://developer.paypal.com/docs/integration/direct/create-billing-plan/), check out the [samples](/samples/subscription) for creating planned sets of future recurring payments at periodic intervals.
+
   * To create [Future Payments](https://developer.paypal.com/docs/integration/mobile/make-future-payment/), check out this [sample](/samples/payment/create_future_payment.js) for executing future payments for a customer who has granted consent on a mobile device.
 
   * For [Invoicing](https://developer.paypal.com/webapps/developer/docs/api/#invoicing), check out the [samples](/samples/invoice/) to see how you can use the node sdk to create, send and manage invoices.
 
 ## Running Samples
-Instructions for running samples are located in the [sample directory] (https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
+Instructions for running samples are located in the [sample directory](https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
 
 <a href="https://runnable.com/paypal" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 

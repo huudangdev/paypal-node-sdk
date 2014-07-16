@@ -169,7 +169,7 @@ describe('SDK', function () {
 
                     paypal_sdk.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
                         expect(error).equal(null);
-                        expect(rv).equal('');
+                        expect(rv.httpStatusCode).equal(204);
 
                         var quantity_new = 500;
                         var amount_new = "2500.00";
@@ -242,7 +242,7 @@ describe('SDK', function () {
 
                     paypal_sdk.invoice.remind(invoice.id, remind_attr, function (error, rv) {
                         expect(error).equal(null);
-                        expect(rv).equal('');
+                        expect(rv.httpStatusCode).equal(202);
                         done();
                     });
                 });
@@ -281,7 +281,7 @@ describe('SDK', function () {
 
                     paypal_sdk.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
                         expect(error).equal(null);
-                        expect(rv).equal('');
+                        expect(rv.httpStatusCode).equal(204);
 
                         paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
                             expect(error).equal(null);
@@ -317,7 +317,7 @@ describe('SDK', function () {
 
                 paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
                     expect(error).equal(null);
-                    expect(rv).equal('');
+                    expect(rv.httpStatusCode).equal(204);
 
                     paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
                         expect(error.response.message).equal("Resource is already deleted.");
