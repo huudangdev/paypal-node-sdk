@@ -48,6 +48,10 @@ describe('OpenIDConnect', function () {
             var url = openid_connect.authorize_url({'scope': 'openid profile'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
+            paypal_sdk.configure({
+                'mode': 'sandbox'
+            });
+            done();
         });
     });
 
@@ -72,7 +76,10 @@ describe('OpenIDConnect', function () {
             var url = openid_connect.logout_url({'id_token': 'test'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
-            console.log(url);
+            paypal_sdk.configure({
+                'mode': 'sandbox'
+            });
+            done();
         });
     });
 

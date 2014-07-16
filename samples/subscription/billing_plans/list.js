@@ -4,14 +4,15 @@
 var paypal_api = require('../../../');
 require('../../configure');
 
-var billingPlanId = "P-6KX77264SV996415P6K4MZZY";
+var list_billing_plan = {
+    'status': 'ACTIVE'
+};
 
-paypal_api.billing_plan.get(billingPlanId, function (error, billingPlan) {
+paypal_api.billing_plan.list(function (error, billingPlan) {
     if (error) {
-        console.log(error);
         throw error;
     } else {
-        console.log("Get Billing Plan");
+        console.log("List Billing Plans Response");
         console.log(JSON.stringify(billingPlan));
     }
 });
