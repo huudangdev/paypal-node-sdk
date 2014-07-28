@@ -76,6 +76,5 @@ describe('SDK', function () {
                 });
             });
         });
-
     });
 });
