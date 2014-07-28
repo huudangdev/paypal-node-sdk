@@ -25,7 +25,7 @@ describe('SDK', function () {
             },
             "transactions": [{
                 "amount": {
-                    "total": "1.00",
+                    "total": "4.00",
                     "currency": "USD"
                 }
             }]
@@ -55,7 +55,7 @@ describe('SDK', function () {
         it('capture', function (done) {
             create_authorization(function (authorization) {
                 var capture_details = {
-                    "amount": { "currency": "USD", "total": "1.00" }
+                    "amount": { "currency": "USD", "total": "4.00" }
                 };
                 paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
                     expect(error).equal(null);
@@ -75,6 +75,41 @@ describe('SDK', function () {
             });
         });
 
+        it('void partially captured authorization success', function (done) {
+            create_authorization(function (authorization) {
+                var capture_details = {
+                    "amount": { "currency": "USD", "total": "1.00" },
+                };
+                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                    expect(error).equal(null);
+                    paypal_sdk.authorization.void(authorization.id, function (error, authorization) {
+                        expect(error).equal(null);
+                        expect(authorization.state).equal("voided");
+                        done();
+                    });
+                });
+            });
+        });
+
+        it('void captured authorization failure', function (done) {
+            create_authorization(function (authorization) {
+                var capture_details = {
+                    "amount": { "currency": "USD", "total": "1.00" },
+                    "is_final_capture": true
+                };
+                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                    expect(error).equal(null);
+                    paypal_sdk.authorization.void(authorization.id, function (error, authorization) {
+                        expect(error.httpStatusCode).equal(400);
+                        expect(error.response.name).equal("AUTHORIZATION_CANNOT_BE_VOIDED");
+                        expect(error.response.information_link).not.be.empty;
+                        expect(error.response.debug_id).not.be.empty;
+                        done();
+                    });
+                });
+            });
+        });
+
         it('reauthorize', function (done) {
 	        var reauthorize_details = {
 		        "amount": {
@@ -88,6 +123,5 @@ describe('SDK', function () {
                 done();
             });
         });
-
     });
 });
