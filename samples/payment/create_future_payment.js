@@ -13,7 +13,7 @@ require('../configure');
 
 var auth_code = {'authorization_code': 'Authorization code from the mobile sdk'};
 
-paypal_api.generate_token(auth_code, function (error, rt) {
+paypal_api.generateToken(auth_code, function (error, rt) {
     if (error) {
         console.log(error);
         console.log(error.response);

@@ -16,9 +16,9 @@ describe('SDK', function () {
                 require('./mocks/generate_token');
             }
 
-            paypal_sdk.generate_token(function (error, generatedToken) {
-                should.exist(generatedToken);
-                expect(generatedToken).to.contain('Bearer');
+            paypal_sdk.generateToken(function (error, token) {
+                should.exist(token);
+                expect(token).to.contain('Bearer');
                 done();
             });
         });

@@ -315,7 +315,7 @@ describe('SDK', function () {
             paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
+                paypal_sdk.invoice.del(invoice.id, function (error, rv) {
                     expect(error).equal(null);
                     expect(rv.httpStatusCode).equal(204);
 
@@ -334,7 +334,7 @@ describe('SDK', function () {
                 paypal_sdk.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
 
-                    paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
+                    paypal_sdk.invoice.del(invoice.id, function (error, rv) {
                         expect(error.response.message).equal("Only draft can be deleted.");
                         done();
                     });

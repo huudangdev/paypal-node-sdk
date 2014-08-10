@@ -17,7 +17,7 @@ describe('SDK', function () {
 		}
 
 		it('fail with bad auth code', function (done) {
-			paypal_sdk.generate_token({'authorization_code': 'invalid_code'}, function (error, generatedToken) {
+			paypal_sdk.generateToken({'authorization_code': 'invalid_code'}, function (error, generatedToken) {
 				expect(error.httpStatusCode).equal(400);
 				expect(error.response.error_description).equal('Invalid auth code');
 				done();
