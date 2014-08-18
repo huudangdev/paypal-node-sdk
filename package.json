@@ -2,7 +2,7 @@
   "author": "PayPal <DL-PP-NODEJS-SDK@ebay.com> (https://developer.paypal.com/)",
   "name": "paypal-rest-sdk",
   "description": "SDK for PayPal REST APIs",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/paypal/rest-api-sdk-nodejs",
   "keywords": [
     "paypal",
@@ -46,7 +46,8 @@
     "blanket": {
       "pattern": "paypal-rest-sdk.js"
     },
-    "test": "mocha -t 60000"
+    "test": "grunt"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "man" : "README.md"
 }
