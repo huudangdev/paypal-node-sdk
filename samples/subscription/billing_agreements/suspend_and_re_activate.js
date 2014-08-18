@@ -10,7 +10,7 @@ var suspend_note = {
     "note": "Suspending the agreement"
 };
 
-paypal.billing_agreement.suspend(billingAgreementId, suspend_note, function (error, response) {
+paypal.billingAgreement.suspend(billingAgreementId, suspend_note, function (error, response) {
     if (error) {
         console.log(error);
         throw error;
@@ -22,7 +22,7 @@ paypal.billing_agreement.suspend(billingAgreementId, suspend_note, function (err
             "note": "Reactivating the agreement"
         };
 
-        paypal.billing_agreement.reactivate(billingAgreementId, reactivate_note, function (error, response) {
+        paypal.billingAgreement.reactivate(billingAgreementId, reactivate_note, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;

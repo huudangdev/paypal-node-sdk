@@ -6,7 +6,7 @@ require('../../configure');
 
 var billingAgreementId = "I-08413VDRU6DE";
 
-paypal.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
+paypal.billingAgreement.get(billingAgreementId, function (error, billingAgreement) {
     if (error) {
         console.log(error);
         throw error;

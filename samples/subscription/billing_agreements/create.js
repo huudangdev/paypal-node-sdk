@@ -113,7 +113,7 @@ var billingAgreementAttributes = {
 };
 
 // Create the billing plan
-paypal.billing_plan.create(billingPlanAttributes, function (error, billingPlan) {
+paypal.billingPlan.create(billingPlanAttributes, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;
@@ -122,7 +122,7 @@ paypal.billing_plan.create(billingPlanAttributes, function (error, billingPlan) 
         console.log(billingPlan);
 
         // Activate the plan by changing status to Active
-        paypal.billing_plan.update(billingPlan.id, billingPlanUpdateAttributes, function (error, response) {
+        paypal.billingPlan.update(billingPlan.id, billingPlanUpdateAttributes, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;
@@ -131,7 +131,7 @@ paypal.billing_plan.create(billingPlanAttributes, function (error, billingPlan) 
                 billingAgreementAttributes.plan.id = billingPlan.id;
 
                 // Use activated billing plan to create agreement
-                paypal.billing_agreement.create(billingAgreementAttributes, function (error, billingAgreement) {
+                paypal.billingAgreement.create(billingAgreementAttributes, function (error, billingAgreement) {
                     if (error) {
                         console.log(error);
                         throw error;

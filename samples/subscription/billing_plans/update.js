@@ -16,7 +16,7 @@ var billing_plan_update_attributes = [
     }
 ];
 
-paypal.billing_plan.get(billingPlanId, function (error, billingPlan) {
+paypal.billingPlan.get(billingPlanId, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;
@@ -24,12 +24,12 @@ paypal.billing_plan.get(billingPlanId, function (error, billingPlan) {
         console.log("Get Billing Plan");
         console.log(JSON.stringify(billingPlan));
 
-        paypal.billing_plan.update(billingPlanId, billing_plan_update_attributes, function (error, response) {
+        paypal.billingPlan.update(billingPlanId, billing_plan_update_attributes, function (error, response) {
             if (error) {
                 console.log(error.response);
                 throw error;
             } else {
-                paypal.billing_plan.get(billingPlanId, function (error, billingPlan) {
+                paypal.billingPlan.get(billingPlanId, function (error, billingPlan) {
                     if (error) {
                         console.log(error.response);
                         throw error;

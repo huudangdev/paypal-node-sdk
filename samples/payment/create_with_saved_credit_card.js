@@ -1,4 +1,4 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var paypal = require('../../');

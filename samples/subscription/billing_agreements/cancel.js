@@ -10,7 +10,7 @@ var cancel_note = {
     "note": "Canceling the agreement"
 };
 
-paypal.billing_agreement.cancel(billingAgreementId, cancel_note, function (error, response) {
+paypal.billingAgreement.cancel(billingAgreementId, cancel_note, function (error, response) {
     if (error) {
         console.log(error);
         throw error;
@@ -18,7 +18,7 @@ paypal.billing_agreement.cancel(billingAgreementId, cancel_note, function (error
         console.log("Cancel Billing Agreement Response");
         console.log(response);
 
-        paypal.billing_plan.get(billingAgreementId, function (error, billingPlan) {
+        paypal.billingPlan.get(billingAgreementId, function (error, billingPlan) {
             if (error) {
                 console.log(error.response);
                 throw error;

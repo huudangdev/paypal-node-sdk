@@ -77,7 +77,7 @@ var billingPlanAttributes = {
     "type": "INFINITE"
 };
 
-paypal.billing_plan.create(billingPlanAttributes, function (error, billingPlan) {
+paypal.billingPlan.create(billingPlanAttributes, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;

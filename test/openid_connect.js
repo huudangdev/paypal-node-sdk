@@ -1,4 +1,4 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var chai = require('chai'),
@@ -24,9 +24,9 @@ describe('OpenIDConnect', function () {
         require('./mocks/openid_connect');
     }
 
-    describe('authorize_url', function () {
+    describe('authorizeUrl', function () {
         it('default', function (done) {
-            var url = openid_connect.authorize_url();
+            var url = openid_connect.authorizeUrl();
             expect(url).to.contain('response_type=code');
             expect(url).to.contain('scope=openid');
             expect(url).to.contain('client_id=');
@@ -36,7 +36,7 @@ describe('OpenIDConnect', function () {
         });
 
         it('with scope', function (done) {
-            var url = openid_connect.authorize_url({'scope': 'openid profile'});
+            var url = openid_connect.authorizeUrl({'scope': 'openid profile'});
             expect(url).to.contain(querystring.stringify({'scope': 'openid profile'}));
             done();
         });
@@ -45,7 +45,7 @@ describe('OpenIDConnect', function () {
             paypal.configure({
                 'mode': 'live'
             });
-            var url = openid_connect.authorize_url({'scope': 'openid profile'});
+            var url = openid_connect.authorizeUrl({'scope': 'openid profile'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
             paypal.configure({
@@ -55,15 +55,15 @@ describe('OpenIDConnect', function () {
         });
     });
 
-    describe('logout_url', function () {
+    describe('logoutUrl', function () {
         it('default', function (done) {
-            var url = openid_connect.logout_url();
+            var url = openid_connect.logoutUrl();
             expect(url).to.contain('logout=true');
             done();
         });
 
         it('with id_token', function (done) {
-            var url = openid_connect.logout_url({'id_token': 'test'});
+            var url = openid_connect.logoutUrl({'id_token': 'test'});
             expect(url).to.contain('logout=true');
             expect(url).to.contain('id_token=test');
             done();
@@ -73,7 +73,7 @@ describe('OpenIDConnect', function () {
             paypal.configure({
                 'mode': 'live'
             });
-            var url = openid_connect.logout_url({'id_token': 'test'});
+            var url = openid_connect.logoutUrl({'id_token': 'test'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
             paypal.configure({

@@ -25,7 +25,7 @@ var billing_agreement_update_attributes = [
     }
 ];
 
-paypal.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
+paypal.billingAgreement.get(billingAgreementId, function (error, billingAgreement) {
     if (error) {
         console.log(error);
         throw error;
@@ -33,7 +33,7 @@ paypal.billing_agreement.get(billingAgreementId, function (error, billingAgreeme
         console.log("Get Billing Agreement");
         console.log(JSON.stringify(billingAgreement));
 
-        paypal.billing_agreement.update(billingAgreementId, billing_agreement_update_attributes, function (error, response) {
+        paypal.billingAgreement.update(billingAgreementId, billing_agreement_update_attributes, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;

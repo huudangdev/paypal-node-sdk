@@ -45,7 +45,7 @@ To write an app using the SDK
       "last_name": "Shopper"
     };
 
-    paypal.credit_card.create(card_data, function(error, credit_card){
+    paypal.creditCard.create(card_data, function(error, credit_card){
       if (error) {
         console.log(error);
         throw error;
@@ -66,25 +66,25 @@ To write an app using the SDK
       'openid_redirect_uri': 'http://example.com' });
 
     // Authorize url
-    paypal.openid_connect.authorize_url({'scope': 'openid profile'});
+    paypal.openIdConnect.authorizeUrl({'scope': 'openid profile'});
 
     // Get tokeninfo with Authorize code
-    paypal.openid_connect.tokeninfo.create("Replace with authorize code", function(error, tokeninfo){
+    paypal.openIdConnect.tokeninfo.create("Replace with authorize code", function(error, tokeninfo){
       console.log(tokeninfo);
     });
 
     // Get tokeninfo with Refresh code
-    paypal.openid_connect.tokeninfo.refresh("Replace with refresh_token", function(error, tokeninfo){
+    paypal.openIdConnect.tokeninfo.refresh("Replace with refresh_token", function(error, tokeninfo){
       console.log(tokeninfo);
     });
 
     // Get userinfo with Access code
-    paypal.openid_connect.userinfo.get("Replace with access_code", function(error, userinfo){
+    paypal.openIdConnect.userinfo.get("Replace with access_code", function(error, userinfo){
       console.log(userinfo);
     });
 
     // Logout url
-    paypal.openid_connect.logout_url("Replace with tokeninfo.id_token");
+    paypal.openIdConnect.logoutUrl("Replace with tokeninfo.id_token");
     ```
   * For creating [Subscription Payments](https://developer.paypal.com/docs/integration/direct/create-billing-plan/), check out the [samples](/samples/subscription) for creating planned sets of future recurring payments at periodic intervals.
 
@@ -124,5 +124,3 @@ grunt test (timeout is specified in milliseconds eg: 15000ms)
 ## Contribution
    * If you would like to contribute, please fork the repo and send in a pull request.
    * Please ensure you run grunt before sending in the pull request.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paypal/rest-api-sdk-nodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

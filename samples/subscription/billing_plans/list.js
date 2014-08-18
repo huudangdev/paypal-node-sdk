@@ -8,7 +8,7 @@ var list_billing_plan = {
     'status': 'ACTIVE'
 };
 
-paypal.billing_plan.list(function (error, billingPlan) {
+paypal.billingPlan.list(function (error, billingPlan) {
     if (error) {
         throw error;
     } else {

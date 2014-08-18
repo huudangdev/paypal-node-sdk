@@ -1,8 +1,8 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var paypal = require('../');
-var openid_connect = paypal.openid_connect;
+var openid_connect = paypal.openIdConnect;
 
 //set configs for openid_client_id and openid_client_secret if they are different from your
 //usual client_id and secret. openid_redirect_uri is required
@@ -14,7 +14,7 @@ paypal.configure({
 });
 
 // Login url
-console.log(openid_connect.authorize_url({'scope': 'openid profile'}));
+console.log(openid_connect.authorizeUrl({'scope': 'openid profile'}));
 
 // With Authorizatiion code
 openid_connect.tokeninfo.create("Replace with authorize code", function (error, tokeninfo) {
@@ -28,7 +28,7 @@ openid_connect.tokeninfo.create("Replace with authorize code", function (error, 
                 console.log(tokeninfo);
                 console.log(userinfo);
                 // Logout url
-                console.log(openid_connect.logout_url({ 'id_token': tokeninfo.id_token }));
+                console.log(openid_connect.logoutUrl({ 'id_token': tokeninfo.id_token }));
             }
         });
     }

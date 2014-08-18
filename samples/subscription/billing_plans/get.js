@@ -6,7 +6,7 @@ require('../../configure');
 
 var billingPlanId = "P-6KX77264SV996415P6K4MZZY";
 
-paypal.billing_plan.get(billingPlanId, function (error, billingPlan) {
+paypal.billingPlan.get(billingPlanId, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;
