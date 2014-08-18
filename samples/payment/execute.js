@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var create_payment_json = {
@@ -31,7 +31,7 @@ var create_payment_json = {
     }]
 };
 
-paypal_api.payment.create(create_payment_json, function (error, payment) {
+paypal.payment.create(create_payment_json, function (error, payment) {
     if (error) {
         console.log(error.response);
         throw error;
@@ -49,7 +49,7 @@ paypal_api.payment.create(create_payment_json, function (error, payment) {
 
 var paymentId = 'PAYMENT id created in previous step';
 
-paypal_api.payment.execute(paymentId, { "payer_id" : "Appended to redirect url" }, function (error, payment) {
+paypal.payment.execute(paymentId, { "payer_id" : "Appended to redirect url" }, function (error, payment) {
     if (error) {
         console.log(error.response);
         throw error;

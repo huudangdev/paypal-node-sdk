@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var invoiceId = "INV2-9DRB-YTHU-2V9Q-7Q24";
@@ -63,7 +63,7 @@ var update_invoice_json = {
     }
 };
 
-paypal_api.invoice.update(invoiceId, update_invoice_json, function (error, invoice) {
+paypal.invoice.update(invoiceId, update_invoice_json, function (error, invoice) {
     if (error) {
         console.log(error.response);
         throw error;

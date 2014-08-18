@@ -5,7 +5,7 @@ var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -25,7 +25,7 @@ describe('SDK', function () {
                 require('./mocks/vault');
             }
 
-            paypal_sdk.credit_card.create(credit_card_details, function (error, credit_card) {
+            paypal.creditCard.create(credit_card_details, function (error, credit_card) {
                 expect(error).equal(null);
                 expect(credit_card.id).to.contain('CARD');
                 callback(credit_card);
@@ -35,29 +35,27 @@ describe('SDK', function () {
         it('create and get', function (done) {
 
             create_credit_card(function (credit_card) {
-                paypal_sdk.credit_card.get(credit_card.id, function (error, credit_card) {
+                paypal.creditCard.get(credit_card.id, function (error, credit_card) {
                     expect(error).equal(null);
                     expect(credit_card.id).to.contain('CARD');
                     done();
                 });
             });
-
         });
 
         it('create and delete', function (done) {
 
             create_credit_card(function (credit_card) {
-                paypal_sdk.credit_card.delete(credit_card.id, function (error, no_response) {
+                paypal.creditCard.del(credit_card.id, function (error, no_response) {
                     expect(error).equal(null);
                     done();
                 });
             });
-
         });
 
         it('create with invalid data', function (done) {
 
-            paypal_sdk.credit_card.create({}, function (error, credit_card) {
+            paypal.creditCard.create({}, function (error, credit_card) {
                 expect(error).not.equal(null);
                 done();
             });

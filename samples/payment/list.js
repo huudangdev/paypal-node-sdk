@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var listPayment = {
@@ -9,7 +9,7 @@ var listPayment = {
     'start_index': '1'
 };
 
-paypal_api.payment.list(listPayment, function (error, payment) {
+paypal.payment.list(listPayment, function (error, payment) {
     if (error) {
         throw error;
     } else {

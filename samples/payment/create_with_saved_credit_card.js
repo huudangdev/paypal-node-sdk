@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var savedCard = {
@@ -22,7 +22,7 @@ var savedCard = {
         "description": "This is the payment description."
     }]
 };
-paypal_api.payment.create(savedCard, function (error, payment) {
+paypal.payment.create(savedCard, function (error, payment) {
     if (error) {
         throw error;
     } else {

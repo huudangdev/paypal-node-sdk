@@ -1,7 +1,7 @@
 /* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 
 var billingAgreementId = "I-08413VDRU6DE";
@@ -10,7 +10,7 @@ var suspend_note = {
     "note": "Suspending the agreement"
 };
 
-paypal_api.billing_agreement.suspend(billingAgreementId, suspend_note, function (error, response) {
+paypal.billing_agreement.suspend(billingAgreementId, suspend_note, function (error, response) {
     if (error) {
         console.log(error);
         throw error;
@@ -22,7 +22,7 @@ paypal_api.billing_agreement.suspend(billingAgreementId, suspend_note, function 
             "note": "Reactivating the agreement"
         };
 
-        paypal_api.billing_agreement.reactivate(billingAgreementId, reactivate_note, function (error, response) {
+        paypal.billing_agreement.reactivate(billingAgreementId, reactivate_note, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;

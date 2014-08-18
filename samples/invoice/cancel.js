@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var invoiceId = "INV2-ATFN-A9AM-FK8J-7ZEK";
@@ -14,7 +14,7 @@ var options = {
 };
 
 //Cannot be in DRAFT status for cancelling
-paypal_api.invoice.cancel(invoiceId, options, function (error, rv) {
+paypal.invoice.cancel(invoiceId, options, function (error, rv) {
 	if (error) {
 		console.log(error.response);
 		throw error;

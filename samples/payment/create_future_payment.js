@@ -8,12 +8,12 @@
 */
 
 "use strict";
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var auth_code = {'authorization_code': 'Authorization code from the mobile sdk'};
 
-paypal_api.generateToken(auth_code, function (error, rt) {
+paypal.generateToken(auth_code, function (error, rt) {
     if (error) {
         console.log(error);
         console.log(error.response);
@@ -41,7 +41,7 @@ paypal_api.generateToken(auth_code, function (error, rt) {
         };
 
         //Create future payment
-        paypal_api.payment.create(create_payment_json, future_payment_config, function (error, payment) {
+        paypal.payment.create(create_payment_json, future_payment_config, function (error, payment) {
             if (error) {
                 console.log(error.response);
                 throw error;

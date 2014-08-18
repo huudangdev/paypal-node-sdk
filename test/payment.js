@@ -5,7 +5,7 @@ var chai = require('chai'),
 	expect = chai.expect,
 	should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -43,11 +43,11 @@ describe('SDK', function () {
         }
 
         it('create with credit_card', function (done) {
-            paypal_sdk.payment.create(create_payment_json_card, function (error, payment) {
+            paypal.payment.create(create_payment_json_card, function (error, payment) {
                 expect(error).equal(null);
                 expect(payment.id).to.contain('PAY-');
 
-                paypal_sdk.payment.get(payment.id, function (error, payment) {
+                paypal.payment.get(payment.id, function (error, payment) {
                     expect(error).equal(null);
                     expect(payment.state).to.contain('approved');
                     done();
@@ -57,7 +57,7 @@ describe('SDK', function () {
 
 
         it('list', function (done) {
-            paypal_sdk.payment.list({ "count": 2 }, function (error, payment_history) {
+            paypal.payment.list({ "count": 2 }, function (error, payment_history) {
                 expect(error).equal(null);
                 expect(payment_history.count).equal(2);
                 done();

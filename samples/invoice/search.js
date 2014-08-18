@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var search_attr = {
@@ -12,7 +12,7 @@ var search_attr = {
     "total_count_required": true
 };
 
-paypal_api.invoice.search(search_attr, function (error, results) {
+paypal.invoice.search(search_attr, function (error, results) {
     if (error) {
         throw error;
     } else {

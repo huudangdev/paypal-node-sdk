@@ -5,14 +5,14 @@ var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
-var openid_connect = paypal_sdk.openid_connect;
+var paypal = require('../');
+var openid_connect = paypal.openIdConnect;
 var querystring = require('querystring');
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
-paypal_sdk.configure({
+paypal.configure({
     'openid_client_id': 'CLIENT_ID',
     'openid_client_secret': 'CLIENT_SECRET',
     'openid_redirect_uri': 'http://example.com'
@@ -42,13 +42,13 @@ describe('OpenIDConnect', function () {
         });
 
         it('with live mode', function (done) {
-            paypal_sdk.configure({
+            paypal.configure({
                 'mode': 'live'
             });
             var url = openid_connect.authorize_url({'scope': 'openid profile'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
-            paypal_sdk.configure({
+            paypal.configure({
                 'mode': 'sandbox'
             });
             done();
@@ -70,13 +70,13 @@ describe('OpenIDConnect', function () {
         });
 
         it('with live mode', function (done) {
-            paypal_sdk.configure({
+            paypal.configure({
                 'mode': 'live'
             });
             var url = openid_connect.logout_url({'id_token': 'test'});
             expect(url).to.not.contain('sandbox');
             expect(url).to.contain('www.paypal.com');
-            paypal_sdk.configure({
+            paypal.configure({
                 'mode': 'sandbox'
             });
             done();

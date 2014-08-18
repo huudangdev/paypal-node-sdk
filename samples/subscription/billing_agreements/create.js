@@ -5,7 +5,7 @@ Create a billing plan, activate it and use it to create a billing Agreement.
 */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 var url = require('url');
 
@@ -113,7 +113,7 @@ var billingAgreementAttributes = {
 };
 
 // Create the billing plan
-paypal_api.billing_plan.create(billingPlanAttributes, function (error, billingPlan) {
+paypal.billing_plan.create(billingPlanAttributes, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;
@@ -122,7 +122,7 @@ paypal_api.billing_plan.create(billingPlanAttributes, function (error, billingPl
         console.log(billingPlan);
 
         // Activate the plan by changing status to Active
-        paypal_api.billing_plan.update(billingPlan.id, billingPlanUpdateAttributes, function (error, response) {
+        paypal.billing_plan.update(billingPlan.id, billingPlanUpdateAttributes, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;
@@ -131,7 +131,7 @@ paypal_api.billing_plan.create(billingPlanAttributes, function (error, billingPl
                 billingAgreementAttributes.plan.id = billingPlan.id;
 
                 // Use activated billing plan to create agreement
-                paypal_api.billing_agreement.create(billingAgreementAttributes, function (error, billingAgreement) {
+                paypal.billing_agreement.create(billingAgreementAttributes, function (error, billingAgreement) {
                     if (error) {
                         console.log(error);
                         throw error;

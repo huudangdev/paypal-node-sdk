@@ -1,7 +1,7 @@
 /* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 
 var billingAgreementId = "I-08413VDRU6DE";
@@ -25,7 +25,7 @@ var billing_agreement_update_attributes = [
     }
 ];
 
-paypal_api.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
+paypal.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
     if (error) {
         console.log(error);
         throw error;
@@ -33,7 +33,7 @@ paypal_api.billing_agreement.get(billingAgreementId, function (error, billingAgr
         console.log("Get Billing Agreement");
         console.log(JSON.stringify(billingAgreement));
 
-        paypal_api.billing_agreement.update(billingAgreementId, billing_agreement_update_attributes, function (error, response) {
+        paypal.billing_agreement.update(billingAgreementId, billing_agreement_update_attributes, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;

@@ -4,7 +4,7 @@ var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -36,7 +36,7 @@ describe('SDK', function () {
         }
 
         function create_authorization(callback) {
-            paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
+            paypal.payment.create(authorize_payment_details, function (error, payment) {
                 expect(error).equal(null);
                 callback(payment.transactions[0].related_resources[0].authorization);
             });
@@ -44,7 +44,7 @@ describe('SDK', function () {
 
         it('get', function (done) {
             create_authorization(function (authorization) {
-                paypal_sdk.authorization.get(authorization.id, function (error, authorization) {
+                paypal.authorization.get(authorization.id, function (error, authorization) {
                     expect(error).equal(null);
                     expect(authorization.state).equal("authorized");
                     done();
@@ -57,7 +57,7 @@ describe('SDK', function () {
                 var capture_details = {
                     "amount": { "currency": "USD", "total": "4.00" }
                 };
-                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                paypal.authorization.capture(authorization.id, capture_details, function (error, capture) {
                     expect(error).equal(null);
                     expect(capture.state).equal("completed");
                     done();
@@ -67,7 +67,7 @@ describe('SDK', function () {
 
         it('void', function (done) {
             create_authorization(function (authorization) {
-                paypal_sdk.authorization.void(authorization.id, function (error, authorization) {
+                paypal.authorization.void(authorization.id, function (error, authorization) {
                     expect(error).equal(null);
                     expect(authorization.state).equal("voided");
                     done();
@@ -80,9 +80,9 @@ describe('SDK', function () {
                 var capture_details = {
                     "amount": { "currency": "USD", "total": "1.00" },
                 };
-                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                paypal.authorization.capture(authorization.id, capture_details, function (error, capture) {
                     expect(error).equal(null);
-                    paypal_sdk.authorization.void(authorization.id, function (error, authorization) {
+                    paypal.authorization.void(authorization.id, function (error, authorization) {
                         expect(error).equal(null);
                         expect(authorization.state).equal("voided");
                         done();
@@ -97,9 +97,9 @@ describe('SDK', function () {
                     "amount": { "currency": "USD", "total": "1.00" },
                     "is_final_capture": true
                 };
-                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                paypal.authorization.capture(authorization.id, capture_details, function (error, capture) {
                     expect(error).equal(null);
-                    paypal_sdk.authorization.void(authorization.id, function (error, authorization) {
+                    paypal.authorization.void(authorization.id, function (error, authorization) {
                         expect(error.httpStatusCode).equal(400);
                         expect(error.response.name).equal("AUTHORIZATION_CANNOT_BE_VOIDED");
                         expect(error.response.information_link).not.be.empty;
@@ -117,7 +117,7 @@ describe('SDK', function () {
 			        "total": "4.54"
 			    }
 		    };
-            paypal_sdk.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, authorization) {
+            paypal.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, authorization) {
                 expect(authorization).equal(null);
                 expect(error).not.equal(null);
                 done();

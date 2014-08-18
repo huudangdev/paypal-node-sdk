@@ -1,7 +1,7 @@
 /* Copyright 2013 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var data = {
@@ -12,7 +12,7 @@ var data = {
 },
 saleId = "3RM92092UW5126232";
 
-paypal_api.sale.refund(saleId, data, function (error, refund) {
+paypal.sale.refund(saleId, data, function (error, refund) {
     if (error) {
         throw error;
     } else {
