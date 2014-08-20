@@ -13,5 +13,4 @@ paypal.creditCard.get(creditCardId, function (error, credit_card) {
         console.log("Retrieve Credit Card Response");
         console.log(JSON.stringify(credit_card));
     }
-
 });
