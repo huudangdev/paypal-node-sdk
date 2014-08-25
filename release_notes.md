@@ -8,6 +8,7 @@ v1.0.0
 * Subscription API support added
 * Order/Auth/Capture support added
 * Update credit card support added for vault
+* Test/samples added for extra payment parameters
 
 ### Breaking changes
 * Exported methods are now camelCased instead of underscored in 0.* versions
