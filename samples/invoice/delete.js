@@ -6,7 +6,7 @@ require('../configure');
 
 var invoiceId = "INV2-JSN3-NVZG-QAR3-JZQY";
 
-paypal.invoice.delete(invoiceId, function (error, rv) {
+paypal.invoice.del(invoiceId, function (error, rv) {
     if (error) {
         console.log(error.response);
         throw error;

@@ -15,7 +15,7 @@ paypal.creditCard.create(new_credit_card_details, function (error, credit_card) 
     if (error) {
         throw error;
     } else {
-        paypal.creditCard.delete(credit_card.id, function (error, no_response) {
+        paypal.creditCard.del(credit_card.id, function (error, no_response) {
             if (error) {
                 throw error;
             } else {

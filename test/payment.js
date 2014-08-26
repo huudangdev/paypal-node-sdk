@@ -146,7 +146,7 @@ describe('SDK', function () {
 
         it('create with paypal with extra parameters', function (done) {
             paypal.payment.create(create_payment_extra_parameters, function (error, payment) {
-                expect(error).equal(null);
+                expect(error).to.equal(null);
                 expect(payment.id).to.contain('PAY-');
 
                 //Validate tax information
