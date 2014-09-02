@@ -11,7 +11,7 @@ var outstanding_amount = {
     "currency" : "USD"
 };
 
-paypal.billingAgreement.set_balance(billingAgreementId, outstanding_amount, function (error, response) {
+paypal.billingAgreement.setBalance(billingAgreementId, outstanding_amount, function (error, response) {
     if (error) {
         console.log(error);
         throw error;
@@ -24,7 +24,7 @@ paypal.billingAgreement.set_balance(billingAgreementId, outstanding_amount, func
             "amount": outstanding_amount
         };
 
-        paypal.billingAgreement.bill_balance(billingAgreementId, outstanding_amount_note, function (error, response) {
+        paypal.billingAgreement.billBalance(billingAgreementId, outstanding_amount_note, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;
