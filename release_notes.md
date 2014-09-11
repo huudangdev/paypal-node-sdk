@@ -13,6 +13,7 @@ v1.0.0
 ### Breaking changes
 * Exported methods are now camelCased instead of underscored in 0.* versions
 * delete is now del
+* support still maintained for above changes for compatibility with 0.* versions
 
 ### Refactoring
 * Modularize into components api, client, config and utils
