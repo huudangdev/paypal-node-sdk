@@ -1,7 +1,7 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var new_credit_card_details = {
@@ -11,11 +11,11 @@ var new_credit_card_details = {
     "expire_year": "2019"
 };
 
-paypal_api.credit_card.create(new_credit_card_details, function (error, credit_card) {
+paypal.creditCard.create(new_credit_card_details, function (error, credit_card) {
     if (error) {
         throw error;
     } else {
-        paypal_api.credit_card.delete(credit_card.id, function (error, no_response) {
+        paypal.creditCard.del(credit_card.id, function (error, no_response) {
             if (error) {
                 throw error;
             } else {

@@ -1,12 +1,12 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var saleId = "3RM92092UW5126232";
 
-paypal_api.sale.get(saleId, function (error, sale) {
+paypal.sale.get(saleId, function (error, sale) {
     if (error) {
         throw error;
     } else {

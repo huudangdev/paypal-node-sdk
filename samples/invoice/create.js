@@ -1,7 +1,7 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var create_invoice_json = {
@@ -60,7 +60,7 @@ var create_invoice_json = {
     }
 };
 
-paypal_api.invoice.create(create_invoice_json, function (error, invoice) {
+paypal.invoice.create(create_invoice_json, function (error, invoice) {
     if (error) {
         throw error;
     } else {

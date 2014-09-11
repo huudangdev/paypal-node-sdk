@@ -1,12 +1,12 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var paymentId = "PAY-0XL713371A312273YKE2GCNI";
 
-paypal_api.payment.get(paymentId, function (error, payment) {
+paypal.payment.get(paymentId, function (error, payment) {
     if (error) {
         console.log(error);
         throw error;

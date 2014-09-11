@@ -1,7 +1,7 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var invoiceId = "INV2-GLJ8-9FA2-26BB-GHLU";
@@ -13,7 +13,7 @@ var options = {
 };
 
 //Cannot be in DRAFT status for remind
-paypal_api.invoice.remind(invoiceId, options, function (error, rv) {
+paypal.invoice.remind(invoiceId, options, function (error, rv) {
     if (error) {
         console.log(error.response);
         throw error;

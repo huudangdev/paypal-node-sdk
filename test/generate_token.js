@@ -1,11 +1,11 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -16,9 +16,9 @@ describe('SDK', function () {
                 require('./mocks/generate_token');
             }
 
-            paypal_sdk.generate_token(function (error, generatedToken) {
-                should.exist(generatedToken);
-                expect(generatedToken).to.contain('Bearer');
+            paypal.generateToken(function (error, token) {
+                should.exist(token);
+                expect(token).to.contain('Bearer');
                 done();
             });
         });

@@ -4,7 +4,7 @@ var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -42,11 +42,11 @@ describe('SDK', function () {
                 require('./mocks/capture');
             }
 
-            paypal_sdk.payment.create(authorize_payment_details, function (error, payment) {
+            paypal.payment.create(authorize_payment_details, function (error, payment) {
                 expect(error).equal(null);
                 var authorization = payment.transactions[0].related_resources[0].authorization;
 
-                paypal_sdk.authorization.capture(authorization.id, capture_details, function (error, capture) {
+                paypal.authorization.capture(authorization.id, capture_details, function (error, capture) {
                     expect(error).equal(null);
                     expect(capture.state).equal("completed");
                     callback(capture);
@@ -57,7 +57,7 @@ describe('SDK', function () {
         it('get', function (done) {
             create_capture(function (capture) {
 
-                paypal_sdk.capture.get(capture.id, function (error, capture) {
+                paypal.capture.get(capture.id, function (error, capture) {
                     expect(error).equal(null);
                     expect(capture.state).equal("completed");
                     done();
@@ -67,7 +67,7 @@ describe('SDK', function () {
 
         it('refund', function (done) {
             create_capture(function (capture) {
-                paypal_sdk.capture.refund(capture.id, {}, function (error, refund) {
+                paypal.capture.refund(capture.id, {}, function (error, refund) {
                     expect(error).equal(null);
                     expect(refund.state).equal("completed");
 

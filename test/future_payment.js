@@ -6,7 +6,7 @@ var chai = require('chai'),
 	expect = chai.expect,
 	should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -17,7 +17,7 @@ describe('SDK', function () {
 		}
 
 		it('fail with bad auth code', function (done) {
-			paypal_sdk.generate_token({'authorization_code': 'invalid_code'}, function (error, generatedToken) {
+			paypal.generateToken({'authorization_code': 'invalid_code'}, function (error, generatedToken) {
 				expect(error.httpStatusCode).equal(400);
 				expect(error.response.error_description).equal('Invalid auth code');
 				done();
@@ -40,7 +40,7 @@ describe('SDK', function () {
         };
 
         it('redirect uri required for paypal payment without refresh token', function (done) {
-			paypal_sdk.payment.create(create_payment_json, function (error, payment) {
+			paypal.payment.create(create_payment_json, function (error, payment) {
 				expect(error.httpStatusCode).equal(400);
 				expect(error.response.name).equal('VALIDATION_ERROR');
 				expect(error.response.details[0].field).equal('redirect_urls');
@@ -50,7 +50,7 @@ describe('SDK', function () {
 		});
 
 		it('fail with bad refresh token', function (done) {
-			paypal_sdk.payment.create(create_payment_json, {'refresh_token': 'invalid_token'}, function (error, payment) {
+			paypal.payment.create(create_payment_json, {'refresh_token': 'invalid_token'}, function (error, payment) {
 				expect(error.httpStatusCode).equal(400);
 				expect(error.response.error_description).equal('Invalid refresh token');
 				done();

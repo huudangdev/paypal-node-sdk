@@ -1,7 +1,7 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var savedCard = {
@@ -14,7 +14,7 @@ var savedCard = {
     "last_name": "Shopper"
 };
 
-paypal_api.credit_card.create(savedCard, function (error, credit_card) {
+paypal.creditCard.create(savedCard, function (error, credit_card) {
     if (error) {
         throw error;
     } else {

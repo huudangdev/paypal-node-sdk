@@ -1,6 +1,6 @@
 "use strict";
 
-var paypal_sdk = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var refund_details = {
@@ -10,7 +10,7 @@ var refund_details = {
     }
 };
 
-paypal_sdk.capture.refund("8F148933LY9388354", refund_details, function (error, refund) {
+paypal.capture.refund("8F148933LY9388354", refund_details, function (error, refund) {
     if (error) {
         console.error(error);
     } else {

@@ -1,11 +1,11 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 describe('SDK', function () {
@@ -71,11 +71,11 @@ describe('SDK', function () {
         }
 
         it('create and get success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
                 expect(invoice.id).to.contain('INV2-');
 
-                paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
+                paypal.invoice.get(invoice.id, function (error, invoice) {
                     expect(error).equal(null);
                     expect(invoice.status).to.contain('DRAFT');
                     done();
@@ -84,7 +84,7 @@ describe('SDK', function () {
         });
 
         it('get nonexistent invoice failure', function (done) {
-            paypal_sdk.invoice.get('ABRACADABRA', function (error, invoice) {
+            paypal.invoice.get('ABRACADABRA', function (error, invoice) {
                 expect(error.response.name).to.equal('BUSINESS_ERROR');
                 expect(error.response.message).to.equal('Invalid encrypted id.');
                 done();
@@ -92,7 +92,7 @@ describe('SDK', function () {
         });
 
         it('list success', function (done) {
-            paypal_sdk.invoice.list(function (error, invoice_history) {
+            paypal.invoice.list(function (error, invoice_history) {
                 expect(error).equal(null);
                 done();
             });
@@ -106,7 +106,7 @@ describe('SDK', function () {
                 "page_size": 3,
                 "total_count_required": true
             };
-            paypal_sdk.invoice.search(search_attr, function (error, invoice_history) {
+            paypal.invoice.search(search_attr, function (error, invoice_history) {
                 expect(error).equal(null);
                 expect(invoice_history.total_count).equal(23);
                 expect(invoice_history.invoices.length).equal(3);
@@ -115,14 +115,14 @@ describe('SDK', function () {
         });
 
         it('update draft invoice success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
                 var quantity_new = 500;
                 var amount_new = "2500.00";
                 invoice_attributes.items[0].quantity = quantity_new;
                 invoice_attributes.total_amount.value = amount_new;
 
-                paypal_sdk.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
+                paypal.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
                     expect(error).equal(null);
                     expect(invoice.items[0].quantity).equal(quantity_new);
                     expect(invoice_attributes.total_amount.value).equal(amount_new);
@@ -132,10 +132,10 @@ describe('SDK', function () {
         });
 
         it('update sent invoice success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
 
                     var quantity_new = 500;
@@ -143,7 +143,7 @@ describe('SDK', function () {
                     invoice_attributes.items[0].quantity = quantity_new;
                     invoice_attributes.total_amount.value = amount_new;
 
-                    paypal_sdk.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
+                    paypal.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
                         expect(error).equal(null);
                         expect(invoice.status).to.contain('SENT');
                         expect(invoice.items[0].quantity).equal(quantity_new);
@@ -155,10 +155,10 @@ describe('SDK', function () {
         });
 
         it('update cancelled invoice failure', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
                     var cancel_attr = {
                         "subject": "Past due",
@@ -167,7 +167,7 @@ describe('SDK', function () {
                         "send_to_payer": true
                     };
 
-                    paypal_sdk.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
+                    paypal.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
                         expect(error).equal(null);
                         expect(rv.httpStatusCode).equal(204);
 
@@ -176,7 +176,7 @@ describe('SDK', function () {
                         invoice_attributes.items[0].quantity = quantity_new;
                         invoice_attributes.total_amount.value = amount_new;
 
-                        paypal_sdk.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
+                        paypal.invoice.update(invoice.id, invoice_attributes, function (error, invoice) {
                             expect(error.response.message).equal('Already paid/refund/cancelled.');
                             done();
                         });
@@ -187,14 +187,14 @@ describe('SDK', function () {
 
         //Test that sending correctly changes status to SENT
         it('send success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
                 expect(invoice.id).to.contain('INV2-');
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
 
-                    paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
+                    paypal.invoice.get(invoice.id, function (error, invoice) {
                         expect(error).equal(null);
                         expect(invoice.status).to.contain('SENT');
                         done();
@@ -214,11 +214,11 @@ describe('SDK', function () {
                     "email": "example@example.com"
                 }]
             };
-            paypal_sdk.invoice.create(invoice_attr_wo_items, function (error, invoice) {
+            paypal.invoice.create(invoice_attr_wo_items, function (error, invoice) {
                 expect(error).equal(null);
                 expect(invoice.id).to.contain('INV2-');
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error.httpStatusCode).equal(400);
                     expect(error.response.name).equal('VALIDATION_ERROR');
                     expect(error.response.details[0].field).equal('items');
@@ -229,10 +229,10 @@ describe('SDK', function () {
         });
 
         it('remind success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
                     var remind_attr = {
                         "subject": "Past due",
@@ -240,7 +240,7 @@ describe('SDK', function () {
                         "send_to_merchant": true
                     };
 
-                    paypal_sdk.invoice.remind(invoice.id, remind_attr, function (error, rv) {
+                    paypal.invoice.remind(invoice.id, remind_attr, function (error, rv) {
                         expect(error).equal(null);
                         expect(rv.httpStatusCode).equal(202);
                         done();
@@ -250,7 +250,7 @@ describe('SDK', function () {
         });
 
         it('remind does not work for draft invoices', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
                 var cancel_attr = {
@@ -259,7 +259,7 @@ describe('SDK', function () {
                     "send_to_merchant": true
                 };
 
-                paypal_sdk.invoice.remind(invoice.id, cancel_attr, function (error, rv) {
+                paypal.invoice.remind(invoice.id, cancel_attr, function (error, rv) {
                     expect(error.response.message).equal("Cannot send reminder for a draft.");
                     done();
                 });
@@ -267,10 +267,10 @@ describe('SDK', function () {
         });
 
         it('cancel success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
                     var cancel_attr = {
                         "subject": "Past due",
@@ -279,11 +279,11 @@ describe('SDK', function () {
                         "send_to_payer": true
                     };
 
-                    paypal_sdk.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
+                    paypal.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
                         expect(error).equal(null);
                         expect(rv.httpStatusCode).equal(204);
 
-                        paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
+                        paypal.invoice.get(invoice.id, function (error, invoice) {
                             expect(error).equal(null);
                             expect(invoice.status).to.contain('CANCELLED');
                             done();
@@ -294,7 +294,7 @@ describe('SDK', function () {
         });
 
         it('cancel does not work for draft invoices', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
                 var cancel_attr = {
@@ -304,7 +304,7 @@ describe('SDK', function () {
                     "send_to_payer": true
                 };
 
-                paypal_sdk.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
+                paypal.invoice.cancel(invoice.id, cancel_attr, function (error, rv) {
                     expect(error.response.message).equal("Cannot cancel a draft entity.");
                     done();
                 });
@@ -312,14 +312,14 @@ describe('SDK', function () {
         });
 
         it('delete success', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
+                paypal.invoice.del(invoice.id, function (error, rv) {
                     expect(error).equal(null);
                     expect(rv.httpStatusCode).equal(204);
 
-                    paypal_sdk.invoice.get(invoice.id, function (error, invoice) {
+                    paypal.invoice.get(invoice.id, function (error, invoice) {
                         expect(error.response.message).equal("Resource is already deleted.");
                         done();
                     });
@@ -328,13 +328,13 @@ describe('SDK', function () {
         });
 
         it('delete only works for draft invoices', function (done) {
-            paypal_sdk.invoice.create(invoice_attributes, function (error, invoice) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
 
-                paypal_sdk.invoice.send(invoice.id, function (error, rv) {
+                paypal.invoice.send(invoice.id, function (error, rv) {
                     expect(error).equal(null);
 
-                    paypal_sdk.invoice.delete(invoice.id, function (error, rv) {
+                    paypal.invoice.del(invoice.id, function (error, rv) {
                         expect(error.response.message).equal("Only draft can be deleted.");
                         done();
                     });
