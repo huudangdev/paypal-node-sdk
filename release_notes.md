@@ -9,6 +9,7 @@ v1.0.0
 * Order/Auth/Capture support added
 * Update credit card support added for vault
 * Test/samples added for extra payment parameters
+* activate method added for billing plans
 
 ### Breaking changes
 * Exported methods are now camelCased instead of underscored in 0.* versions
