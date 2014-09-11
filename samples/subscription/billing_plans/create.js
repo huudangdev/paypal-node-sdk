@@ -1,7 +1,7 @@
 /* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 
 var billingPlanAttributes = {
@@ -77,7 +77,7 @@ var billingPlanAttributes = {
     "type": "INFINITE"
 };
 
-paypal_api.billing_plan.create(billingPlanAttributes, function (error, billingPlan) {
+paypal.billingPlan.create(billingPlanAttributes, function (error, billingPlan) {
     if (error) {
         console.log(error);
         throw error;

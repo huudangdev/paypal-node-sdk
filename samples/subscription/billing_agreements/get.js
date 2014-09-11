@@ -1,12 +1,12 @@
 /* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 
 var billingAgreementId = "I-08413VDRU6DE";
 
-paypal_api.billing_agreement.get(billingAgreementId, function (error, billingAgreement) {
+paypal.billingAgreement.get(billingAgreementId, function (error, billingAgreement) {
     if (error) {
         console.log(error);
         throw error;

@@ -1,10 +1,10 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
-paypal_api.invoice.list(function (error, invoices) {
+paypal.invoice.list(function (error, invoices) {
     if (error) {
         throw error;
     } else {

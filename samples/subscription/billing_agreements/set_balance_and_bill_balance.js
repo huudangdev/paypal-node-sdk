@@ -1,7 +1,7 @@
 /* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../../');
+var paypal = require('../../../');
 require('../../configure');
 
 var billingAgreementId = "I-THNVHK6X9H0V";
@@ -11,7 +11,7 @@ var outstanding_amount = {
     "currency" : "USD"
 };
 
-paypal_api.billing_agreement.set_balance(billingAgreementId, outstanding_amount, function (error, response) {
+paypal.billingAgreement.setBalance(billingAgreementId, outstanding_amount, function (error, response) {
     if (error) {
         console.log(error);
         throw error;
@@ -24,7 +24,7 @@ paypal_api.billing_agreement.set_balance(billingAgreementId, outstanding_amount,
             "amount": outstanding_amount
         };
 
-        paypal_api.billing_agreement.bill_balance(billingAgreementId, outstanding_amount_note, function (error, response) {
+        paypal.billingAgreement.billBalance(billingAgreementId, outstanding_amount_note, function (error, response) {
             if (error) {
                 console.log(error);
                 throw error;

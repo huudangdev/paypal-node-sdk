@@ -1,12 +1,12 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var invoiceId = "INV2-9DRB-YTHU-2V9Q-7Q24";
 
-paypal_api.invoice.get(invoiceId, function (error, invoice) {
+paypal.invoice.get(invoiceId, function (error, invoice) {
     if (error) {
         throw error;
     } else {

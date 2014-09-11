@@ -1,6 +1,6 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var create_payment_json = {
@@ -31,7 +31,7 @@ var create_payment_json = {
 };
 
 
-paypal_api.payment.create(create_payment_json, function (error, payment) {
+paypal.payment.create(create_payment_json, function (error, payment) {
     if (error) {
         throw error;
     } else {

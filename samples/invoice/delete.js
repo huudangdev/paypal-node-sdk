@@ -1,12 +1,12 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_api = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var invoiceId = "INV2-JSN3-NVZG-QAR3-JZQY";
 
-paypal_api.invoice.delete(invoiceId, function (error, rv) {
+paypal.invoice.del(invoiceId, function (error, rv) {
     if (error) {
         console.log(error.response);
         throw error;

@@ -11,6 +11,8 @@ NPM status:
 
 Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
 
+> **v1.0.0 notice**: If upgrading from paypal rest sdk 0.*, Please view Breaking Changes in release_notes.md
+
 > **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/rest-api-sdk-python/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
 
 ## Usage
@@ -21,12 +23,12 @@ To write an app using the SDK
   * Require 'paypal-rest-sdk' in your file
 
     ```js
-    var paypal_sdk = require('paypal-rest-sdk');
+    var paypal = require('paypal-rest-sdk');
     ```
   * Create config options, with parameters (mode, client_id, secret).
 
     ```js
-    paypal_sdk.configure({
+    paypal.configure({
       'mode': 'sandbox', //sandbox or live
       'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
       'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
@@ -45,7 +47,7 @@ To write an app using the SDK
       "last_name": "Shopper"
     };
 
-    paypal_sdk.credit_card.create(card_data, function(error, credit_card){
+    paypal.creditCard.create(card_data, function(error, credit_card){
       if (error) {
         console.log(error);
         throw error;
@@ -60,35 +62,39 @@ To write an app using the SDK
 
     ```js
     // OpenID configuration
-    paypal_sdk.configure({
+    paypal.configure({
       'openid_client_id': 'CLIENT_ID',
       'openid_client_secret': 'CLIENT_SECRET',
       'openid_redirect_uri': 'http://example.com' });
 
     // Authorize url
-    paypal_sdk.openid_connect.authorize_url({'scope': 'openid profile'});
+    paypal.openIdConnect.authorizeUrl({'scope': 'openid profile'});
 
     // Get tokeninfo with Authorize code
-    paypal_sdk.openid_connect.tokeninfo.create("Replace with authorize code", function(error, tokeninfo){
+    paypal.openIdConnect.tokeninfo.create("Replace with authorize code", function(error, tokeninfo){
       console.log(tokeninfo);
     });
 
     // Get tokeninfo with Refresh code
-    paypal_sdk.openid_connect.tokeninfo.refresh("Replace with refresh_token", function(error, tokeninfo){
+    paypal.openIdConnect.tokeninfo.refresh("Replace with refresh_token", function(error, tokeninfo){
       console.log(tokeninfo);
     });
 
     // Get userinfo with Access code
-    paypal_sdk.openid_connect.userinfo.get("Replace with access_code", function(error, userinfo){
+    paypal.openIdConnect.userinfo.get("Replace with access_code", function(error, userinfo){
       console.log(userinfo);
     });
 
     // Logout url
-    paypal_sdk.openid_connect.logout_url("Replace with tokeninfo.id_token");
+    paypal.openIdConnect.logoutUrl("Replace with tokeninfo.id_token");
     ```
   * For creating [Subscription Payments](https://developer.paypal.com/docs/integration/direct/create-billing-plan/), check out the [samples](/samples/subscription) for creating planned sets of future recurring payments at periodic intervals.
 
   * To create [Future Payments](https://developer.paypal.com/docs/integration/mobile/make-future-payment/), check out this [sample](/samples/payment/create_future_payment.js) for executing future payments for a customer who has granted consent on a mobile device.
+
+  * For [exploring additional payment capabilites](https://developer.paypal.com/docs/integration/direct/explore-payment-capabilities/), such as handling discounts, insurance, soft_descriptor and invoice_number, have a look at this [example](/samples/payment/create_with_paypal_further_capabilities.js). These bring REST payment functionality closer to parity with older Merchant APIs.
+
+  * For creating and managing [Orders](https://developer.paypal.com/webapps/developer/docs/integration/direct/create-process-order/#create-the-order), i.e. getting consent from buyer for a purchase but only placing the funds on hold when the merchant is ready to fulfill the [order](https://developer.paypal.com/webapps/developer/docs/api/#orders), have a look at [samples](/samples/order).
 
   * For [Invoicing](https://developer.paypal.com/webapps/developer/docs/api/#invoicing), check out the [samples](/samples/invoice/) to see how you can use the node sdk to create, send and manage invoices.
 
@@ -124,5 +130,3 @@ grunt test (timeout is specified in milliseconds eg: 15000ms)
 ## Contribution
    * If you would like to contribute, please fork the repo and send in a pull request.
    * Please ensure you run grunt before sending in the pull request.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/paypal/rest-api-sdk-nodejs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

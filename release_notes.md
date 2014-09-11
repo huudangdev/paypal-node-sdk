@@ -1,6 +1,28 @@
 PayPal Node SDK release notes
 ============================
 
+v1.0.0
+----
+
+### Features
+* Subscription API support added
+* Order/Auth/Capture support added
+* Update credit card support added for vault
+* Test/samples added for extra payment parameters
+* activate method added for billing plans
+
+### Breaking changes
+* Exported methods are now camelCased instead of underscored in 0.* versions
+* delete is now del
+* support still maintained for above changes for compatibility with 0.* versions
+
+### Refactoring
+* Modularize into components api, client, config and utils
+* Rest api resources separated into own functions/classes
+* generate has the factory of rest methods attached to object literals e.g creditCard, reducing duplication
+* Exported methods named and CamelCased across sdk, closer to JavaScript conventions, closes #34 and #35
+* Test coverage increased
+
 v0.9.1
 ----
 * Fix for toggling host by using mode in config

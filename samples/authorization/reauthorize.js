@@ -1,7 +1,7 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
-var paypal_sdk = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var reauthorize_details = {
@@ -11,7 +11,7 @@ var reauthorize_details = {
     }
 };
 
-paypal_sdk.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, reauthorization) {
+paypal.authorization.reauthorize("7GH53639GA425732B", reauthorize_details, function (error, reauthorization) {
     if (error) {
         console.error(error);
     } else {

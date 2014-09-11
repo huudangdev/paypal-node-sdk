@@ -1,6 +1,6 @@
 "use strict";
 
-var paypal_sdk = require('../../');
+var paypal = require('../../');
 require('../configure');
 
 var capture_details = {
@@ -11,7 +11,7 @@ var capture_details = {
     "is_final_capture": true
 };
 
-paypal_sdk.authorization.capture("5RA45624N3531924N", capture_details, function (error, capture) {
+paypal.authorization.capture("5RA45624N3531924N", capture_details, function (error, capture) {
     if (error) {
         console.error(error);
     } else {

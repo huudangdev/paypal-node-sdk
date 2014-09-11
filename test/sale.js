@@ -1,11 +1,11 @@
-/* Copyright 2013 PayPal */
+/* Copyright 2014 PayPal */
 "use strict";
 
 var chai = require('chai'),
     expect = chai.expect,
     should = chai.should();
 
-var paypal_sdk = require('../');
+var paypal = require('../');
 require('./configure');
 
 var refund_data = {
@@ -52,7 +52,7 @@ describe('SDK', function () {
                 require('./mocks/sale');
             }
 
-            paypal_sdk.payment.create(create_payment_data, function (error, payment) {
+            paypal.payment.create(create_payment_data, function (error, payment) {
                 expect(error).equal(null);
                 callback(payment.transactions[0].related_resources[0].sale);
             });
@@ -60,7 +60,7 @@ describe('SDK', function () {
 
         it('get', function (done) {
             create_sale(function (sale) {
-                paypal_sdk.sale.get(sale.id, function (error, sale) {
+                paypal.sale.get(sale.id, function (error, sale) {
                     expect(error).equal(null);
                     expect(sale.state).equal("completed");
                     done();
@@ -70,7 +70,7 @@ describe('SDK', function () {
 
         it('refund', function (done) {
             create_sale(function (sale) {
-                paypal_sdk.sale.refund(sale.id, {}, function (error, refund) {
+                paypal.sale.refund(sale.id, {}, function (error, refund) {
                     expect(error).equal(null);
                     expect(refund.state).equal("completed");
                     expect(refund.sale_id).equal(sale.id);
