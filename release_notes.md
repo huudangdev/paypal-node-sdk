@@ -1,9 +1,13 @@
 PayPal Node SDK release notes
 ============================
 
+v1.0.1
+----
+* Update Paypal-Client-Metadata-Id header for future payments
+* Subscription API changes for searching transactions and listing billing plans
+
 v1.0.0
 ----
-
 ### Features
 * Subscription API support added
 * Order/Auth/Capture support added
