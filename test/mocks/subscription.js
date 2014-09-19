@@ -175,7 +175,7 @@ nock('https://api.sandbox.paypal.com')
   'content-length': '1522' });
 
 nock('https://api.sandbox.paypal.com')
-  .get('/v1/payments/billing-agreements/I-W0CR3PB7KTBB/transaction?start-date=2014-07-01&end-date=2014-07-20')
+  .get('/v1/payments/billing-agreements/I-W0CR3PB7KTBB/transactions?start-date=2014-07-01&end-date=2014-07-20')
   .reply(200, {"agreement_transaction_list":[{"transaction_id":"I-W0CR3PB7KTBB","status":"Created","transaction_type":"Recurring Payment","payer_email":"","payer_name":"John  Smith","time_stamp":"2014-07-07T22:16:19Z","time_zone":"GMT"},{"transaction_id":"6D127165PP237693N","status":"Unclaimed","transaction_type":"Recurring Payment","amount":{"currency":"USD","value":"25.00"},"fee_amount":{"currency":"USD","value":"0.00"},"net_amount":{"currency":"USD","value":"25.00"},"payer_email":"android_test1@gmail.com","payer_name":"John  Smith","time_stamp":"2014-07-08T02:01:02Z","time_zone":"GMT"},{"transaction_id":"I-W0CR3PB7KTBB","status":"Updated","transaction_type":"Recurring Payment","payer_email":"","payer_name":"John  Smith","time_stamp":"2014-07-10T16:17:43Z","time_zone":"GMT"},{"transaction_id":"I-W0CR3PB7KTBB","status":"Updated","transaction_type":"Recurring Payment","payer_email":"","payer_name":"John  Smith","time_stamp":"2014-07-10T16:17:44Z","time_zone":"GMT"},{"transaction_id":"I-W0CR3PB7KTBB","status":"Updated","transaction_type":"Recurring Payment","payer_email":"","payer_name":"John  Smith","time_stamp":"2014-07-10T16:19:42Z","time_zone":"GMT"}]}, { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=13943',
   'paypal-debug-id': '3f07358025e08',
