@@ -94,6 +94,8 @@ To write an app using the SDK
 
   * For [exploring additional payment capabilites](https://developer.paypal.com/docs/integration/direct/explore-payment-capabilities/), such as handling discounts, insurance, soft_descriptor and invoice_number, have a look at this [example](/samples/payment/create_with_paypal_further_capabilities.js). These bring REST payment functionality closer to parity with older Merchant APIs.
 
+  * Customizing a [PayPal payment experience](https://developer.paypal.com/webapps/developer/docs/integration/direct/rest-experience-overview/) is available as of version 1.1.0 enabling merchants to provide a customized experience to consumers from the merchant’s website to the PayPal payment. Get started with the [supported rest methods](https://developer.paypal.com/webapps/developer/docs/api/#payment-experience) and [samples](/samples/payment_experience/web_profile).
+
   * For creating and managing [Orders](https://developer.paypal.com/webapps/developer/docs/integration/direct/create-process-order/#create-the-order), i.e. getting consent from buyer for a purchase but only placing the funds on hold when the merchant is ready to fulfill the [order](https://developer.paypal.com/webapps/developer/docs/api/#orders), have a look at [samples](/samples/order).
 
   * For [Invoicing](https://developer.paypal.com/webapps/developer/docs/api/#invoicing), check out the [samples](/samples/invoice/) to see how you can use the node sdk to create, send and manage invoices.
