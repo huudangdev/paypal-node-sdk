@@ -1,6 +1,15 @@
 PayPal Node SDK release notes
 ============================
 
+v1.2.0
+----
+* Webhook and Webhook events creation and management supported
+* Verification that webhook events are unaltered and originate from PayPal
+
+v1.1.0
+----
+* Payment Experience customizaton feature added via API for Web Profiles
+
 v1.0.1
 ----
 * Update Paypal-Client-Metadata-Id header for future payments

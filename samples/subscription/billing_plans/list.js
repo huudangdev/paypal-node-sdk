@@ -11,7 +11,7 @@ var list_billing_plan = {
     'total_required': 'yes'
 };
 
-paypal.billingPlan.list(function (error, billingPlan) {
+paypal.billingPlan.list(list_billing_plan, function (error, billingPlan) {
     if (error) {
         throw error;
     } else {

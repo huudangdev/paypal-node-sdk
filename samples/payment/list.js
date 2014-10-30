@@ -16,5 +16,4 @@ paypal.payment.list(listPayment, function (error, payment) {
         console.log("List Payments Response");
         console.log(JSON.stringify(payment));
     }
-
 });
