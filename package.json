@@ -29,6 +29,7 @@
   },
   "main": "./index.js",
   "dependencies": {
+    "buffer-crc32": "^0.2.3",
     "node-uuid": "~1.4.1"
   },
   "devDependencies": {
@@ -52,5 +53,5 @@
     "test": "grunt"
   },
   "readmeFilename": "README.md",
-  "man" : "README.md"
+  "man": "README.md"
 }
