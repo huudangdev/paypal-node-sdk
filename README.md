@@ -1,19 +1,19 @@
-# REST API SDK for Node.js
+# PayPal REST SDK
 
 Continuous integration status:
 
-[![Build Status](https://travis-ci.org/paypal/rest-api-sdk-nodejs.png?branch=master)](https://travis-ci.org/paypal/rest-api-sdk-nodejs) [![Coverage Status](https://coveralls.io/repos/paypal/rest-api-sdk-nodejs/badge.png?branch=master)](https://coveralls.io/r/paypal/rest-api-sdk-nodejs?branch=master) 
+[![Build Status](https://travis-ci.org/paypal/PayPal-node-SDK.png?branch=master)](https://travis-ci.org/paypal/PayPal-node-SDK) [![Coverage Status](https://coveralls.io/repos/paypal/PayPal-node-SDK/badge.png?branch=master)](https://coveralls.io/r/paypal/PayPal-node-SDK?branch=master) 
 
 NPM status:
 
 [![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk)
-[![Dependency Status](https://david-dm.org/paypal/rest-api-sdk-nodejs.png)](https://david-dm.org/paypal/rest-api-sdk-nodejs)
+[![Dependency Status](https://david-dm.org/paypal/PayPal-node-SDK.png)](https://david-dm.org/paypal/PayPal-node-SDK)
 
 Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
 
 > **v1.0.0 notice**: If upgrading from paypal rest sdk 0.*, Please view Breaking Changes in release_notes.md
 
-> **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/rest-api-sdk-python/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
+> **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/PayPal-Python-SDK/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
 
 ## Usage
 To write an app using the SDK
@@ -103,7 +103,7 @@ To write an app using the SDK
   * To receive [notifications from PayPal about Payment events](https://developer.paypal.com/webapps/developer/docs/api/#notifications) on your server, webhook support is now available as of version 1.2.0. For creating and managing [Webhook and Webhook Events](https://developer.paypal.com/webapps/developer/docs/integration/direct/rest-webhooks-overview/), check out the [samples](/samples/notifications/) to see how you can use the node sdk to manage webhooks, webhook events and [verify](/samples/notifications/webhook-events/webhook_payload_verify.js) that the response unaltered and is really from PayPal.
 
 ## Running Samples
-Instructions for running samples are located in the [sample directory](https://github.com/Runnable/rest-api-sdk-nodejs/tree/master/samples). Try these samples in a live sandbox environment:
+Instructions for running samples are located in the [sample directory](https://github.com/Runnable/PayPal-node-SDK/tree/master/samples). Try these samples in a live sandbox environment:
 
 <a href="https://runnable.com/paypal" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 
