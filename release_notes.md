@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.2.1
+----
+* User Agent conforms to new naming conventions
+
 v1.2.0
 ----
 * Webhook and Webhook events creation and management supported
