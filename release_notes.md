@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.2.2
+----
+* Search transactions for billing agreements patched
+
 v1.2.1
 ----
 * User Agent conforms to new naming conventions
