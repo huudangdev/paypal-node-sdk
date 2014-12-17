@@ -98,6 +98,8 @@ To write an app using the SDK
 
   * For creating and managing [Orders](https://developer.paypal.com/webapps/developer/docs/integration/direct/create-process-order/#create-the-order), i.e. getting consent from buyer for a purchase but only placing the funds on hold when the merchant is ready to fulfill the [order](https://developer.paypal.com/webapps/developer/docs/api/#orders), have a look at [samples](/samples/order).
 
+  * For creating [batch and single payouts](https://developer.paypal.com/webapps/developer/docs/integration/direct/payouts-overview/), check out the samples for [payouts](/samples/payout) and [payout items](/samples/payout_item). The [Payouts feature](https://developer.paypal.com/webapps/developer/docs/api/#payouts) enables you to make PayPal payments to multiple PayPal accounts in a single API call.
+
   * For [Invoicing](https://developer.paypal.com/webapps/developer/docs/api/#invoicing), check out the [samples](/samples/invoice/) to see how you can use the node sdk to create, send and manage invoices.
 
   * To receive [notifications from PayPal about Payment events](https://developer.paypal.com/webapps/developer/docs/api/#notifications) on your server, webhook support is now available as of version 1.2.0. For creating and managing [Webhook and Webhook Events](https://developer.paypal.com/webapps/developer/docs/integration/direct/rest-webhooks-overview/), check out the [samples](/samples/notifications/) to see how you can use the node sdk to manage webhooks, webhook events and [verify](/samples/notifications/webhook-events/webhook_payload_verify.js) that the response unaltered and is really from PayPal.

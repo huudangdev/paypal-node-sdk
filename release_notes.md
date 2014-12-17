@@ -1,6 +1,11 @@
 PayPal Node SDK release notes
 ============================
 
+v1.3.0
+----
+* Payouts API support added
+* Samples documentation updated
+
 v1.2.2
 ----
 * Search transactions for billing agreements patched

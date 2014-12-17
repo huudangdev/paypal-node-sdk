@@ -1,4 +1,4 @@
-/* Copyright 2014 PayPal */
+/* Copyright 2015 PayPal */
 
 // Refer to https://developer.paypal.com/docs/integration/direct/explore-payment-capabilities/
 // to and https://developer.paypal.com/docs/release-notes/#updates-for-13-august-2014 to explore

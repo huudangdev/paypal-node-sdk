@@ -4,14 +4,14 @@
 var paypal = require('../../');
 require('../configure');
 
-var orderId = "O-20L81840AL4365052";
+var payoutId = "R3LFR867ESVQY";
 
-paypal.order.get(orderId, function (error, order) {
+paypal.payout.get(payoutId, function (error, payout) {
     if (error) {
         console.log(error);
         throw error;
     } else {
-        console.log("Get Order Response");
-        console.log(JSON.stringify(order));
+        console.log("Get Payout Response");
+        console.log(JSON.stringify(payout));
     }
 });
