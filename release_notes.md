@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.3.1
+----
+* Version read from package.json for User Agent
+
 v1.3.0
 ----
 * Payouts API support added
