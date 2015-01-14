@@ -34,6 +34,7 @@ To write an app using the SDK
       'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
     });
     ```
+  * For multiple configuration support, have a look at the [sample](/samples/configuration/multiple_config.js)
   * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, config_options, callback).
 
     ```js
