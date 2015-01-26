@@ -1,6 +1,11 @@
 PayPal Node SDK release notes
 ============================
 
+v1.4.0
+----
+* Access token persistance added for performance boost in multiple client scenerios
+* Add JSDoc for modules and refactor mixin method for rest objects
+
 v1.3.1
 ----
 * Version read from package.json for User Agent
