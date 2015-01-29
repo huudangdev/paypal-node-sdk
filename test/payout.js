@@ -184,5 +184,47 @@ describe('SDK', function () {
                 });
             });
         });
+
+        it('cancel payout success', function (done) {
+            create_single_payout_json.sender_batch_header.sender_batch_id = "payout94";
+            paypal.payout.create(create_single_payout_json, 'true', function (error, payout) {
+                expect(error).equal(null);
+                expect(payout.items[0].transaction_status).to.equal('UNCLAIMED');
+                var payout_item_id = payout.items[0].payout_item_id;
+
+                paypal.payoutItem.cancel(payout_item_id, function (error, payoutItemDetails) {
+                    expect(payoutItemDetails.transaction_status).to.equal('RETURNED');
+                    done();
+                });
+            });
+        });
+
+        it('item already cancelled', function (done) {
+            var payout_item_id = "5UD3FSLKEZ63";
+            paypal.payoutItem.cancel(payout_item_id, function (error, payoutItemDetails) {
+                expect(error.httpStatusCode).to.equal(400);
+                expect(error.response.name).to.equal('ITEM_ALREADY_CANCELLED');
+                expect(error.response.message).to.equal('Requested item is already cancelled.');
+                done();
+            });
+        });
+
+        it('only items in UNCLAIMED status can be cancelled', function (done) {
+            create_batch_payout_json.sender_batch_header.sender_batch_id = "batch65";
+            paypal.payout.create(create_batch_payout_json, function (error, payout) {
+                expect(error).equal(null);
+                var payout_batch_id = payout.batch_header.payout_batch_id;
+                paypal.payout.get(payout_batch_id, function (error, payoutDetails) {
+                    var payout_item_id = payoutDetails.items[0].payout_item_id;
+                    expect(payoutDetails.items[0].transaction_status).to.equal('PENDING');
+                    paypal.payoutItem.cancel(payout_item_id, function (error, payoutItemDetails) {
+                        expect(error.httpStatusCode).to.equal(400);
+                        expect(error.response.name).to.equal('ITEM_INCORRECT_STATUS');
+                        expect(error.response.message).to.equal('Only items in Unclaimed status can be cancelled.');
+                        done();
+                    });
+                });
+            });
+        });
     });
 });
