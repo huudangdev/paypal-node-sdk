@@ -120,6 +120,16 @@ nock('https://api.sandbox.paypal.com')
   date: 'Wed, 17 Dec 2014 15:07:48 GMT',
   'content-type': 'application/json',
   'content-length': '730' });
+  
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/payments/payouts-item/VXURV6Y48P898/cancel')
+  .reply(200, {"payout_item_id":"VXURV6Y48P898","transaction_id":"5FU55828X3939910A","transaction_status":"RETURNED","payout_item_fee":{"currency":"USD","value":"0.0"},"payout_batch_id":"7LHNN5KX7WVDC","sender_batch_id":"t400","payout_item":{"amount":{"currency":"USD","value":"0.15"},"note":"Thank you.","receiver":"shirt-supplier-three@mail.com","recipient_type":"EMAIL","sender_item_id":"item_3"},"time_processed":"2014-40-16T10:40:53Z","errors":{"name":"RECEIVER_UNREGISTERED","message":"Receiver is unregistered"},"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payouts-item/VXURV6Y48P898","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payouts/7LHNN5KX7WVDC","rel":"batch","method":"GET"}]}, { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbplatformapiserv3002.slc.paypal.com;threadId=1213',
+  'paypal-debug-id': 'a1aa941bd8ed1',
+  'content-language': '*',
+  date: 'Wed, 17 Dec 2014 15:07:48 GMT',
+  'content-type': 'application/json',
+  'content-length': '730' });
 
 nock('https://api.sandbox.paypal.com')
   .post('/v1/oauth2/token', "grant_type=client_credentials")

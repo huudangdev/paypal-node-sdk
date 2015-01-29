@@ -165,6 +165,18 @@ describe('SDK', function () {
             });
         });
 
+        it('cancel payout item success', function (done) {
+            paypal.payoutItem.cancel(payout_item_id, function (error, payoutItem) {
+                expect(error).equal(null);
+                expect(payoutItem.transaction_status).to.equal("RETURNED");
+                expect(payoutItem.payout_item_id).to.equal(payout_item_id);
+                expect(payoutItem.payout_batch_id).to.not.equal(null);
+                expect(payoutItem.payout_item).to.not.equal(null);
+                expect(payoutItem.links).to.not.equal(null);
+                done();
+            });
+        });
+
         it('create payout with duplicate id failure', function (done) {
             var dup_payout_id = 'tduplicate';
             create_batch_payout_json.sender_batch_header.sender_batch_id = dup_payout_id;
