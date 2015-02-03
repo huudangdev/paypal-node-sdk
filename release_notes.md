@@ -1,6 +1,13 @@
 PayPal Node SDK release notes
 ============================
 
+v1.5.0
+----
+* Payouts cancel feature added
+* Execute billing agreements more configurable
+* Consolidate configuration of tests and samples
+* JSDocs for most resource functions
+
 v1.4.0
 ----
 * Access token persistance added for performance boost in multiple client scenerios
