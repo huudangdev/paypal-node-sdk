@@ -1,6 +1,6 @@
 var nock = require('nock');
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/tokenservice', "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=Invalid%20code&grant_type=authorization_code")
   .reply(400, "{\"error_description\":\"client id or secret is null\",\"error\":\"invalid_client\"}", { date: 'Wed, 23 Apr 2014 14:38:21 GMT',
   server: 'Apache-Coyote/1.1',
@@ -12,7 +12,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   vary: 'Accept-Encoding',
   connection: 'close' });
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/tokenservice', "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&code=Invalid%20code&grant_type=authorization_code")
   .reply(400, "{\"error_description\":\"client id or secret is null\",\"error\":\"invalid_client\"}", { date: 'Wed, 23 Apr 2014 14:38:21 GMT',
   server: 'Apache-Coyote/1.1',
@@ -24,7 +24,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   vary: 'Accept-Encoding',
   connection: 'close' });
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/tokenservice', "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&refresh_token=Invalid%20refresh_token&grant_type=refresh_token")
   .reply(400, "{\"error_description\":\"client id or secret is null\",\"error\":\"invalid_client\"}", { date: 'Wed, 23 Apr 2014 14:38:21 GMT',
   server: 'Apache-Coyote/1.1',
@@ -37,7 +37,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   connection: 'close' });
 
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/tokenservice', "client_id=CLIENT_ID&client_secret=CLIENT_SECRET&refresh_token=Invalid%20refresh_token&grant_type=refresh_token")
   .reply(400, "{\"error_description\":\"client id or secret is null\",\"error\":\"invalid_client\"}", { date: 'Wed, 23 Apr 2014 14:38:22 GMT',
   server: 'Apache-Coyote/1.1',
@@ -50,7 +50,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   connection: 'close' });
 
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/userinfo', "schema=openid&client_id=CLIENT_ID&access_token=Invalid%20access_token")
   .reply(401, "", { date: 'Wed, 23 Apr 2014 14:38:22 GMT',
   server: 'Apache-Coyote/1.1',
@@ -62,7 +62,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   connection: 'Keep-Alive',
   'content-type': 'text/html' });
 
-nock('https://api.sandbox.paypal.com:443:443')
+nock('https://api-s.sandbox.paypal.com:443:443')
   .post('/v1/identity/openidconnect/userinfo', "schema=openid&client_id=CLIENT_ID&access_token=Invalid%20access_token")
   .reply(401, "", { date: 'Wed, 23 Apr 2014 14:38:22 GMT',
   server: 'Apache-Coyote/1.1',

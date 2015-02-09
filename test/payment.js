@@ -3,7 +3,9 @@
 
 var chai = require('chai'),
 	expect = chai.expect,
-	should = chai.should();
+	should = chai.should(),
+    util = require('../lib/utils'),
+    url = require('url');
 
 var paypal = require('../');
 require('./configure');
@@ -166,6 +168,18 @@ describe('SDK', function () {
                         expect(item.price).to.equal(discount_amount);
                     }
                 }
+                done();
+            });
+        });
+
+        it('verify hateos endpoint matches configurations', function (done) {
+            var paymentId = "PAY-0XL713371A312273YKE2GCNI";
+
+            paypal.payment.get(paymentId, function (error, payment) {
+                expect(error).equal(null);
+                var hateos_hostname = url.parse(payment.links[0].href, true).host;
+                var api_endpoint = util.getDefaultApiEndpoint(paypal.configuration.mode);
+                expect(hateos_hostname).to.equal(api_endpoint);
                 done();
             });
         });
