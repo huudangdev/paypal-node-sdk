@@ -20,6 +20,26 @@ describe('Main module tests', function () {
         "token_type": "Bearer"
     };
 
+    var obj1 = {
+        "host": "api.sandbox.paypal.com",
+        "port": "",
+        "client_id": "SomeId",
+        "client_secret": "SomeSecret"
+    };
+
+    var obj2 = {
+        "mode": "sandbox",
+        "schema": "https",
+        "host": "api.sandbox.paypal.com",
+        "port": "",
+        "openid_connect_schema": "https",
+        "openid_connect_host": "api.sandbox.paypal.com",
+        "openid_connect_port": "",
+        "authorize_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize",
+        "logout_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/endsession",
+        "headers": {}
+    };
+
     it('check version appears in user agent', function (done) {
         expect(sdkConfig.userAgent).to.contain(paypal.version);
         done();
@@ -35,5 +55,10 @@ describe('Main module tests', function () {
         var current_time = new Date().getTime() / 1000;
         token_hash.created_at = current_time;
         expect(util.checkExpiredToken(token_hash)).to.be.false;
+    });
+
+    it('merge retains header in configurations', function () {
+        var result = util.merge(obj1, obj2);
+        expect(result.headers).to.not.be.undefined;
     });
 });
