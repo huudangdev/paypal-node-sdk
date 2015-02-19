@@ -33,14 +33,17 @@
     "node-uuid": "~1.4.1"
   },
   "devDependencies": {
+    "blanket": "~1.1.5",
     "chai": "~1.9.1",
-    "mocha": "~1.18.2",
+    "coveralls": "~2.0.16",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.3.0",
+    "grunt-jsdoc": "^0.5.8",
     "grunt-simple-mocha": "~0.4.0",
+    "ink-docstrap": "^0.5.2",
+    "jsdoc": "^3.3.0-beta1",
+    "mocha": "~1.18.2",
     "mocha-lcov-reporter": "0.0.1",
-    "blanket": "~1.1.5",
-    "coveralls": "~2.0.16",
     "nock": "0.36.2"
   },
   "config": {
