@@ -1,6 +1,11 @@
 PayPal Node SDK release notes
 ============================
 
+v1.5.1
+----
+* utils.merge patch for empty header
+* Automate JSDoc generation via Travis
+
 v1.5.0
 ----
 * Payouts cancel feature added
