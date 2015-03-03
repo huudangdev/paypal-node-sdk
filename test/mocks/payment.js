@@ -67,3 +67,15 @@ nock('https://api.sandbox.paypal.com')
   date: 'Mon, 25 Aug 2014 19:24:21 GMT',
   'content-type': 'application/json',
   'content-length': '1490' });
+
+nock('https://api.sandbox.paypal.com')
+  .get('/v1/payments/payment/PAY-0XL713371A312273YKE2GCNI')
+  .reply(200, "{\"id\":\"PAY-0XL713371A312273YKE2GCNI\",\"create_time\":\"2014-04-23T13:40:00Z\",\"update_time\":\"2014-04-23T13:40:16Z\",\"state\":\"approved\",\"intent\":\"sale\",\"payer\":{\"payment_method\":\"credit_card\",\"funding_instruments\":[{\"credit_card\":{\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\"}}]},\"transactions\":[{\"amount\":{\"total\":\"7.00\",\"currency\":\"USD\",\"details\":{\"subtotal\":\"5.00\",\"tax\":\"1.00\",\"shipping\":\"1.00\"}},\"description\":\"This is the payment transaction descriptiön.\",\"related_resources\":[{\"sale\":{\"id\":\"7PR173990Y544840C\",\"create_time\":\"2014-04-23T13:40:00Z\",\"update_time\":\"2014-04-23T13:40:16Z\",\"state\":\"completed\",\"amount\":{\"total\":\"7.00\",\"currency\":\"USD\"},\"parent_payment\":\"PAY-3YT781515K9510419KNL4FMA\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/7PR173990Y544840C\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/sale/7PR173990Y544840C/refund\",\"rel\":\"refund\",\"method\":\"POST\"},{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-3YT781515K9510419KNL4FMA\",\"rel\":\"parent_payment\",\"method\":\"GET\"}]}}]}],\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/payments/payment/PAY-3YT781515K9510419KNL4FMA\",\"rel\":\"self\",\"method\":\"GET\"}]}", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava4.slc.paypal.com;threadId=21386',
+  'paypal-debug-id': 'e1e006252eda0',
+  server_info: 'paymentsplatformserv:v1.payments.payment&CalThreadId=211&TopLevelTxnStartTime=1458ed0c340&Host=slcsbjm2.slc.paypal.com&pid=18083',
+  'correlation-id': 'e1e006252eda0',
+  'content-language': '*',
+  date: 'Wed, 23 Apr 2014 13:40:16 GMT',
+  'content-type': 'application/json',
+  'transfer-encoding': 'chunked' });

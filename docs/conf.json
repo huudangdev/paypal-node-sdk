@@ -1,0 +1,26 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "default": {
+            "outputSourceFiles": true
+        },
+        "systemName"      : "PayPal Node SDK",
+        "footer"          : "",
+        "copyright"       : "PayPal Copyright © 2013-2015",
+        "navType"         : "inline",
+        "theme"           : "yeti",
+        "outputSourceFiles": true,
+        "linenums"        : true,
+        "collapseSymbols" : false,
+        "inverseNav"      : true
+    }
+}
