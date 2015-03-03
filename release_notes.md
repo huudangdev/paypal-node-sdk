@@ -3,7 +3,7 @@ PayPal Node SDK release notes
 
 v1.5.1
 ----
-* utils.merge patch for empty header
+* utils.merge patch for empty header, fixes #69 and #70
 * Automate JSDoc generation via Travis
 
 v1.5.0
