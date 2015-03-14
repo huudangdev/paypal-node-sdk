@@ -15,6 +15,12 @@ Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for 
 
 > **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/PayPal-Python-SDK/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
 
+## Installation
+
+```sh
+npm install paypal-rest-sdk
+```
+
 ## Usage
 To write an app using the SDK
 
