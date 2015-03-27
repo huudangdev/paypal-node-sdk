@@ -9,11 +9,17 @@ NPM status:
 [![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk)
 [![Dependency Status](https://david-dm.org/paypal/PayPal-node-SDK.png)](https://david-dm.org/paypal/PayPal-node-SDK)
 
-Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. Refer [Node.js Sample Reference App ](https://github.com/paypal/rest-api-sample-app-nodejs) for a sample web app implementing the REST APIs.
+Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. For a full working app and documentation, have a look at the [PayPal Node SDK Page](http://paypal.github.io/PayPal-node-SDK/).
 
 > **v1.0.0 notice**: If upgrading from paypal rest sdk 0.*, Please view Breaking Changes in release_notes.md
 
 > **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/PayPal-Python-SDK/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
+
+## Installation
+
+```sh
+npm install paypal-rest-sdk
+```
 
 ## Usage
 To write an app using the SDK
@@ -129,8 +135,8 @@ grunt test (timeout is specified in milliseconds eg: 15000ms)
 
 ## Debugging
 
-   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable NODE_ENV=development
-   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/webapps/developer/docs/api/#errors)
+   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable NODE_ENV=development.
+   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/webapps/developer/docs/api/#errors). NODE_ENV=development setting also gives you access to stringfied response in error messages.
 
 ## Reference
    [REST API Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
