@@ -1,6 +1,12 @@
 PayPal Node SDK release notes
 ============================
 
+v1.5.2
+----
+* Content-Type Header parsing fix
+* Merge updated
+* NODE_ENV=development provides stringified response
+
 v1.5.1
 ----
 * utils.merge patch for empty header, fixes #69 and #70

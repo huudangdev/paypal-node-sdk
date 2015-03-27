@@ -135,8 +135,8 @@ grunt test (timeout is specified in milliseconds eg: 15000ms)
 
 ## Debugging
 
-   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable NODE_ENV=development
-   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/webapps/developer/docs/api/#errors)
+   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable NODE_ENV=development.
+   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/webapps/developer/docs/api/#errors). NODE_ENV=development setting also gives you access to stringfied response in error messages.
 
 ## Reference
    [REST API Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
