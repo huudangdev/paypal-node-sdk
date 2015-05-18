@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.5.3
+----
+* Webhook validation update patch
+
 v1.5.2
 ----
 * Content-Type Header parsing fix
