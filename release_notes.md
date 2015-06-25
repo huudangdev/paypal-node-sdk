@@ -4,6 +4,9 @@ PayPal Node SDK release notes
 v1.6.0
 ----
 * Webhook events have getAndVerify available for validation
+* Fix for credential resolution
+* Improve debug id triaging and json parse error handling message
+* Vault list all credit cards feature
 
 v1.5.3
 ----
