@@ -172,3 +172,47 @@ nock('https://api.sandbox.paypal.com')
   date: 'Mon, 18 May 2015 16:27:41 GMT',
   'content-type': 'application/x-pem-file',
   'content-length': '2756' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/oauth2/token', "grant_type=client_credentials")
+  .reply(200, {"scope":"https://uri.paypal.com/services/subscriptions https://api.paypal.com/v1/payments/.* email https://api.paypal.com/v1/vault/credit-card https://uri.paypal.com/services/applications/webhooks openid https://uri.paypal.com/payments/payouts https://api.paypal.com/v1/vault/credit-card/.*","access_token":"A015HzkFvnySgStf6vaZ9cqs.f.Csm1WbKZ9sJUBJOXu5Vk","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":28800}, { date: 'Tue, 23 Jun 2015 17:57:56 GMT',
+  server: 'Apache',
+  proxy_server_info: 'host=slcsbplatformapiserv3001.slc.paypal.com;threadId=362',
+  'paypal-debug-id': '116d2a5a8e26d',
+  connection: 'close',
+  'content-length': '432',
+  'set-cookie': 
+   [ 'X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D880%26app%3Dplatformapiserv%26TIME%3D614369621; domain=.paypal.com; path=/; Secure; HttpOnly',
+     'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
+  vary: 'Authorization',
+  'content-type': 'application/json' });
+
+nock('https://api.sandbox.paypal.com')
+  .get('/v1/notifications/webhooks-events/WH-7285486103862532R-5WM67492J86746059')
+  .reply(200, {"id":"WH-7285486103862532R-5WM67492J86746059","create_time":"2015-06-23T15:26:30Z","resource_type":"authorization","event_type":"PAYMENT.AUTHORIZATION.CREATED","summary":"A successful payment authorization was created for $ 6.0 USD","resource":{"amount":{"total":"6.00","currency":"USD","details":{"subtotal":"6.00"}},"id":"6F961703H62685926","parent_payment":"PAY-2XG59747K7884911VKWEXUKI","update_time":"2015-06-23T15:25:23Z","state":"authorized","payment_mode":"INSTANT_TRANSFER","create_time":"2015-06-23T15:24:25Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/6F961703H62685926","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/6F961703H62685926/capture","rel":"capture","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/6F961703H62685926/void","rel":"void","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/6F961703H62685926/reauthorize","rel":"reauthorize","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-2XG59747K7884911VKWEXUKI","rel":"parent_payment","method":"GET"}],"valid_until":"2015-07-22T15:24:25Z","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","protection_eligibility":"ELIGIBLE"},"links":[{"href":"https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-7285486103862532R-5WM67492J86746059","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/notifications/webhooks-events/WH-7285486103862532R-5WM67492J86746059/resend","rel":"resend","method":"POST"}]}, { date: 'Tue, 23 Jun 2015 17:57:56 GMT',
+  server: 'Apache',
+  proxy_server_info: 'host=slcsbplatformapiserv3001.slc.paypal.com;threadId=596',
+  'paypal-debug-id': 'd935806689f53',
+  'content-language': '*',
+  connection: 'close',
+  'content-length': '1621',
+  'set-cookie': 
+   [ 'X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D880%26app%3Dplatformapiserv%26TIME%3D614369621; domain=.paypal.com; path=/; Secure; HttpOnly',
+     'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
+  vary: 'Authorization',
+  'content-type': 'application/json' });
+
+nock('https://api.sandbox.paypal.com')
+  .get('/v1/notifications/webhooks-events/H-0G2756385H040842W-5Y612302CV158622M')
+  .reply(404, {"name":"INVALID_RESOURCE_ID","details":[],"message":"Resource id is invalid"}, { date: 'Tue, 23 Jun 2015 17:57:57 GMT',
+  server: 'Apache',
+  proxy_server_info: 'host=slcsbplatformapiserv3002.slc.paypal.com;threadId=210',
+  'paypal-debug-id': 'a42aabb889ca2',
+  'content-language': '*',
+  connection: 'close',
+  'content-length': '78',
+  'set-cookie': 
+   [ 'X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D880%26app%3Dplatformapiserv%26TIME%3D631146837; domain=.paypal.com; path=/; Secure; HttpOnly',
+     'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
+  vary: 'Authorization',
+  'content-type': 'application/json' });
