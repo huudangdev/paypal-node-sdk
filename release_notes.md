@@ -7,6 +7,7 @@ v1.6.0
 * Fix for credential resolution
 * Improve debug id triaging and json parse error handling message
 * Vault list all credit cards feature
+* Patches to make easier use with Browserify
 
 v1.5.3
 ----
