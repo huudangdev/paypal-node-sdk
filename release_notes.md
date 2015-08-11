@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.1
+----
+* Openid userinfo header patch
+
 v1.6.0
 ----
 * Webhook events have getAndVerify available for validation
