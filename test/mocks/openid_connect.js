@@ -50,26 +50,32 @@ nock('https://api.sandbox.paypal.com:443:443')
   connection: 'close' });
 
 
-nock('https://api.sandbox.paypal.com:443:443')
-  .post('/v1/identity/openidconnect/userinfo', "schema=openid&client_id=CLIENT_ID&access_token=Invalid%20access_token")
-  .reply(401, "", { date: 'Wed, 23 Apr 2014 14:38:22 GMT',
-  server: 'Apache-Coyote/1.1',
-  'www-authenticate': 'Bearer error_description="Invalid Access Token",error="invalid_token",realm="UserInfoService"',
-  'set-cookie': [ 'Apache=10.72.128.11.1398263902865365; path=/; expires=Fri, 15-Apr-44 14:38:22 GMT' ],
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/identity/openidconnect/userinfo', "schema=openid&access_token=Invalid%20access_token")
+  .reply(401, "", { date: 'Tue, 11 Aug 2015 16:33:54 GMT',
+  server: 'Apache',
+  'paypal-debug-id': 'dfaf12d0c5dff',
+  'www-authenticate': 'Bearer error_description="Invalid Access Token",correlation_id="dfaf12d0c5dff",error="invalid_token",information_link="https://developer.paypal.com/docs/api/#errors",realm="UserInfoService"',
+  'set-cookie': 
+   [ 'Apache=10.72.128.11.1439310834659319; path=/; expires=Thu, 03-Aug-45 16:33:54 GMT',
+     'X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D880%26app%3Didentityspartaweb_api%26TIME%3D4062431829; domain=.paypal.com; path=/; Secure; HttpOnly',
+     'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
   vary: 'Accept-Encoding',
+  connection: 'close',
   'content-length': '0',
-  'keep-alive': 'timeout=5, max=100',
-  connection: 'Keep-Alive',
-  'content-type': 'text/html' });
+  'content-type': 'text/html; charset=ISO-8859-1' });
 
-nock('https://api.sandbox.paypal.com:443:443')
-  .post('/v1/identity/openidconnect/userinfo', "schema=openid&client_id=CLIENT_ID&access_token=Invalid%20access_token")
-  .reply(401, "", { date: 'Wed, 23 Apr 2014 14:38:22 GMT',
-  server: 'Apache-Coyote/1.1',
-  'www-authenticate': 'Bearer error_description="Invalid Access Token",error="invalid_token",realm="UserInfoService"',
-  'set-cookie': [ 'Apache=10.72.128.11.1398263903211132; path=/; expires=Fri, 15-Apr-44 14:38:23 GMT' ],
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/identity/openidconnect/userinfo', "schema=openid&access_token=Invalid%20access_token")
+  .reply(401, "", { date: 'Tue, 11 Aug 2015 16:35:43 GMT',
+  server: 'Apache',
+  'paypal-debug-id': 'e90ab329e228f',
+  'www-authenticate': 'Bearer error_description="Invalid Access Token",correlation_id="e90ab329e228f",error="invalid_token",information_link="https://developer.paypal.com/docs/api/#errors",realm="UserInfoService"',
+  'set-cookie': 
+   [ 'Apache=10.72.128.11.1439310943451341; path=/; expires=Thu, 03-Aug-45 16:35:43 GMT',
+     'X-PP-SILOVER=name%3DSANDBOX3.API.1%26silo_version%3D880%26app%3Didentityspartaweb_api%26TIME%3D1596246613; domain=.paypal.com; path=/; Secure; HttpOnly',
+     'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
   vary: 'Accept-Encoding',
+  connection: 'close',
   'content-length': '0',
-  'keep-alive': 'timeout=5, max=100',
-  connection: 'Keep-Alive',
-  'content-type': 'text/html' });
+  'content-type': 'text/html; charset=ISO-8859-1' });
