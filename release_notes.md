@@ -1,6 +1,11 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.2
+----
+* Full request/response logged for non production environments with NODE_ENV=development set
+* Update travis to build for Node 4.0
+
 v1.6.1
 ----
 * Openid userinfo header patch
