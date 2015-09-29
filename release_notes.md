@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.3
+----
+* Update to uuid module for #106
+
 v1.6.2
 ----
 * Full request/response logged for non production environments with NODE_ENV=development set

@@ -2,7 +2,7 @@
   "author": "PayPal <DL-PP-NODEJS-SDK@paypal.com> (https://developer.paypal.com/)",
   "name": "paypal-rest-sdk",
   "description": "SDK for PayPal REST APIs",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "homepage": "https://github.com/paypal/PayPal-node-SDK",
   "keywords": [
     "paypal",
@@ -30,7 +30,7 @@
   "main": "./index.js",
   "dependencies": {
     "buffer-crc32": "^0.2.3",
-    "node-uuid": "~1.4.1"
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "blanket": "~1.1.5",
