@@ -45,6 +45,13 @@ describe('Main module tests', function () {
         done();
     });
 
+    it('check user agent adheres to key value formatting', function (done) {
+        var metadata = sdkConfig.userAgent.split('(')[1];
+        var platform = metadata.split(';')[0].split('=')[1];
+        expect(platform).to.equal('node');
+        done();
+    });
+
     it('check expired token success', function () {
         var current_time = new Date().getTime() / 1000;
         token_hash.created_at = current_time - 10;
