@@ -1,6 +1,12 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.4
+----
+* Security test sandbox endpoint avaiable as a configuration
+* Warn if merchant server has below 1.0 version of OpenSSL
+* Update User Agent with crypto lib version
+
 v1.6.3
 ----
 * Update to uuid module for #106
