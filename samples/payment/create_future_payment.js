@@ -23,7 +23,7 @@ paypal.generateToken(auth_code, function (error, rt) {
         console.log(rt);
         var refresh_token = rt;
 
-        var future_payment_config = {'correlation_id': 'Correlation ID from mobile sdk', 'refresh_token': refresh_token};
+        var future_payment_config = {'client_metadata_id': 'Client Metadata ID from mobile sdk', 'refresh_token': refresh_token};
 
         //Set up payment details
         var create_payment_json = {

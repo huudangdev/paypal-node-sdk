@@ -40,8 +40,21 @@ describe('Main module tests', function () {
         "headers": {}
     };
 
+    if (process.env.NOCK_OFF !== 'true') {
+        require('./mocks/basic');
+    }
+
     it('check version appears in user agent', function (done) {
         expect(sdkConfig.userAgent).to.contain(paypal.version);
+        done();
+    });
+
+    it('check user agent contains crypto version', function (done) {
+        var metadata = sdkConfig.userAgent.split('(')[1];
+        var openssl = metadata.split(';')[1].split(' ')[1];
+        var openssl_version = metadata.split(';')[1].split(' ')[2];
+        expect(openssl).to.equal('OpenSSL');
+        expect(openssl_version).to.not.be.undefined;
         done();
     });
 
