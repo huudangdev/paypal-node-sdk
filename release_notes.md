@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.5
+----
+* Check OpenSSL version is 1.0.1 or above
+
 v1.6.4
 ----
 * Security test sandbox endpoint avaiable as a configuration
