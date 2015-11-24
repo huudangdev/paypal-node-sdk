@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 ============================
 
+v1.6.5
+----
+* Update warning message
+
 v1.6.4
 ----
 * Security test sandbox endpoint avaiable as a configuration
