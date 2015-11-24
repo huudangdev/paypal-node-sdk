@@ -1,9 +1,13 @@
 PayPal Node SDK release notes
 ============================
 
-v1.6.5
+v1.6.6
 ----
 * Update warning message
+
+v1.6.5
+----
+* Check OpenSSL version is 1.0.1 or above
 
 v1.6.4
 ----
