@@ -46,6 +46,8 @@ describe('SDK', function () {
         var insurance = "1.00";
         var shipping_discount = "1.00";
 
+        var updated_insurance = "5.00";
+
         var create_payment_extra_parameters = {
             "intent": "sale",
             "redirect_urls": {
@@ -121,6 +123,25 @@ describe('SDK', function () {
             ]
         };
 
+        var update_payment_extra_params = [
+            {
+                "op":  "replace",
+                "path": "/transactions/0/amount",
+                "value": {
+                    "total": "36.07",
+                    "currency": "USD",
+                    "details": {
+                        "subtotal": "30.00",
+                        "tax": "0.07",
+                        "shipping": shipping,
+                        "handling_fee": handling_fee,
+                        "shipping_discount": shipping_discount,
+                        "insurance": updated_insurance
+                    }
+                }
+            }
+        ];
+
         if (process.env.NOCK_OFF !== 'true') {
             require('./mocks/payment');
         }
@@ -168,7 +189,22 @@ describe('SDK', function () {
                         expect(item.price).to.equal(discount_amount);
                     }
                 }
-                done();
+
+                paypal.payment.update(payment.id, update_payment_extra_params, function (error, updatedPayment) {
+                    expect(error).to.equal(null);
+                    expect(updatedPayment.id).to.equal(payment.id);
+
+                    // Check updated fields
+                    expect(updatedPayment.transactions[0].amount.total).to.equal("36.07");
+                    expect(updatedPayment.transactions[0].amount.details.insurance).to.equal(updated_insurance);
+
+                    //Check for handling_fee, insurance, shipping_discount
+                    expect(updatedPayment.transactions[0].amount.details.shipping).to.equal(shipping);
+                    expect(updatedPayment.transactions[0].amount.details.handling_fee).to.equal(handling_fee);
+                    expect(updatedPayment.transactions[0].amount.details.shipping_discount).to.equal(shipping_discount);
+
+                    done();
+                });
             });
         });
 
