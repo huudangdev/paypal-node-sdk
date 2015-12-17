@@ -1,5 +1,11 @@
 PayPal Node SDK release notes
-============================
+=============================
+
+v1.6.8
+------
+* Deprecate webhookEvent.getAndVerify(). Instead, it is recommended that the
+  webhook event handler issue a GET to retrieve the event data from the
+  PayPal servers directly. See the [Webhook Validation wiki](https://github.com/paypal/PayPal-node-SDK/wiki/Webhook-Validation).
 
 v1.6.7
 ----
