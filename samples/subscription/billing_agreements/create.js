@@ -1,4 +1,4 @@
-/* Copyright 2015 PayPal 
+/* Copyright 2015-2016 PayPal, Inc. 
 
 Create a billing plan, activate it and use it to create a billing Agreement.
 

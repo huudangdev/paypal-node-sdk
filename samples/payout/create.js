@@ -1,4 +1,4 @@
-/* Copyright 2015 PayPal
+/* Copyright 2015-2016 PayPal, Inc.
 
 Create a batch payout, by default in asynchronous mode.
 

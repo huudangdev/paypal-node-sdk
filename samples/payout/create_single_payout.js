@@ -1,4 +1,4 @@
-/* Copyright 2015 PayPal 
+/* Copyright 2015-2016 PayPal, Inc. 
 
 Example to demonstrate creating a single synchronous payout, meaning the payment
 will be executed immediately and response returned in the batch_status entry in the 

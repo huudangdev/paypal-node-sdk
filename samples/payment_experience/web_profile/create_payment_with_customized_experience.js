@@ -3,7 +3,7 @@
  * payment with it by using the returned id as experience_profile_id in
  * the payment json
  * 
- * Copyright 2015 PayPal
+ * Copyright 2015-2016 PayPal, Inc.
  */
 "use strict";
 

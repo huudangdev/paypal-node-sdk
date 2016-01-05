@@ -15,7 +15,7 @@
         },
         "systemName"      : "PayPal Node SDK",
         "footer"          : "",
-        "copyright"       : "PayPal Copyright © 2013-2015",
+        "copyright"       : "PayPal Copyright © 2013-2016",
         "navType"         : "inline",
         "theme"           : "yeti",
         "outputSourceFiles": true,

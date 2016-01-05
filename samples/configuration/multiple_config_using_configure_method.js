@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 PayPal
+ * Copyright 2015-2016 PayPal, Inc.
  *
  * Sample to show using multiple client_id and client_secret using the configure method.
  */

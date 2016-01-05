@@ -4,7 +4,7 @@
    When customer makes a payment in future, the correlation id obtained from mobile device
    should be passed in while charging the customer.
 
-   Copyright 2015 PayPal
+   Copyright 2015-2016 PayPal, Inc.
 */
 
 "use strict";
