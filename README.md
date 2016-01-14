@@ -126,24 +126,31 @@ Instructions for running samples are located in the [sample directory](/samples)
 ## Running Tests
 To run the test suite first invoke the following command within the repo
 
-If grunt is not installed:
+If [Grunt](http://gruntjs.com) is not installed:
 ```sh
-npm install -g grunt
 npm install -g grunt-cli
 ```
 
-If mocha is not installed:
+If [Mocha](https://mochajs.org) is not installed:
 ```sh
 npm install -g mocha
 ```
-and then to install the development dependencies:
+
+To install the development dependencies (run where the `package.json` is):
 ```sh
 npm install
 ```
-then run the tests:
+
+Run the tests:
 ```sh
 grunt test (timeout is specified in milliseconds eg: 15000ms)
 ```
+
+To run the tests without the mocks:
+```
+NOCK_OFF=true mocha -t 60000
+```
+
 
 ## Debugging
    * As of version 1.6.2, full request/response are logged for non production environments with NODE_ENV=development set
