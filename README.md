@@ -126,7 +126,13 @@ Instructions for running samples are located in the [sample directory](/samples)
 ## Running Tests
 To run the test suite first invoke the following command within the repo
 
-If mocha is not installed
+If grunt is not installed:
+```sh
+npm install -g grunt
+npm install -g grunt-cli
+```
+
+If mocha is not installed:
 ```sh
 npm install -g mocha
 ```
