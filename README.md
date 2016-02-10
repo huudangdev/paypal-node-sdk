@@ -13,8 +13,6 @@ Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for 
 
 > **v1.0.0 notice**: If upgrading from paypal rest sdk 0.*, Please view Breaking Changes in release_notes.md
 
-> **Before starting to use the sdk, please be aware of the [existing issues and currently unavailable or upcoming features](https://github.com/paypal/PayPal-Python-SDK/wiki/Existing-Issues-and-Unavailable%5CUpcoming-features) for the REST APIs. (which the sdks are based on)** 
-
 > **The Payment Card Industry (PCI) Council has [mandated](http://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls) that early versions of TLS be retired from service.  All organizations that handle credit card information are required to comply with this standard. As part of this obligation, PayPal is updating its services to require TLS 1.2 for all HTTPS connections. At this time, PayPal will also require HTTP/1.1 for all connections. See the [PayPal TLS Update repository](https://github.com/paypal/tls-update) for more information.**
 
 > **TLSv1_2 warning: Due to PCI compliance, merchant servers using a version of TLS that does not support TLSv1_2 will receive a warning.
