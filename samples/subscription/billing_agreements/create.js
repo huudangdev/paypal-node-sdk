@@ -9,6 +9,10 @@ var paypal = require('../../../');
 require('../../configure');
 var url = require('url');
 
+var isoDate = new Date();
+isoDate.setSeconds(isoDate.getSeconds() + 4);
+isoDate.toISOString().slice(0, 19) + 'Z';
+
 var billingPlanAttributes = {
     "description": "Create Plan for Regular",
     "merchant_preferences": {
@@ -95,7 +99,7 @@ var billingPlanUpdateAttributes = [
 var billingAgreementAttributes = {
     "name": "Fast Speed Agreement",
     "description": "Agreement for Fast Speed Plan",
-    "start_date": "2015-02-19T00:37:04Z",
+    "start_date": isoDate,
     "plan": {
         "id": "P-0NJ10521L3680291SOAQIVTQ"
     },
