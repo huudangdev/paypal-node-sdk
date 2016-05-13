@@ -164,3 +164,9 @@ NOCK_OFF=true mocha -t 60000
 ## Contribution
    * If you would like to contribute, please fork the repo and send in a pull request.
    * Please ensure you run grunt before sending in the pull request.
+
+## License
+Code released under [SDK LICENSE](LICENSE)  
+
+## Contributions 
+ Pull requests and new issues are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details. 
