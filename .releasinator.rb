@@ -3,11 +3,11 @@ configatron.product_name = "PayPal node SDK"
 
 # List of items to confirm from the person releasing.  Required, but empty list is ok.
 configatron.prerelease_checklist_items = [  
-    "Sanity check the master branch."
+    "Sanity check the master branch.",
+    "Unit tests passed."
 ]
 
 def validate_version_match()
-  puts @current_release.version
   if 'v'+package_version() != @current_release.version
       Printer.fail("Package.json version #{package_version} does not match changelog version #{@current_release.version}.")
       abort()
@@ -21,18 +21,13 @@ def validate_paths
   @validator.validate_in_path("jq")
 end
 
-def run_tests
-  CommandProcessor.command("npm test", live_output=true)
-end
-
 configatron.custom_validation_methods = [
   method(:validate_paths),
-  method(:validate_version_match),
-  method(:run_tests) 
+  method(:validate_version_match) 
 ]
 
-# there are no separate build steps for PayPal-Cordova-Plugin, so it is just empty method
 def build_method
+  CommandProcessor.command("npm test", live_output=true)
 end
 
 # The command that builds the sdk.  Required.

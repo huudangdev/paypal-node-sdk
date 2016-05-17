@@ -1,4 +1,4 @@
-# Contribute to the PayPal-Cordova-Plugin
+# Contribute to the PayPal node SDK
 
 ### *Pull requests are welcome!*
 
