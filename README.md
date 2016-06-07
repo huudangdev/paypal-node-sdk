@@ -2,12 +2,12 @@
 
 Continuous integration status:
 
-[![Build Status](https://travis-ci.org/paypal/PayPal-node-SDK.png?branch=master)](https://travis-ci.org/paypal/PayPal-node-SDK) [![Coverage Status](https://coveralls.io/repos/paypal/PayPal-node-SDK/badge.png?branch=master)](https://coveralls.io/r/paypal/PayPal-node-SDK?branch=master) 
+[![Build Status](https://travis-ci.org/paypal/PayPal-node-SDK.svg?branch=master)](https://travis-ci.org/paypal/PayPal-node-SDK) [![Coverage Status](https://coveralls.io/repos/paypal/PayPal-node-SDK/badge.svg?branch=master)](https://coveralls.io/r/paypal/PayPal-node-SDK?branch=master) 
 
 NPM status:
 
-[![NPM version](https://badge.fury.io/js/paypal-rest-sdk.png)](http://badge.fury.io/js/paypal-rest-sdk)
-[![Dependency Status](https://david-dm.org/paypal/PayPal-node-SDK.png)](https://david-dm.org/paypal/PayPal-node-SDK)
+[![NPM version](https://badge.fury.io/js/paypal-rest-sdk.svg)](http://badge.fury.io/js/paypal-rest-sdk)
+[![Dependency Status](https://david-dm.org/paypal/PayPal-node-SDK.svg)](https://david-dm.org/paypal/PayPal-node-SDK)
 
 Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. For a full working app and documentation, have a look at the [PayPal Node SDK Page](http://paypal.github.io/PayPal-node-SDK/).
 
