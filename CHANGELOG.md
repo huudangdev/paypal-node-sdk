@@ -1,5 +1,11 @@
 PayPal Node SDK release notes
 =============================
+v1.6.9
+------
+* Added new Third Party Invoicing sample [#157](https://github.com/paypal/PayPal-node-SDK/pull/157)
+* Use default headders for OAuth calls [#155](https://github.com/paypal/PayPal-node-SDK/pull/155)
+* Modify default start_date for Billing Agrement create sample [#138](https://github.com/paypal/PayPal-node-SDK/pull/138)
+* Fix a typo in inline documentation [#135](https://github.com/paypal/PayPal-node-SDK/pull/138)
 
 v1.6.8
 ------
