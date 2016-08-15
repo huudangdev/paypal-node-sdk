@@ -35,8 +35,8 @@ describe('Main module tests', function () {
         "openid_connect_schema": "https",
         "openid_connect_host": "api.sandbox.paypal.com",
         "openid_connect_port": "",
-        "authorize_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize",
-        "logout_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/endsession",
+        "authorize_url": "https://www.sandbox.paypal.com/signin/authorize",
+        "logout_url": "https://www.sandbox.paypal.com/signin/endsession",
         "headers": {}
     };
 
