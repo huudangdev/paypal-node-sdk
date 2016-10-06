@@ -7,11 +7,6 @@ var chai = require('chai'),
 var paypal = require('../');
 require('./configure');
 
-// TODO: move this to samples
-function random_id() {
-    return Math.random().toString(36).substring(10);
-}
-
 describe('SDK', function () {
     describe('InvoiceTemplate', function () {
         var invoice_template_attributes = function(id) {
