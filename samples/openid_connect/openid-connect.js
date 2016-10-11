@@ -1,7 +1,7 @@
 /* Copyright 2015-2016 PayPal, Inc. */
 "use strict";
 
-var paypal = require('../');
+var paypal = require('../../');
 var openIdConnect = paypal.openIdConnect;
 
 //set configs for openid_client_id and openid_client_secret if they are different from your
