@@ -216,3 +216,8 @@ nock('https://api.sandbox.paypal.com')
      'X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT' ],
   vary: 'Authorization',
   'content-type': 'application/json' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/notifications/verify-webhook-signature')
+  .reply(200, { "verification_status": "SUCCESS" }, { 'content-type': 'application/json' });
+
