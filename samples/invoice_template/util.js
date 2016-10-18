@@ -1,3 +1,6 @@
+/* Copyright 2015-2016 PayPal, Inc. */
+"use strict";
+
 function _random_id() {
     return Math.random().toString(36).substring(10);
 }
@@ -38,7 +41,7 @@ function invoice_template_json() {
                 }
             }
         ]
-    }
+    };
 }
 
 exports.invoice_template_json = invoice_template_json;

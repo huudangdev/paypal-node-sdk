@@ -9,7 +9,7 @@ require('./configure');
 
 describe('SDK', function () {
     describe('InvoiceTemplate', function () {
-        var invoice_template_attributes = function(id) {
+        var invoice_template_attributes = function (id) {
             var ret = {
                 "name": "Hours Template",
                 "default": true,
@@ -47,8 +47,8 @@ describe('SDK', function () {
                     }
                 ]
             };
-            if (id != null) {
-                ret["template_id"] = id;
+            if (id !== null) {
+                ret.template_id = id;
             }
 
             return ret;
@@ -67,7 +67,7 @@ describe('SDK', function () {
                     expect(error).equal(null);
                     expect(invoice_template.unit_of_measure).equal("HOURS");
                     done();
-                })
+                });
             });
         });
 
@@ -91,7 +91,7 @@ describe('SDK', function () {
             var invoice_template = invoice_template_attributes("TEMP-XYZ");
             invoice_template.name = "Hours Template - modified";
 
-            paypal.invoiceTemplate.update(invoice_template.template_id, invoice_template, function(error, invoice_template) {
+            paypal.invoiceTemplate.update(invoice_template.template_id, invoice_template, function (error, invoice_template) {
                 expect(error).equal(null);
                 expect(invoice_template.name).equal("Hours Template - modified");
                 done();
