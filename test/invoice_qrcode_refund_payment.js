@@ -110,6 +110,32 @@ describe('SDK', function () {
             });
         });
 
+        it('deletes external payment on payment success', function (done) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
+                expect(error).equal(null);
+
+                paypal.invoice.send(invoice.id, function (error, rv) {
+                    expect(error).equal(null);
+                    var payment_attr = {
+                        "method" : "CASH",
+                        "date" : "2014-07-06 03:30:00 PST",
+                        "note" : "Cash received."
+                    };
+
+                    paypal.invoice.recordPayment(invoice.id, payment_attr, function (error, rv) {
+                        expect(error).equal(null);
+                        expect(rv.httpStatusCode).equal(204);
+
+                        paypal.invoice.deleteExternalPayment(invoice.id, '1', function (error, rv) {
+                            expect(error).equal(null);
+                            expect(rv.httpStatusCode).equal(204);
+                            done();
+                        });
+                    });
+                });
+            });
+        });
+
         it('record refund on invoice success', function (done) {
             paypal.invoice.create(invoice_attributes, function (error, invoice) {
                 expect(error).equal(null);
@@ -135,6 +161,41 @@ describe('SDK', function () {
                             expect(error).equal(null);
                             expect(rv.httpStatusCode).equal(204);
                             done();
+                        });
+                    });
+                });
+            });
+        });
+
+        it('deletes external refund on refund success', function (done) {
+            paypal.invoice.create(invoice_attributes, function (error, invoice) {
+                expect(error).equal(null);
+
+                paypal.invoice.send(invoice.id, function (error, rv) {
+                    expect(error).equal(null);
+                    var payment_attr = {
+                        "method" : "CASH",
+                        "date" : "2014-07-06 03:30:00 PST",
+                        "note" : "Cash received."
+                    };
+
+                    paypal.invoice.recordPayment(invoice.id, payment_attr, function (error, rv) {
+                        expect(error).equal(null);
+                        expect(rv.httpStatusCode).equal(204);
+                        var refund_attr = {
+                            "date" : "2014-07-06 03:30:00 PST",
+                            "note" : "Refund provided by cash."
+                        };
+
+                        paypal.invoice.recordRefund(invoice.id, refund_attr, function (error, rv) {
+                            expect(error).equal(null);
+                            expect(rv.httpStatusCode).equal(204);
+
+                            paypal.invoice.deleteExternalRefund(invoice.id, '1', function (error, rv) {
+                                expect(error).equal(null);
+                                expect(rv.httpStatusCode).equal(204);
+                                done();
+                            });
                         });
                     });
                 });

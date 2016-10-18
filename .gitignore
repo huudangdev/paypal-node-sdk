@@ -16,3 +16,4 @@ scratch*
 npm-debug.log
 node_modules
 report
+.idea/
