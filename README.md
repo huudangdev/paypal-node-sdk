@@ -117,9 +117,7 @@ To write an app using the SDK
     ```
 
 ## Running Samples
-Instructions for running samples are located in the [sample directory](/samples). Try these samples in a live sandbox environment:
-
-<a href="http://runnable.com/paypal" target="_blank"><img src="http://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
+Instructions for running samples are located in the [sample directory](/samples).
 
 ## Running Tests
 To run the test suite first invoke the following command within the repo
