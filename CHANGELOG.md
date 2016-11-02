@@ -1,5 +1,12 @@
 PayPal Node SDK release notes
 =============================
+
+v1.7.0
+------
+* Updated Webhooks Verify event.
+* Invoicing API updates [#204](https://github.com/paypal/PayPal-node-SDK/pull/204).
+* Minor bug fixes.
+
 v1.6.9
 ------
 * Added new Third Party Invoicing sample [#157](https://github.com/paypal/PayPal-node-SDK/pull/157)
