@@ -116,3 +116,90 @@ nock('https://api.sandbox.paypal.com')
   proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=284',
   'paypal-debug-id': 'a939029c657a4',
   date: 'Tue, 02 Sep 2014 14:47:22 GMT' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/oauth2/token', "grant_type=client_credentials")
+  .reply(200, {"scope":"https://uri.paypal.com/services/invoicing openid https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card/.* https://api.paypal.com/v1/vault/credit-card","access_token":"A015h5DYK40eUh80-aB2XraaHHrhVdTNgLSG6JOixFJsDFQ","token_type":"Bearer","app_id":"APP-2EJ531395M785864S","expires_in":28800}, { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=34406',
+  'paypal-debug-id': 'af3de8f365716',
+  server_info: 'identitysecuretokenserv:v1.oauth2.token&CalThreadId=90&TopLevelTxnStartTime=14836d593d3&Host=slcsbidensectoken501.slc.paypal.com&pid=26104',
+  date: 'Tue, 02 Sep 2014 14:47:20 GMT',
+  'content-type': 'application/json',
+  'content-length': '367' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/', {"merchant_info":{"email":"PPX.DevNet-facilitator@gmail.com","first_name":"Dennis","last_name":"Doctor","business_name":"Medical Professionals, LLC","phone":{"country_code":"001","national_number":"5032141716"},"address":{"line1":"1234 Main St.","city":"Portland","state":"OR","postal_code":"97217","country_code":"US"}},"billing_info":[{"email":"example@example.com"}],"items":[{"name":"Sutures","quantity":100,"unit_price":{"currency":"USD","value":5}}],"note":"Medical Invoice 16 Jul, 2013 PST","payment_term":{"term_type":"NET_45"},"shipping_info":{"first_name":"Sally","last_name":"Patient","business_name":"Not applicable","phone":{"country_code":"001","national_number":"5039871234"},"address":{"line1":"1234 Broad St.","city":"Portland","state":"OR","postal_code":"97216","country_code":"US"}},"tax_inclusive":false,"total_amount":{"currency":"USD","value":"500.00"}})
+  .reply(201, {"id":"INV2-WNVY-RKWC-46V4-2KJV","number":"2328","status":"DRAFT","merchant_info":{"email":"PPX.DevNet-facilitator@gmail.com","first_name":"Dennis","last_name":"Doctor","business_name":"Medical Professionals, LLC","phone":{"country_code":"001","national_number":"5032141716"},"address":{"line1":"1234 Main St.","city":"Portland","state":"OR","postal_code":"97217","country_code":"US"}},"billing_info":[{"email":"example@example.com"}],"shipping_info":{"first_name":"Sally","last_name":"Patient","business_name":"Not applicable","phone":{"country_code":"001","national_number":"5039871234"},"address":{"line1":"1234 Broad St.","city":"Portland","state":"OR","postal_code":"97216","country_code":"US"}},"items":[{"name":"Sutures","quantity":100,"unit_price":{"currency":"USD","value":"5.00"}}],"invoice_date":"2014-09-02 PDT","payment_term":{"term_type":"NET_45","due_date":"2014-10-17 PDT"},"tax_calculated_after_discount":false,"tax_inclusive":false,"note":"Medical Invoice 16 Jul, 2013 PST","total_amount":{"currency":"USD","value":"500.00"}}, { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=284',
+  'paypal-debug-id': '122e35a165eb4',
+  date: 'Tue, 02 Sep 2014 14:47:20 GMT',
+  location: 'https://api.sandbox.paypal.com/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV',
+  'content-type': 'application/json',
+  'content-length': '1045' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/send', {})
+  .reply(202, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=34406',
+  'paypal-debug-id': 'ba3faecb65edc',
+  date: 'Tue, 02 Sep 2014 14:47:21 GMT',
+  'content-type': 'text/xml',
+  'content-length': '0' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/record-payment', {"method":"CASH","date":"2014-07-06 03:30:00 PST","note":"Cash received."})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava4.slc.paypal.com;threadId=252',
+  'paypal-debug-id': 'c0bba21c65a8e',
+  date: 'Tue, 02 Sep 2014 14:47:22 GMT' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/oauth2/token', "grant_type=client_credentials")
+  .reply(200, {"scope":"https://uri.paypal.com/services/invoicing openid https://api.paypal.com/v1/developer/.* https://api.paypal.com/v1/payments/.* https://api.paypal.com/v1/vault/credit-card/.* https://api.paypal.com/v1/vault/credit-card","access_token":"A015h5DYK40eUh80-aB2XraaHHrhVdTNgLSG6JOixFJsDFQ","token_type":"Bearer","app_id":"APP-2EJ531395M785864S","expires_in":28800}, { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=34406',
+  'paypal-debug-id': 'af3de8f365716',
+  server_info: 'identitysecuretokenserv:v1.oauth2.token&CalThreadId=90&TopLevelTxnStartTime=14836d593d3&Host=slcsbidensectoken501.slc.paypal.com&pid=26104',
+  date: 'Tue, 02 Sep 2014 14:47:20 GMT',
+  'content-type': 'application/json',
+  'content-length': '367' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/', {"merchant_info":{"email":"PPX.DevNet-facilitator@gmail.com","first_name":"Dennis","last_name":"Doctor","business_name":"Medical Professionals, LLC","phone":{"country_code":"001","national_number":"5032141716"},"address":{"line1":"1234 Main St.","city":"Portland","state":"OR","postal_code":"97217","country_code":"US"}},"billing_info":[{"email":"example@example.com"}],"items":[{"name":"Sutures","quantity":100,"unit_price":{"currency":"USD","value":5}}],"note":"Medical Invoice 16 Jul, 2013 PST","payment_term":{"term_type":"NET_45"},"shipping_info":{"first_name":"Sally","last_name":"Patient","business_name":"Not applicable","phone":{"country_code":"001","national_number":"5039871234"},"address":{"line1":"1234 Broad St.","city":"Portland","state":"OR","postal_code":"97216","country_code":"US"}},"tax_inclusive":false,"total_amount":{"currency":"USD","value":"500.00"}})
+  .reply(201, {"id":"INV2-WNVY-RKWC-46V4-2KJV","number":"2328","status":"DRAFT","merchant_info":{"email":"PPX.DevNet-facilitator@gmail.com","first_name":"Dennis","last_name":"Doctor","business_name":"Medical Professionals, LLC","phone":{"country_code":"001","national_number":"5032141716"},"address":{"line1":"1234 Main St.","city":"Portland","state":"OR","postal_code":"97217","country_code":"US"}},"billing_info":[{"email":"example@example.com"}],"shipping_info":{"first_name":"Sally","last_name":"Patient","business_name":"Not applicable","phone":{"country_code":"001","national_number":"5039871234"},"address":{"line1":"1234 Broad St.","city":"Portland","state":"OR","postal_code":"97216","country_code":"US"}},"items":[{"name":"Sutures","quantity":100,"unit_price":{"currency":"USD","value":"5.00"}}],"invoice_date":"2014-09-02 PDT","payment_term":{"term_type":"NET_45","due_date":"2014-10-17 PDT"},"tax_calculated_after_discount":false,"tax_inclusive":false,"note":"Medical Invoice 16 Jul, 2013 PST","total_amount":{"currency":"USD","value":"500.00"}}, { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=284',
+  'paypal-debug-id': '122e35a165eb4',
+  date: 'Tue, 02 Sep 2014 14:47:20 GMT',
+  location: 'https://api.sandbox.paypal.com/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV',
+  'content-type': 'application/json',
+  'content-length': '1045' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/send', {})
+  .reply(202, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=34406',
+  'paypal-debug-id': 'ba3faecb65edc',
+  date: 'Tue, 02 Sep 2014 14:47:21 GMT',
+  'content-type': 'text/xml',
+  'content-length': '0' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/record-payment', {"method":"CASH","date":"2014-07-06 03:30:00 PST","note":"Cash received."})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava4.slc.paypal.com;threadId=252',
+  'paypal-debug-id': 'c0bba21c65a8e',
+  date: 'Tue, 02 Sep 2014 14:47:22 GMT' });
+
+nock('https://api.sandbox.paypal.com')
+  .post('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/record-refund', {"date":"2014-07-06 03:30:00 PST","note":"Refund provided by cash."})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=284',
+  'paypal-debug-id': 'a939029c657a4',
+  date: 'Tue, 02 Sep 2014 14:47:22 GMT' });
+
+nock('https://api.sandbox.paypal.com')
+  .delete('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/refund-records/1', {})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=2732',
+  'paypal-debug-id': '4a477616ebc5b',
+  date: 'Sun, 10 Aug 2014 18:11:33 GMT' });
+

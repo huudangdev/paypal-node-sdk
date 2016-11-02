@@ -343,3 +343,17 @@ nock('https://api.sandbox.paypal.com')
   date: 'Sun, 10 Aug 2014 18:11:35 GMT',
   'content-type': 'application/json',
   'content-length': '91' });
+
+nock('https://api.sandbox.paypal.com')
+  .delete('/v1/invoicing/invoices/INV2-333R-YUQL-YNNN-D7WF/refund-records/EXTR-2LG703375E477444T', {})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=2732',
+  'paypal-debug-id': '4a477616ebc5b',
+  date: 'Sun, 10 Aug 2014 18:11:33 GMT' });
+
+nock('https://api.sandbox.paypal.com')
+  .delete('/v1/invoicing/invoices/INV2-WNVY-RKWC-46V4-2KJV/payment-records/1', {})
+  .reply(204, "", { server: 'Apache-Coyote/1.1',
+  proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=2732',
+  'paypal-debug-id': '4a477616ebc5b',
+  date: 'Sun, 10 Aug 2014 18:11:33 GMT' });
