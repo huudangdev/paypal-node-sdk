@@ -12,8 +12,8 @@ nock('https://api.sandbox.paypal.com:443:443')
   'transfer-encoding': 'chunked' });
 
 nock('https://api.sandbox.paypal.com:443:443')
-  .post('/v1/vault/credit-card/', {"type":"visa","number":"4417119669820331","expire_month":"11","expire_year":"2018","cvv2":"123"})
-  .reply(201, "{\"id\":\"CARD-5S105187UG0492942KNNL2QY\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:39Z\",\"update_time\":\"2014-04-25T19:53:39Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
+  .post('/v1/vault/credit-cards/', {"type":"visa","number":"4417119669820331","expire_month":"11","expire_year":"2018","cvv2":"123"})
+  .reply(201, "{\"id\":\"CARD-5S105187UG0492942KNNL2QY\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:39Z\",\"update_time\":\"2014-04-25T19:53:39Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=127',
   'paypal-debug-id': 'e86be3fd33eea',
   'content-language': '*',
@@ -24,8 +24,8 @@ nock('https://api.sandbox.paypal.com:443:443')
   'transfer-encoding': 'chunked' });
 
 nock('https://api.sandbox.paypal.com:443:443')
-  .get('/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY')
-  .reply(200, "{\"id\":\"CARD-5S105187UG0492942KNNL2QY\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:39Z\",\"update_time\":\"2014-04-25T19:53:39Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
+  .get('/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY')
+  .reply(200, "{\"id\":\"CARD-5S105187UG0492942KNNL2QY\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:39Z\",\"update_time\":\"2014-04-25T19:53:39Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-5S105187UG0492942KNNL2QY\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava1.slc.paypal.com;threadId=271',
   'paypal-debug-id': '8bba61903224e',
   'content-language': '*',
@@ -36,8 +36,8 @@ nock('https://api.sandbox.paypal.com:443:443')
   'transfer-encoding': 'chunked' });
 
 nock('https://api.sandbox.paypal.com:443:443')
-  .post('/v1/vault/credit-card/', {"type":"visa","number":"4417119669820331","expire_month":"11","expire_year":"2018","cvv2":"123"})
-  .reply(201, "{\"id\":\"CARD-9RH7337754359873GKNNL2RI\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:41Z\",\"update_time\":\"2014-04-25T19:53:41Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-card/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
+  .post('/v1/vault/credit-cards/', {"type":"visa","number":"4417119669820331","expire_month":"11","expire_year":"2018","cvv2":"123"})
+  .reply(201, "{\"id\":\"CARD-9RH7337754359873GKNNL2RI\",\"state\":\"ok\",\"type\":\"visa\",\"number\":\"xxxxxxxxxxxx0331\",\"expire_month\":\"11\",\"expire_year\":\"2018\",\"valid_until\":\"2017-04-24T00:00:00Z\",\"create_time\":\"2014-04-25T19:53:41Z\",\"update_time\":\"2014-04-25T19:53:41Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"self\",\"method\":\"GET\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"delete\",\"method\":\"DELETE\"},{\"href\":\"https://api.sandbox.paypal.com/v1/vault/credit-cards/CARD-9RH7337754359873GKNNL2RI\",\"rel\":\"patch\",\"method\":\"PATCH\"}]}", { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava2.slc.paypal.com;threadId=127',
   'paypal-debug-id': '2ecb355c33bbd',
   'content-language': '*',
@@ -48,7 +48,7 @@ nock('https://api.sandbox.paypal.com:443:443')
   'transfer-encoding': 'chunked' });
 
 nock('https://api.sandbox.paypal.com:443:443')
-  .delete('/v1/vault/credit-card/CARD-9RH7337754359873GKNNL2RI', {})
+  .delete('/v1/vault/credit-cards/CARD-9RH7337754359873GKNNL2RI', {})
   .reply(204, "", { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava3.slc.paypal.com;threadId=368',
   'paypal-debug-id': 'f8f5995e326a2',
@@ -59,7 +59,7 @@ nock('https://api.sandbox.paypal.com:443:443')
 
 
 nock('https://api.sandbox.paypal.com:443:443')
-  .post('/v1/vault/credit-card/', {})
+  .post('/v1/vault/credit-cards/', {})
   .reply(400, "{\"name\":\"VALIDATION_ERROR\",\"details\":[{\"field\":\"number\",\"issue\":\"Required field missing\"},{\"field\":\"expire_year\",\"issue\":\"Required field missing\"},{\"field\":\"expire_month\",\"issue\":\"Required field missing\"},{\"field\":\"type\",\"issue\":\"Required field missing\"}],\"message\":\"Invalid request - see details\",\"information_link\":\"https://developer.paypal.com/docs/api/#VALIDATION_ERROR\",\"debug_id\":\"430139cb3295e\"}", { server: 'Apache-Coyote/1.1',
   proxy_server_info: 'host=slcsbjava1.slc.paypal.com;threadId=271',
   'paypal-debug-id': '430139cb3295e',
