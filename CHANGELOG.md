@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 =============================
 
+v1.7.1
+------
+* Fix access token caching when using refresh token config [#226](https://github.com/paypal/PayPal-node-SDK/issues/226)
+
 v1.7.0
 ------
 * Updated Webhooks Verify event.
