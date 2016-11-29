@@ -3,7 +3,8 @@ PayPal Node SDK release notes
 
 v1.7.1
 ------
-* Fix access token caching when using refresh token config [#226](https://github.com/paypal/PayPal-node-SDK/issues/226)
+* Update credit card vault URL to /v1/vault/credit-cards/ [#222](https://github.com/paypal/PayPal-node-SDK/issues/222).
+* Fix access token caching when using refresh token config [#226](https://github.com/paypal/PayPal-node-SDK/issues/226).
 
 v1.7.0
 ------
