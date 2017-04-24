@@ -30,7 +30,6 @@
   "devDependencies": {
     "blanket": "~1.1.5",
     "chai": "~1.9.1",
-    "coveralls": "~2.0.16",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.3.0",
     "grunt-jsdoc": "^0.5.8",
