@@ -45,28 +45,45 @@ To write an app using the SDK
     });
     ```
   * For multiple configuration support, have a look at the [sample](/samples/configuration/multiple_config.js)
-  * Invoke the rest api (eg: store a credit card) with required parameters (eg: data, config_options, callback).
+  * Invoke the rest api (eg: create a PayPal payment) with required parameters (eg: data, config_options, callback).
 
     ```js
-    var card_data = {
-      "type": "visa",
-      "number": "4417119669820331",
-      "expire_month": "11",
-      "expire_year": "2018",
-      "cvv2": "123",
-      "first_name": "Joe",
-      "last_name": "Shopper"
+    var create_payment_json = {
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://return.url",
+            "cancel_url": "http://cancel.url"
+        },
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "item",
+                    "sku": "item",
+                    "price": "1.00",
+                    "currency": "USD",
+                    "quantity": 1
+                }]
+            },
+            "amount": {
+                "currency": "USD",
+                "total": "1.00"
+            },
+            "description": "This is the payment description."
+        }]
     };
-
-    paypal.creditCard.create(card_data, function(error, credit_card){
-      if (error) {
-        console.log(error);
-        throw error;
-      } else {
-        console.log("Create Credit-Card Response");
-        console.log(credit_card);
-      }
-    })
+    
+    
+    paypal.payment.create(create_payment_json, function (error, payment) {
+        if (error) {
+            throw error;
+        } else {
+            console.log("Create Payment Response");
+            console.log(payment);
+        }
+    });
     ```
 
   * For creating [Subscription Payments](https://developer.paypal.com/docs/integration/direct/create-billing-plan/), check out the [samples](/samples/subscription) for creating planned sets of future recurring payments at periodic intervals.
