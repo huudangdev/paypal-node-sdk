@@ -49,6 +49,5 @@
   "scripts": {
     "test": "grunt"
   },
-  "readmeFilename": "README.md",
-  "man": "README.md"
+  "readmeFilename": "README.md"
 }
