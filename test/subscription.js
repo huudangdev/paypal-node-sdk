@@ -110,7 +110,7 @@ describe('SDK', function () {
         var billing_agreement_attributes = {
             "name": "Fast Speed Agreement",
             "description": "Agreement for Fast Speed Plan",
-            "start_date": "2015-02-19T00:37:04Z",
+            "start_date": "2018-02-19T00:37:04Z",
             "plan": {
                 "id": "P-0NJ10521L3680291SOAQIVTQ"
             },
@@ -130,7 +130,7 @@ describe('SDK', function () {
         var billing_agreement_attributes_cc = {
             "name": "Fast Speed Agreement",
             "description": "Agreement for the Fast Speed Plan",
-            "start_date": "2015-02-19T00:37:04Z",
+            "start_date": "2018-02-19T00:37:04Z",
             "plan": {
                 "id": "P-9JJ08935W261554413DRYT4I"
             },
@@ -181,6 +181,51 @@ describe('SDK', function () {
         ];
         var billing_agreement_id = 'I-W0CR3PB7KTBB';
 
+        var billing_plan_attributes_invalid_json = {
+            "description": "Invalid JSON Handling Plan",
+            "name": "Testing1-HandleInvalidJSON",
+            "merchant_preferences": {
+                "auto_bill_amount": "yes",
+                "cancel_url": "http://www.cancel.com",
+                "initial_fail_amount_action": "continue",
+                "max_fail_attempts": "1",
+                "return_url": "http://www.success.com",
+                "setup_fee": {
+                    "currency": "USD",
+                    "value": "25"
+                }
+            },
+            "payment_definitions": [
+                {
+                    "amount": {
+                        "currency": "USD",
+                        "value": "100"
+                    },
+                    "charge_models": [
+                        {
+                            "amount": {
+                                "currency": "USD",
+                                "value": "10.60"
+                            },
+                            "type": "SHIPPING"
+                        },
+                        {
+                            "amount": {
+                                "currency": "USD",
+                                "value": "20"
+                            },
+                            "type": "TAX"
+                        }
+                    ],
+                    "cycles": "0",
+                    "frequency": "MONTH",
+                    "frequency_interval": "1",
+                    "name": "Regular 1",
+                    "type": "REGULAR"
+                }
+            ],
+            "type": "INFINITE"
+        };
         if (process.env.NOCK_OFF !== 'true') {
             require('./mocks/subscription');
         }
@@ -226,6 +271,20 @@ describe('SDK', function () {
                         expect(billing_plan.state).to.contain('ACTIVE');
                         done();
                     });
+                });
+            });
+        });
+
+        it('activate billing plan with invalid JSON', function (done) {
+            paypal.billingPlan.create(billing_plan_attributes_invalid_json, function (error, billing_plan) {
+                expect(error).equal(null);
+                expect(billing_plan.state).equal("CREATED");
+
+                paypal.billingPlan.update(billing_plan.id, billing_plan_update_attributes, function (error, response) {
+                    expect(error).equal(null);
+                    expect(response.httpStatusCode).equal(200);
+
+                    done();
                 });
             });
         });
