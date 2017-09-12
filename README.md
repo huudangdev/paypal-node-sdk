@@ -166,12 +166,12 @@ NOCK_OFF=true mocha -t 60000
 
 
 ## Debugging
-   * As of version 1.6.2, full request/response are logged for non production environments with NODE_ENV=development set
+   * As of version 1.6.2, full request/response are logged for non production environments with PAYPAL_DEBUG set
 
-     You can set the environment variable on the command line by running `NODE_ENV=development node <path of script>` or by executing `export NODE_ENV=development` and then running your Node.js script. Please see your command terminal/shell's manual pages for specific information.
+     You can set the environment variable on the command line by running `PAYPAL_DEBUG=1 node <path of script>` or by executing `export PAYPAL_DEBUG=1` and then running your Node.js script. Please see your command terminal/shell's manual pages for specific information.
 
-   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable NODE_ENV=development.
-   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/docs/api/payments/#errors). NODE_ENV=development setting also gives you access to stringfied response in error messages.
+   * It is recommended to provide Paypal-Debug-Id if requesting PayPal Merchant Technical Services for support. You can get access to the debug id by setting environment variable PAYPAL_DEBUG=1.
+   * The error object returned for any bad request has error.response populated with [details](https://developer.paypal.com/docs/api/payments/#errors). PAYPAL_DEBUG=1 setting also gives you access to stringfied response in error messages.
 
 ## Reference
    [REST API Reference] (https://developer.paypal.com/webapps/developer/docs/api/)
