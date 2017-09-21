@@ -11,6 +11,8 @@ NPM status:
 
 Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for REST API. For a full working app and documentation, have a look at the [PayPal Node SDK Page](http://paypal.github.io/PayPal-node-SDK/).
 
+> **2.0 Beta**: We now have a 2.0 beta available, featuring promise support, and a revamped integration. Check out the [`2.0-beta`](https://github.com/paypal/PayPal-node-SDK/tree/2.0-beta) branch for details, or run `npm install paypal-rest-sdk@beta`.
+
 > **v1.0.0 notice**: If upgrading from paypal rest sdk 0.*, Please view Breaking Changes in release_notes.md
 
 > **The Payment Card Industry (PCI) Council has [mandated](http://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls) that early versions of TLS be retired from service.  All organizations that handle credit card information are required to comply with this standard. As part of this obligation, PayPal is updating its services to require TLS 1.2 for all HTTPS connections. At this time, PayPal will also require HTTP/1.1 for all connections. See the [PayPal TLS Update repository](https://github.com/paypal/tls-update) for more information.**
