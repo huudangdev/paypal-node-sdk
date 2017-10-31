@@ -21,6 +21,9 @@ Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for 
 
 > **To verify that your server supports PCI compliant version of TLS, test against the PayPal sandbox environment which uses TLS 1.2.
 
+## Direct Credit Card Support
+> **Important: The PayPal REST API no longer supports new direct credit card integrations.**  Please instead consider [Braintree Direct](https://www.braintreepayments.com/products/braintree-direct); which is, PayPal's preferred integration solution for accepting direct credit card payments in your mobile app or website. Braintree, a PayPal service, is the easiest way to accept credit cards, PayPal, and many other payment methods.
+
 ## Installation
 
 ```sh
