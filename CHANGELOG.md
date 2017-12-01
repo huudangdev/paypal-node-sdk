@@ -1,6 +1,15 @@
 PayPal Node SDK release notes
 =============================
 
+v1.8.0
+------
+* Use `PAYPAL_DEBUG` instead of `NODE_ENV` to print debug messages [#289](https://github.com/paypal/PayPal-node-SDK/pull/289).
+* Handler whitespaces only for response body [#286](https://github.com/paypal/PayPal-node-SDK/pull/286).
+* Validate `mode` to be either `sandbox` or `live` [#269](https://github.com/paypal/PayPal-node-SDK/pull/269).
+* HTTP config host precedence order set as other configs [#231](https://github.com/paypal/PayPal-node-SDK/pull/231).
+* Remove unnecessary setting of PayPal-Request-Id.
+* Remove deprecated samples, and other minor bug fixes.
+
 v1.7.1
 ------
 * Update credit card vault URL to /v1/vault/credit-cards/ [#222](https://github.com/paypal/PayPal-node-SDK/issues/222).
