@@ -3,7 +3,7 @@ PayPal Node SDK release notes
 
 v1.8.1
 ------
-* Revert HTTP config host precedence order change due to issue with some configs
+* Revert HTTP config host precedence order change due to issue with some configs.
 
 v1.8.0
 ------
