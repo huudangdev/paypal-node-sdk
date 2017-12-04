@@ -1,6 +1,10 @@
 PayPal Node SDK release notes
 =============================
 
+v1.8.1
+------
+* Revert HTTP config host precedence order change due to issue with some configs
+
 v1.8.0
 ------
 * Use `PAYPAL_DEBUG` instead of `NODE_ENV` to print debug messages [#289](https://github.com/paypal/PayPal-node-SDK/pull/289).
