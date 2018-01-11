@@ -18,12 +18,12 @@ paypal.billingAgreement.cancel(billingAgreementId, cancel_note, function (error,
         console.log("Cancel Billing Agreement Response");
         console.log(response);
 
-        paypal.billingPlan.get(billingAgreementId, function (error, billingPlan) {
+        paypal.billingAgreement.get(billingAgreementId, function (error, billingAgreement) {
             if (error) {
                 console.log(error.response);
                 throw error;
             } else {
-                console.log(billingPlan.state);
+                console.log(billingAgreement.state);
             }
         });
     }
