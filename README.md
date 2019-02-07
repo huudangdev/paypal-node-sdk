@@ -24,6 +24,11 @@ Repository for PayPal's Node SDK (node.js version >=0.6.x) and Node samples for 
 ## Direct Credit Card Support
 > **Important: The PayPal REST API no longer supports new direct credit card integrations.**  Please instead consider [Braintree Direct](https://www.braintreepayments.com/products/braintree-direct); which is, PayPal's preferred integration solution for accepting direct credit card payments in your mobile app or website. Braintree, a PayPal service, is the easiest way to accept credit cards, PayPal, and many other payment methods.
 
+## PayPal Checkout v2
+Please note that if you are integrating with PayPal Checkout, this SDK and corresponding API [v1/payments](https://developer.paypal.com/docs/api/payments/v1/) are in the process of being deprecated.
+
+We recommend that you integrate with API [v2/checkout/orders](https://developer.paypal.com/docs/api/orders/v2/) and [v2/payments](https://developer.paypal.com/docs/api/payments/v2/). Please refer to the [Checkout Node.js SDK](https://github.com/paypal/Checkout-NodeJS-SDK) to continue with the integration.
+
 ## 2.0 Release Candidate!
 We're releasing a [brand new version of our SDK!](https://github.com/paypal/PayPal-node-SDK/tree/2.0-beta) 2.0 is currently at release candidate status, and represents a full refactor, with the goal of making all of our APIs extremely easy to use. 2.0 includes all of the existing APIs (except payouts), and includes the new Orders API (disputes and Marketplace coming soon). Check out the [FAQ and migration guide](https://github.com/paypal/PayPal-node-SDK/tree/2.0-beta/docs), and let us know if you have any suggestions or issues!
 
